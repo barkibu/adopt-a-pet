@@ -4,3 +4,36 @@
 @import 'base/grid-settings';
 @import 'neat';
 @import 'base/base';
+@import 'header';
+@import 'footer';
+@import 'views/home';
+
+section{
+  @include outer-container;
+  margin-bottom: 2em;
+  padding-bottom: 1em;
+  position: relative;
+}
+
+.line-behind-text {
+  border-bottom: 1px solid #CACACA;
+  text-align: center;
+  margin-bottom: 4.5em;
+  h6 {
+    background: white;
+    color: gray;
+    display: inline-block;
+    font-family: "Oswald", sans-serif;
+    font-size: 1em;
+    font-weight: 500;
+    padding: 0 10px;
+    position: relative;
+    text-transform: uppercase;
+    top: 34px;
+  }
+}
+
+h6 {
+  margin-bottom: 1.5em;
+}
+

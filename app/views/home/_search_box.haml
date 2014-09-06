@@ -1,0 +1,39 @@
+.search-tools
+  .filter
+    %label Especie
+    %div
+      %ol
+        %li
+          %input#red{:type => "checkbox"}/
+          %label{:for => "perro"} Perro
+        %li
+          %input#green{:type => "checkbox"}/
+          %label{:for => "gato"} Gato
+        %li
+          %input#blue{:type => "checkbox"}/
+          %label{:for => "otros"} Otros
+  .filter
+    %label Tamaño
+    %div
+      %ol
+        %li
+          %input#small{:type => "checkbox"}/
+          %label{:for => "small"} Small
+        %li
+          %input#medium{:type => "checkbox"}/
+          %label{:for => "medium"} Medium
+        %li
+          %input#large{:type => "checkbox"}/
+          %label{:for => "large"} Large
+  .filter
+    %label Edad
+    %div
+      %ol
+        %li
+          %input#short{:type => "checkbox"}/
+          %label{:for => "cachorro"} Cachorro
+        %li
+          %input#long{:type => "checkbox"}/
+          %label{:for => "adulto"} Adulto
+  .trigger
+    %button Buscar
