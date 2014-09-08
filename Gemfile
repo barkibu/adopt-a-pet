@@ -24,6 +24,7 @@ gem "uglifier"
 gem "unicorn"
 gem 'haml-rails'
 gem 'devise'
+gem 'activeadmin', github: 'activeadmin'
 
 group :development do
   gem "spring"
