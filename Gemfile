@@ -23,6 +23,7 @@ gem "title"
 gem "uglifier"
 gem "unicorn"
 gem 'haml-rails'
+gem 'devise'
 
 group :development do
   gem "spring"
