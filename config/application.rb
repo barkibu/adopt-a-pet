@@ -27,6 +27,8 @@ module AdoptAPet
       generate.stylesheets false
       generate.test_framework :rspec
       generate.view_specs false
+
+      generate.scaffold_controller "scaffold_controller"
     end
 
     # Settings in config/environments/* take precedence over those specified here.

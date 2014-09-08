@@ -7,12 +7,31 @@ es:
       user:
         one: Usuario
         other: Usuarios
+      pet:
+        one: Mascota
+        other: Mascotas
     attributes:
       user:
-        name: 'Nombre'
-        role: 'Rol'
-        phone: 'Teléfono'
         address: 'Dirección'
+        name: 'Nombre'
+        phone: 'Teléfono'
+        role: 'Rol'
+      pet:
+        age: 'Edad'
+        breed: 'Raza'
+        description: 'Descripción'
+        location: 'Ubicación'
+        more_info_url: 'Más info. URL'
+        name: 'Nombre'
+        sex: 'Sexo'
+        sexes:
+          male: 'Macho'
+          female: 'Hembra'
+          other: 'Otro'
+        size: 'Tamaño'
+        specie: 'Especie'
+        state: 'Estado'
+        urgent: 'Urgente'
 
   date:
     abbr_day_names:

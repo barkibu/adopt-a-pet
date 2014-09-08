@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
 
   validates :email, presence: true, email: true
 
+  has_many :pets
+
   def set_default_role
     self.role ||= :user
   end

@@ -5,12 +5,11 @@
     = f.input :name
     = f.input :specie
     = f.input :breed
-    = f.input :sex
+    = f.input :sex, collection: Pet.sexes.keys
     = f.input :description
     = f.input :location
-    = f.input :state
     = f.input :age
-    = f.input :size
+    = f.input :size, collection: Pet.sizes.keys
     = f.input :more_info_url
     = f.input :urgent
 

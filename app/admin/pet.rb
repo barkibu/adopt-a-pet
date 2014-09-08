@@ -1,18 +1,24 @@
 ActiveAdmin.register Pet do
+  permit_params :age, :breed, :description, :location, :more_info_url, :name, :sex, :size, :specie, :urgent
 
+  filter :name
+  filter :sex, as: :check_boxes, collection: Pet.sexes.keys
+  filter :state, as: :check_boxes, collection: Pet.states.keys
+  filter :size, as: :check_boxes, collection: Pet.sizes.keys
 
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # permit_params :list, :of, :attributes, :on, :model
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:permitted, :attributes]
-  #   permitted << :other if resource.something?
-  #   permitted
-  # end
-
-
+  form do |f|
+    f.inputs "Details" do
+      f.input :name
+      f.input :specie
+      f.input :breed
+      f.input :sex, as: :select, collection: Pet.sexes.keys
+      f.input :description
+      f.input :location
+      f.input :age
+      f.input :size, as: :select, collection: Pet.sizes.keys
+      f.input :more_info_url
+      f.input :urgent
+    end
+    f.actions
+  end
 end
