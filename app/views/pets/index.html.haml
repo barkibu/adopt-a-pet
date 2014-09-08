@@ -1,0 +1,39 @@
+%h1 Listing pets
+
+%table
+  %tr
+    %th Name
+    %th Specie
+    %th Breed
+    %th Sex
+    %th Description
+    %th Location
+    %th State
+    %th Age
+    %th Size
+    %th More info url
+    %th Urgent
+    %th
+    %th
+    %th
+
+  - @pets.each do |pet|
+    %tr
+      %td= pet.name
+      %td= pet.specie
+      %td= pet.breed
+      %td= pet.sex
+      %td= pet.description
+      %td= pet.location
+      %td= pet.state
+      %td= pet.age
+      %td= pet.size
+      %td= pet.more_info_url
+      %td= pet.urgent
+      %td= link_to 'Show', pet
+      %td= link_to 'Edit', edit_pet_path(pet)
+      %td= link_to 'Destroy', pet, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Pet', new_pet_path

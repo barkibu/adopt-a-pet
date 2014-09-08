@@ -1,0 +1,39 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @pet.name
+%p
+  %b Specie:
+  = @pet.specie
+%p
+  %b Breed:
+  = @pet.breed
+%p
+  %b Sex:
+  = @pet.sex
+%p
+  %b Description:
+  = @pet.description
+%p
+  %b Location:
+  = @pet.location
+%p
+  %b State:
+  = @pet.state
+%p
+  %b Age:
+  = @pet.age
+%p
+  %b Size:
+  = @pet.size
+%p
+  %b More info url:
+  = @pet.more_info_url
+%p
+  %b Urgent:
+  = @pet.urgent
+
+= link_to 'Edit', edit_pet_path(@pet)
+\|
+= link_to 'Back', pets_path
