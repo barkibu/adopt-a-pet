@@ -26,7 +26,7 @@ bundle exec rake dev:prime
 mkdir -p .git/safe
 
 # Pick a port for Foreman
-echo "port: 6000" > .foreman
+echo "port: 3000" > .foreman
 
 # Print warning if Foreman is not installed
 if ! command -v foreman &>/dev/null; then
