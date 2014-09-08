@@ -22,7 +22,7 @@ gem "simple_form"
 gem "title"
 gem "uglifier"
 gem "unicorn"
-gem 'haml'
+gem 'haml-rails'
 
 group :development do
   gem "spring"
