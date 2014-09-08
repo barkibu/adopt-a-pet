@@ -2,6 +2,18 @@ es:
   login: 'Acceso'
   logout: 'Salir'
 
+  activerecord:
+    models:
+      user:
+        one: Usuario
+        other: Usuarios
+    attributes:
+      user:
+        name: 'Nombre'
+        role: 'Rol'
+        phone: 'Teléfono'
+        address: 'Dirección'
+
   date:
     abbr_day_names:
     - dom
