@@ -24,10 +24,6 @@ gem "uglifier"
 gem "unicorn"
 gem 'haml'
 
-group :assets do
-  gem 'coffee-rails'
-end
-
 group :development do
   gem "spring"
   gem "spring-commands-rspec"
