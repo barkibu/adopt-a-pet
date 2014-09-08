@@ -1,4 +1,7 @@
 en:
+  login: 'Sign in'
+  logout: 'Sign out'
+
   date:
     formats:
       default:
@@ -14,3 +17,5 @@ en:
         "%b %-d, %Y"
       short:
         "%B %d"
+
+  
