@@ -37,4 +37,7 @@
               %li
                 %a{:href => "javascript:void(0)"} An Item
       %li.nav-link
-        %a{:href => "javascript:void(0)"} Acceso
+        - if user_signed_in?
+          = link_to t('logout'), destroy_user_session_path, method: :delete
+        - else
+          = link_to t('login'), new_user_session_path
