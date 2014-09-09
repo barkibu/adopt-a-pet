@@ -1,0 +1,9 @@
+.filter
+  = label_tag title
+  %div
+    %ol
+      - collection.each do |item|
+        %li
+          = check_box_tag item
+          = label_tag item
+
