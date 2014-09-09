@@ -4,6 +4,5 @@
     %ol
       - t("activerecord.attributes.pet.#{ filter.pluralize }").each do |k, v|
         %li
-          = check_box_tag k
+          = check_box_tag k, '1', params[k] == '1'
           = label_tag k, v
-

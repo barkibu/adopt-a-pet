@@ -4,9 +4,9 @@
     %a.centered-navigation-menu-button{href: ""} MENÚ
     %ul.centered-navigation-menu
       %li.nav-link
-        %a{href: "javascript:void(0)"} Perros en adopción
+        = link_to 'Perros en adopción', root_path(dog: '1')
       %li.nav-link
-        %a{href: "javascript:void(0)"} Gatos en adopción
+        = link_to 'Gatos en adopción', root_path(cat: '1')
       %li.nav-link
         %a{href: "javascript:void(0)"} ¿Adoptar?
       %li.nav-link.logo

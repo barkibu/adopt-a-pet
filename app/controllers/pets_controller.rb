@@ -36,10 +36,6 @@ class PetsController < ApplicationController
     redirect_to root_url, notice: 'Pet was successfully destroyed.'
   end
 
-  def find
-    redirect_to root_url(params)
-  end
-
   private
     def set_pet
       @pet = Pet.find(params[:id])
