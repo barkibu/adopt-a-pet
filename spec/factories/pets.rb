@@ -2,15 +2,15 @@
 
 FactoryGirl.define do
   factory :pet do
-    name        { "#{ case specie when 'perro' then 'Perrito';when 'gato' then 'Gatito';end } #{ %w(guay viejete happy).sample }" }
-    specie      { %w(perro gato).sample }
-    breed       { case specie when 'perro' then %w(dogo pontier golden).sample;when 'gato' then %w(persa tigre).sample;end }
-    sex         { Pet.sexes.keys.sample }
-    description "MyText"
-    location "MyString"
-    age 1
-    size        { Pet.sizes.keys.sample }
-    more_info_url "MyString"
-    urgent      { [true, false].sample }
+    name          { "#{ case specie when :dog then 'Perrito';when :cat then 'Gatito';end } #{ %w(guay viejete happy).sample }" }
+    specie        { [:dog, :cat].sample }
+    breed         { case specie when :dog then %w(dogo pontier golden).sample;when :cat then %w(persa tigre).sample;end }
+    sex           { Pet.sexes.keys.sample }
+    description   { Faker::Lorem.paragraphs(rand(4) + 1).join "\n\n" }
+    location      { Faker::Address.country }
+    age           { Pet.ages.keys.sample }
+    size          { Pet.sizes.keys.sample }
+    more_info_url { Faker::Internet.http_url }
+    urgent        { [true, false].sample }
   end
 end

@@ -3,7 +3,7 @@
 
   .form-inputs
     = f.input :name
-    = f.input :specie
+    = f.input :specie, collection: Pet.species.keys
     = f.input :breed
     = f.input :sex, collection: Pet.sexes.keys
     = f.input :description

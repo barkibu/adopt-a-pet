@@ -21,6 +21,9 @@ es:
         password_confirmation: 'Confirmación de la contraseña'
       pet:
         age: 'Edad'
+        ages:
+          young: 'Joven'
+          adult: 'Adulto'
         breed: 'Raza'
         description: 'Descripción'
         location: 'Ubicación'
@@ -30,10 +33,19 @@ es:
         sexes:
           male: 'Macho'
           female: 'Hembra'
-          other: 'Otro'
         size: 'Tamaño'
+        sizes:
+          small: 'Pequeño'
+          medium: 'Mediano'
+          big: 'Grande'
         specie: 'Especie'
+        species:
+          dog: 'Perro'
+          cat: 'Gato'
         state: 'Estado'
+        states:
+          adoption: 'En adopción'
+          adopted: 'Adoptado'
         urgent: 'Urgente'
 
   views:

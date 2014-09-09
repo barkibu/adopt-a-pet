@@ -1,5 +1,5 @@
 = form_tag find_pets_path, class: 'search-tools' do |f|
-  = render 'search_box_filter', title: 'Especie', collection: %w(perro gato otros)
-  = render 'search_box_filter', title: 'Tamaño', collection: %w(small medium large)
-  = render 'search_box_filter', title: 'Edad', collection: %w(cachorro adulto)
+  = render 'search_box_filter', filter: 'specie'
+  = render 'search_box_filter', filter: 'size'
+  = render 'search_box_filter', filter: 'age'
   .trigger= button_tag 'Buscar'

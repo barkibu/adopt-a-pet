@@ -38,6 +38,7 @@ group :development, :test do
   gem "factory_girl_rails"
   gem "pry-rails"
   gem "rspec-rails", "~> 3.0.0"
+  gem 'ffaker'
 end
 
 group :test do

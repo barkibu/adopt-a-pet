@@ -26,9 +26,9 @@ RSpec.describe PetsController, :type => :controller do
   let(:valid_attributes) {
     {
       name: 'MyString',
-      specie: 'MyString',
+      specie: :dog,
       breed: 'MyString',
-      sex: :other,
+      sex: :male,
       description: 'MyString',
       location: 'MyString'
     }
@@ -39,7 +39,6 @@ RSpec.describe PetsController, :type => :controller do
       name: 'MyString',
       specie: '',
       breed: 'MyString',
-      sex: :other,
       description: nil,
       location: 'MyString'
     }

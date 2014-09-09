@@ -21,6 +21,9 @@ en:
         password_confirmation: 'Password confirmation'
       pet:
         age: 'Age'
+        ages:
+          young: 'Young'
+          adult: 'Adult'
         breed: 'Breed'
         description: 'Description'
         location: 'Location'
@@ -30,10 +33,19 @@ en:
         sexes:
           male: 'Male'
           female: 'Female'
-          other: 'Other'
         size: 'Size'
+        sizes:
+          small: 'Small'
+          medium: 'Medium'
+          big: 'Big'
         specie: 'Specie'
+        species:
+          dog: 'Dog'
+          cat: 'Cat'
         state: 'State'
+        states:
+          adoption: 'In adoption'
+          adopted: 'Adopted'
         urgent: 'Urgent'
 
   views:

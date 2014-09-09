@@ -9,7 +9,7 @@ ActiveAdmin.register Pet do
   form do |f|
     f.inputs "Details" do
       f.input :name
-      f.input :specie
+      f.input :specie, as: :check_boxes, collection: Pet.species.keys
       f.input :breed
       f.input :sex, as: :select, collection: Pet.sexes.keys
       f.input :description

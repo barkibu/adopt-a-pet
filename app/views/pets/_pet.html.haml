@@ -1,4 +1,4 @@
-.card
+= link_to pet, class: 'card' do
   - if pet.urgent?
     .ribbon-wrapper
       .ribbon URGENTE
@@ -7,7 +7,7 @@
   .card-header
     = pet.name
   .card-copy
-    %p= pet.description
+    %p= simple_format pet.description
   .card-stats
     %ul
       - if pet.age?
