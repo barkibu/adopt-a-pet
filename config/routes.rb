@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :pets, only: [:new, :create, :edit, :update, :destroy]
+  resources :pets, only: [:show, :new, :create, :edit, :update, :destroy]
 
   ActiveAdmin.routes(self)
   devise_for :users

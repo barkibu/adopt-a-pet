@@ -16,6 +16,9 @@ es:
         name: 'Nombre'
         phone: 'Teléfono'
         role: 'Rol'
+        email: 'E-mail'
+        password: 'Contraseña'
+        password_confirmation: 'Confirmación de la contraseña'
       pet:
         age: 'Edad'
         breed: 'Raza'
