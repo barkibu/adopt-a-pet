@@ -1,33 +1,33 @@
 %footer.footer
   .footer-logo
-    %img{:alt => "", :src => "https://s3-eu-west-1.amazonaws.com/barkibu/logos/horizontal-blanco.png"}/
+    = image_tag 'https://s3-eu-west-1.amazonaws.com/barkibu/logos/horizontal-blanco.png'
   .footer-links
     %ul
       %li
         %h3 En Adopciones Barkibu
       %li
-        %a{:href => "javascript:void(0)"} Nosotros
+        %a{href: "javascript:void(0)"} Nosotros
       %li
-        %a{:href => "javascript:void(0)"} Ayudas para protectoras
+        %a{href: "javascript:void(0)"} Ayudas para protectoras
       %li
-        %a{:href => "javascript:void(0)"} Salud animal
+        %a{href: "javascript:void(0)"} Salud animal
     %ul
       %li
         %h3 Síguenos
       %li
-        %a{:href => "javascript:void(0)"} Facebook
+        %a{href: "javascript:void(0)"} Facebook
       %li
-        %a{:href => "javascript:void(0)"} Twitter
+        %a{href: "javascript:void(0)"} Twitter
       %li
-        %a{:href => "javascript:void(0)"} Pinterest
+        %a{href: "javascript:void(0)"} Pinterest
     %ul
       %li
         %h3 Legal
       %li
-        %a{:href => "javascript:void(0)"} Terms and Conditions
+        %a{href: "javascript:void(0)"} Terms and Conditions
       %li
-        %a{:href => "javascript:void(0)"} Privacy Policy
+        %a{href: "javascript:void(0)"} Privacy Policy
   %hr/
-  %p 
-    Adopciones es una iniciativa sin animo de lucro de 
-    %a{:href => "http://www.barkibu.com"} Barkibu
+  %p
+    Adopciones es una iniciativa sin animo de lucro de
+    = link_to 'Barkibu', 'http://www.barkibu.com'
