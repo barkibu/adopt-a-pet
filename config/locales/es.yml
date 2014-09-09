@@ -33,6 +33,23 @@ es:
         state: 'Estado'
         urgent: 'Urgente'
 
+  views:
+    pagination:
+      first: "&laquo; Primera"
+      last: "Última &raquo;"
+      previous: "&lsaquo; Anterior"
+      next: "Siguiente &rsaquo;"
+      truncate: "&hellip;"
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "No %{entry_name} encontrado"
+          one: "Mostrando <b>1</b> %{entry_name}"
+          other: "Mostrando <b>todo %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "Mostrando %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> of <b>%{total}</b> en total"
+
   date:
     abbr_day_names:
     - dom
@@ -134,6 +151,7 @@ es:
     messages:
       accepted: debe ser aceptado
       blank: no puede estar en blanco
+      present: debe estar en blanco
       confirmation: no coincide con la confirmación
       empty: no puede estar vacío
       equal_to: debe ser igual a %{count}
@@ -149,10 +167,14 @@ es:
       not_an_integer: debe ser un entero
       odd: debe ser impar
       record_invalid: ! 'La validación falló: %{errors}'
+      restrict_dependent_destroy:
+        one: "No se puede borrar el registro porque existe un %{record} dependiente"
+        many: "No se puede borrar el registro porque existen %{record} dependientes"
       taken: ya está en uso
       too_long: es demasiado largo (%{count} caracteres máximo)
       too_short: es demasiado corto (%{count} caracteres mínimo)
       wrong_length: no tiene la longitud correcta (%{count} caracteres exactos)
+      other_than: debe ser distinto a %{count}
     template:
       body: ! 'Se encontraron problemas con los siguientes campos:'
       header:
@@ -209,6 +231,7 @@ es:
     percentage:
       format:
         delimiter: ''
+        format: "%n%"
     precision:
       format:
         delimiter: ''
