@@ -2,16 +2,15 @@
 
 FactoryGirl.define do
   factory :pet do
-    name "MyString"
-    specie "MyString"
-    breed "MyString"
-    sex 1
+    name        { "#{ case specie when 'perro' then 'Perrito';when 'gato' then 'Gatito';end } #{ %w(guay viejete happy).sample }" }
+    specie      { %w(perro gato).sample }
+    breed       { case specie when 'perro' then %w(dogo pontier golden).sample;when 'gato' then %w(persa tigre).sample;end }
+    sex         { Pet.sexes.keys.sample }
     description "MyText"
     location "MyString"
-    state 1
     age 1
-    size 1
+    size        { Pet.sizes.keys.sample }
     more_info_url "MyString"
-    urgent false
+    urgent      { [true, false].sample }
   end
 end

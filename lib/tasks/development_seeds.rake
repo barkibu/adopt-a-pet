@@ -6,7 +6,8 @@ if Rails.env.development?
     task prime: "db:setup" do
       include FactoryGirl::Syntax::Methods
 
-      # create(:user, email: "user@example.com", password: "password")
+      FactoryGirl.create :user, email: 'admin@example.com', password: 'password', role: :admin
+      FactoryGirl.create_list :pet, 40
     end
   end
 end
