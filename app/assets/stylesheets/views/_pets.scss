@@ -2,6 +2,7 @@
   @include clearfix;
 }
 
+$card-stats-color: lighten($base-accent-color, 10);
 .card {
   $card-border-color: $base-border-color;
   $card-border: 1px solid $card-border-color;
@@ -10,7 +11,7 @@
   $card-hover-background: lighten($card-background, 5);
   $card-image-background: #DBD199;
   $card-image-hover-background: lighten($card-image-background, 5);
-  $card-stats-color: lighten($base-accent-color, 10);
+  
 
   @include transition (all 0.2s ease-in-out);
   background-color: $card-background;
@@ -79,36 +80,6 @@
     line-height: 1.5em;
   }
 
-  .card-stats {
-    padding: $base-spacing/2 $gutter/2;
-    overflow: auto;
-
-    ul li {
-      display: inline;
-      color: $card-stats-color;
-      font-weight: 800;
-      font-size: 1.2em;
-      float: left;
-      border-right: 1px solid transparentize($base-font-color, .8);
-      line-height: 1.1em;
-      padding: 0 .7em 0 .7em;
-
-      &:first-child {
-        padding-left: 0;
-      }
-
-      &:last-child {
-        border-right: 0;
-      }
-
-      span {
-        color: $base-font-color;
-        font-size: .7em;
-        display: block;
-        font-weight: normal;
-      }
-    }
-  }
 
   &:hover {
     background-color: $card-hover-background;
@@ -130,3 +101,35 @@
     }
   }
 }
+
+.card-stats {
+  padding: $base-spacing/2 $gutter/2;
+  overflow: auto;
+
+  ul li {
+    display: inline;
+    color: $card-stats-color;
+    font-weight: 800;
+    font-size: 1.2em;
+    float: left;
+    border-right: 1px solid transparentize($base-font-color, .8);
+    line-height: 1.1em;
+    padding: 0 .7em 0 .7em;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:last-child {
+      border-right: 0;
+    }
+
+    span {
+      color: $base-font-color;
+      font-size: .7em;
+      display: block;
+      font-weight: normal;
+    }
+  }
+}
+

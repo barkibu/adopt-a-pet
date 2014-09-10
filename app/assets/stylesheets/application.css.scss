@@ -8,6 +8,7 @@
 @import 'header';
 @import 'footer';
 @import 'views/home';
+@import 'views/pet';
 
 section{
   @include outer-container;
