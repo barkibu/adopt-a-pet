@@ -1,4 +1,3 @@
-require Rails.root.join("config/smtp")
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -67,8 +66,8 @@ Rails.application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = SMTP_SETTINGS
+  config.action_mailer.delivery_method   = :postmark
+  config.action_mailer.postmark_settings = { api_key: ENV['POSTMARK_API_KEY'] }
 
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to

@@ -1,0 +1,5 @@
+%p
+  !Hola #{@resource.email}!
+%p Tu cuenta ha sido bloqueada debido a un excesivo número de intentos erróneos.
+%p Click en el siguiente enlace para desbloquear tu cuenta:
+%p= link_to 'Desbloquear mi cuenta', unlock_url(@resource, unlock_token: @token)
