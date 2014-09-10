@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
-  root :to => 'home#index'
+  resources :pets, only: [:show, :new, :create, :edit, :update, :destroy]
 
+  post '/find' => 'home#find', as: :find
+
+  ActiveAdmin.routes(self)
+  devise_for :users
+  root :to => 'home#index'
 end

@@ -23,6 +23,8 @@ gem "title"
 gem "uglifier"
 gem "unicorn"
 gem 'haml-rails'
+gem 'devise'
+gem 'activeadmin', github: 'activeadmin'
 
 group :development do
   gem "spring"
@@ -36,6 +38,7 @@ group :development, :test do
   gem "factory_girl_rails"
   gem "pry-rails"
   gem "rspec-rails", "~> 3.0.0"
+  gem 'ffaker'
 end
 
 group :test do
@@ -46,6 +49,7 @@ group :test do
   gem "shoulda-matchers", require: false
   gem "timecop"
   gem "webmock"
+  gem 'simplecov', require: false
 end
 
 group :staging, :production do

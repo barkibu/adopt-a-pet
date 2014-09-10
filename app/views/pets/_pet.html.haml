@@ -1,0 +1,24 @@
+= link_to pet, class: 'card' do
+  - if pet.urgent?
+    .ribbon-wrapper
+      .ribbon URGENTE
+  .card-image
+    = image_tag 'https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png'
+  .card-header
+    = pet.name
+  .card-copy
+    %p= simple_format pet.description
+  .card-stats
+    %ul
+      - if pet.age?
+        %li
+          = pet.age
+          %span Edad
+      - if pet.size?
+        %li
+          = pet.size
+          %span Tamaño
+      - if pet.location?
+        %li
+          = pet.location
+          %span Lugar

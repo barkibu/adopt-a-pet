@@ -4,6 +4,7 @@
 @import 'base/grid-settings';
 @import 'neat';
 @import 'base/base';
+@import 'flashes';
 @import 'header';
 @import 'footer';
 @import 'views/home';
@@ -36,4 +37,3 @@ section{
 h6 {
   margin-bottom: 1.5em;
 }
-
