@@ -38,6 +38,7 @@ Rails.application.configure do
   # a parameter is not explicitly permitted but is passed anyway.
   config.action_controller.action_on_unpermitted_parameters = :raise
 
-
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = { address: "localhost", port: 1025 }
 end

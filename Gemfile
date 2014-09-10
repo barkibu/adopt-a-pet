@@ -24,7 +24,9 @@ gem "uglifier"
 gem "unicorn"
 gem 'haml-rails'
 gem 'devise'
+gem "devise-async"
 gem 'activeadmin', github: 'activeadmin'
+gem 'postmark-rails'
 
 group :development do
   gem "spring"
