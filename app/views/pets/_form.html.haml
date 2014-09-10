@@ -1,17 +1,22 @@
-= simple_form_for(@pet) do |f|
-  = f.error_notification
+%fieldset
+  = simple_form_for(@pet) do |f|
+    = f.error_notification
 
-  .form-inputs
-    = f.input :name
-    = f.input :specie, collection: Pet.species.keys
-    = f.input :breed
-    = f.input :sex, collection: Pet.sexes.keys
-    = f.input :description
-    = f.input :location
-    = f.input :age
-    = f.input :size, collection: Pet.sizes.keys
-    = f.input :more_info_url
-    = f.input :urgent
+    .form-inputs
+      %p= f.input :name
+      %p= f.input :specie, collection: Pet.species.keys
+      = f.input :breed
+      = f.input :sex, collection: Pet.sexes.keys
+      = f.input :description
+      = f.input :location
+      = f.input :age
+      = f.input :size, collection: Pet.sizes.keys
+      = f.input :more_info_url
+      = f.input :urgent
 
-  .form-actions
-    = f.button :submit
+    .form-inputs
+      = fields_for :photos do |f_photo|
+        = f_photo.file_field :asset
+
+    .form-actions
+      = f.button :submit
