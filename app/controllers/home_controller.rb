@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
     filtered_params = Pet.filtering_params valid_params(params)
-    @pets = Pet.filter(filtered_params).page(params[:page])
+    @pets = Pet.filter(filtered_params).default_filter_and_order.page(params[:page])
   end
 
   def find

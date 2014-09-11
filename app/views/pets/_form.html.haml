@@ -4,13 +4,13 @@
 
     .form-inputs
       = f.input :name
-      = f.input :specie, collection: Pet.species.keys, label_method: ->(obj){ t "activerecord.attributes.pet.species.#{ obj }" }, as: :radio_buttons
+      = f.input :specie, collection: Pet.species.keys, label_method: ->(obj){ Pet.enum_to_s :specie, obj }, as: :radio_buttons
       = f.input :breed
-      = f.input :sex, collection: Pet.sexes.keys, label_method: ->(obj){ t "activerecord.attributes.pet.sexes.#{ obj }" }, as: :radio_buttons
+      = f.input :sex, collection: Pet.sexes.keys, label_method: ->(obj){ Pet.enum_to_s :sex, obj }, as: :radio_buttons
       = f.input :description, input_html: {rows: 10}
       = f.input :location
       = f.input :age
-      = f.input :size, collection: Pet.sizes.keys, label_method: ->(obj){ t "activerecord.attributes.pet.sizes.#{ obj }" }
+      = f.input :size, collection: Pet.sizes.keys, label_method: ->(obj){ Pet.enum_to_s :size, obj }
       = f.input :more_info_url
       = f.input :urgent
 

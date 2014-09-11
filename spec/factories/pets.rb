@@ -7,7 +7,7 @@ FactoryGirl.define do
     breed         { case specie when :dog then %w(dogo pontier golden).sample;when :cat then %w(persa tigre).sample;end }
     sex           { Pet.sexes.keys.sample }
     description   { Faker::Lorem.paragraphs(rand(4) + 1).join "\n\n" }
-    location      { Faker::Address.country }
+    location      { %w(Valencia Barcelona Madrid Zaragoza Bilbao Sevilla Lugo).sample }
     age           { Pet.ages.keys.sample }
     size          { Pet.sizes.keys.sample }
     more_info_url { Faker::Internet.http_url }
