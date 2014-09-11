@@ -53,8 +53,7 @@ RSpec.describe PetsController, :type => :controller do
   end
 
   context 'with an user logged' do
-    let(:user) { FactoryGirl.create :user }
-    before { sign_in user }
+    login_user
 
     describe "GET new" do
       it "assigns a new pet as @pet" do
@@ -146,9 +145,8 @@ RSpec.describe PetsController, :type => :controller do
     end
   end
 
-  context 'with an admiadmin' do
-    let(:user) { FactoryGirl.create :admin }
-    before { sign_in user }
+  context 'with an admin logged' do
+    login_admin
 
     describe "DELETE destroy" do
       it "destroys the requested pet" do

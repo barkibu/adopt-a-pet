@@ -2,8 +2,9 @@
   - if pet.urgent?
     .ribbon-wrapper
       .ribbon URGENTE
-  .card-image
-    = image_tag 'https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png'
+  - if pet.pet_pictures.any?
+    .card-image
+      = image_tag pet.pet_pictures.first.asset.url(:home)
   .card-header
     = pet.name
   .card-copy

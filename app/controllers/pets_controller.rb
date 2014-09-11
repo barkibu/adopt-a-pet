@@ -8,9 +8,11 @@ class PetsController < ApplicationController
 
   def new
     @pet = Pet.new
+    3.times { @pet.pet_pictures.build }
   end
 
   def edit
+    3.times { @pet.pet_pictures.build }
   end
 
   def create
@@ -42,6 +44,8 @@ class PetsController < ApplicationController
     end
 
     def pet_params
-      params.require(:pet).permit(:age, :breed, :description, :location, :more_info_url, :name, :sex, :size, :specie, :urgent)
+      params.require(:pet).permit(:age, :breed, :description, :location,
+                                  :more_info_url, :name, :sex, :size, :specie,
+                                  :urgent, pet_pictures_attributes: [:asset, :_destroy, :id])
     end
 end
