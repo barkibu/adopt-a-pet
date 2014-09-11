@@ -9,7 +9,7 @@ class Pet < ActiveRecord::Base
   enum size: [:small, :medium, :big]
   enum specie: [:dog, :cat]
 
-  after_initialize :set_default_state, :if => :new_record?
+  after_initialize :set_default_state, if: :new_record?
 
   validates :name, presence: true
   validates :specie, presence: true
@@ -19,6 +19,9 @@ class Pet < ActiveRecord::Base
   validates :location, presence: true
 
   belongs_to :user
+  has_many :pet_pictures, dependent: :destroy
+
+  accepts_nested_attributes_for :pet_pictures, reject_if: :new_record?, allow_destroy: true
 
   scope :filter_age, ->(value) { where(age: value) }
   scope :filter_size, ->(value) { where(size: value) }

@@ -1,21 +1,23 @@
 %section
   %p#notice= notice
   .breadcrumb
-    %a{:href => "javascript:void(0)"}
+    %a{href: "javascript:void(0)"}
       = @pet.specie
-    %a{:href => "javascript:void(0)"} 
+    %a{href: "javascript:void(0)"}
       = @pet.breed
-    %a{:href => "javascript:void(0)"} 
+    %a{href: "javascript:void(0)"}
       = @pet.name
 
   .side-image
     .images-wrapper
+      - @pet.pet_pictures.each do |picture|
+        = link_to image_tag(picture.asset.url(:vertical)), picture.asset.url
     .content
       %h4
         = @pet.state
       %h4
         = @pet.urgent
-      %h1 
+      %h1
         = @pet.name
       %p
         = @pet.description
@@ -44,18 +46,18 @@
       .adopt-buttons
         %button ¡Quiero ayudar a que otros lo adopten!
         .modal
-          %label{:for => "modal-1"}
+          %label{for: "modal-1"}
             .btn.js-btn ¡Quiero adoptarlo!
-          %input#modal-1.modal-state{:type => "checkbox"}/
+          %input#modal-1.modal-state{type: "checkbox"}/
           .modal-window
             .modal-inner
-              %label.modal-close{:for => "modal-1"}
+              %label.modal-close{for: "modal-1"}
               %h1
                 = "¿Cómo adoptar a #{@pet.name}?"
               %p.intro En la siguiente dirección te indicarán los pasos a seguir.
               %p.body
-                Información de adopción: 
-                %a{:href => @pet.more_info_url}
+                Información de adopción:
+                %a{href: @pet.more_info_url}
                   = @pet.more_info_url
               %p ¡Muchas gracias por salvar un animal!
               %p Recuerda comunicarnos que lo has adoptado para recibir consultas veterinarias ilimitadas totalmente gratis.
@@ -63,5 +65,5 @@
   = link_to 'Edit', edit_pet_path(@pet)
 
   .line-behind-text
-    %h6#er-toc-id-9.er_toc_tag 
+    %h6#er-toc-id-9.er_toc_tag
       = "Otras mascotas en adopción en #{@pet.location}"

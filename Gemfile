@@ -28,6 +28,7 @@ gem "devise-async"
 gem 'devise-i18n'
 gem 'activeadmin', github: 'activeadmin'
 gem 'postmark-rails'
+gem 'paperclip'
 
 group :development do
   gem "spring"

@@ -3,20 +3,26 @@
     = f.error_notification
 
     .form-inputs
-      %p= f.input :name
-      %p= f.input :specie, collection: Pet.species.keys
+      = f.input :name
+      = f.input :specie, collection: Pet.species.keys, label_method: ->(obj){ t "activerecord.attributes.pet.species.#{ obj }" }, as: :radio_buttons
       = f.input :breed
-      = f.input :sex, collection: Pet.sexes.keys
-      = f.input :description
+      = f.input :sex, collection: Pet.sexes.keys, label_method: ->(obj){ t "activerecord.attributes.pet.sexes.#{ obj }" }, as: :radio_buttons
+      = f.input :description, input_html: {rows: 10}
       = f.input :location
       = f.input :age
-      = f.input :size, collection: Pet.sizes.keys
+      = f.input :size, collection: Pet.sizes.keys, label_method: ->(obj){ t "activerecord.attributes.pet.sizes.#{ obj }" }
       = f.input :more_info_url
       = f.input :urgent
 
     .form-inputs
-      = fields_for :photos do |f_photo|
-        = f_photo.file_field :asset
+      = f.simple_fields_for :pet_pictures do |builder|
+        - if builder.object.new_record?
+          = builder.file_field :asset
+    .form-inputs
+      = f.simple_fields_for :pet_pictures do |builder|
+        - unless builder.object.new_record?
+          = link_to image_tag(builder.object.asset.url(:thumb)), builder.object.asset.url
+          = builder.input :_destroy, as: :boolean
 
     .form-actions
       = f.button :submit
