@@ -1,0 +1,21 @@
+.card-stats
+  %ul
+    %li
+      = pet.breed.capitalize
+      %span Raza
+    - if pet.age?
+      %li
+        = pet.enum_to_s :age
+        %span Edad
+    - if pet.sex
+      %li
+        = pet.enum_to_s :sex
+        %span Sexo
+    - if pet.size?
+      %li
+        = pet.enum_to_s :size
+        %span Tamaño
+    - if pet.location?
+      %li
+        = pet.location
+        %span Lugar

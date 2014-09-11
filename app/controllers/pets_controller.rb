@@ -4,13 +4,16 @@ class PetsController < ApplicationController
   before_action :authenticate_admin_user!, only: [:destroy]
 
   def show
+    @pets = Pet.near_from_location(@pet.location, @pet.id)
   end
 
   def new
     @pet = Pet.new
+    3.times { @pet.pet_pictures.build }
   end
 
   def edit
+    3.times { @pet.pet_pictures.build }
   end
 
   def create
@@ -42,6 +45,8 @@ class PetsController < ApplicationController
     end
 
     def pet_params
-      params.require(:pet).permit(:age, :breed, :description, :location, :more_info_url, :name, :sex, :size, :specie, :urgent)
+      params.require(:pet).permit(:age, :breed, :description, :location,
+                                  :more_info_url, :name, :sex, :size, :specie,
+                                  :urgent, pet_pictures_attributes: [:asset, :_destroy, :id])
     end
 end

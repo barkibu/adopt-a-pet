@@ -3,7 +3,7 @@ ActiveAdmin.register Pet do
 
   filter :name
   filter :sex, as: :check_boxes, collection: Pet.sexes.keys
-  filter :state, as: :check_boxes, collection: Pet.states.keys
+  filter :status, as: :check_boxes, collection: Pet.statuses.keys
   filter :size, as: :check_boxes, collection: Pet.sizes.keys
 
   form do |f|

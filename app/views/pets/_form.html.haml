@@ -1,17 +1,28 @@
-= simple_form_for(@pet) do |f|
-  = f.error_notification
+%fieldset
+  = simple_form_for(@pet) do |f|
+    = f.error_notification
 
-  .form-inputs
-    = f.input :name
-    = f.input :specie, collection: Pet.species.keys
-    = f.input :breed
-    = f.input :sex, collection: Pet.sexes.keys
-    = f.input :description
-    = f.input :location
-    = f.input :age
-    = f.input :size, collection: Pet.sizes.keys
-    = f.input :more_info_url
-    = f.input :urgent
+    .form-inputs
+      = f.input :name
+      = f.input :specie, collection: Pet.species.keys, label_method: ->(obj){ Pet.enum_to_s :specie, obj }, as: :radio_buttons
+      = f.input :breed
+      = f.input :sex, collection: Pet.sexes.keys, label_method: ->(obj){ Pet.enum_to_s :sex, obj }, as: :radio_buttons
+      = f.input :description, input_html: {rows: 10}
+      = f.input :location
+      = f.input :age
+      = f.input :size, collection: Pet.sizes.keys, label_method: ->(obj){ Pet.enum_to_s :size, obj }
+      = f.input :more_info_url
+      = f.input :urgent
 
-  .form-actions
-    = f.button :submit
+    .form-inputs
+      = f.simple_fields_for :pet_pictures do |builder|
+        - if builder.object.new_record?
+          = builder.file_field :asset
+    .form-inputs
+      = f.simple_fields_for :pet_pictures do |builder|
+        - unless builder.object.new_record?
+          = link_to image_tag(builder.object.asset.url(:thumb)), builder.object.asset.url
+          = builder.input :_destroy, as: :boolean
+
+    .form-actions
+      = f.button :submit

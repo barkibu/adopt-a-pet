@@ -42,8 +42,8 @@ en:
         species:
           dog: 'Dog'
           cat: 'Cat'
-        state: 'State'
-        states:
+        status: 'Status'
+        statuses:
           adoption: 'In adoption'
           adopted: 'Adopted'
         urgent: 'Urgent'

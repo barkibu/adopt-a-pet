@@ -1,67 +1,65 @@
+- content_for :javascript do
+  = javascript_include_tag 'social-likes.min'
+- content_for :extra_css do
+  = stylesheet_link_tag 'social-likes_flat'
+
 %section
-  %p#notice= notice
+  = link_to 'Edit', edit_pet_path(@pet)
+
+%section
   .breadcrumb
-    %a{:href => "javascript:void(0)"}
-      = @pet.specie
-    %a{:href => "javascript:void(0)"} 
-      = @pet.breed
-    %a{:href => "javascript:void(0)"} 
-      = @pet.name
+    = link_to 'Especie', root_path(@pet.specie => '1')
+    = link_to 'Raza', root_path(breed: @pet.breed.underscore)
+    = link_to 'Nombre', root_path(name: @pet.name.underscore)
 
   .side-image
     .images-wrapper
+      - @pet.pet_pictures.each do |picture|
+        = link_to image_tag(picture.asset.url(:vertical)), picture.asset.url
     .content
       %h4
-        = @pet.state
-      %h4
-        = @pet.urgent
-      %h1 
+        = t "activerecord.attributes.pet.statuses.#{@pet.status}"
+      - if @pet.urgent?
+        %h4
+          = t 'activerecord.attributes.pet.urgent'
+      %h1
         = @pet.name
       %p
-        = @pet.description
-      .card-stats
-        %ul
-          %li
-            = @pet.breed
-            %span raza
-          - if @pet.age?
-            %li
-              = @pet.age
-              %span Edad
-          - if @pet.sex
-            %li
-              = @pet.sex
-              %span Sexo
-          - if @pet.size?
-            %li
-              = @pet.size
-              %span Tamaño
-          - if @pet.location?
-            %li
-              = @pet.location
-              %span Lugar
+        = simple_format @pet.description
+      = render 'stats', pet: @pet
 
       .adopt-buttons
-        %button ¡Quiero ayudar a que otros lo adopten!
-        .modal
-          %label{:for => "modal-1"}
-            .btn.js-btn ¡Quiero adoptarlo!
-          %input#modal-1.modal-state{:type => "checkbox"}/
-          .modal-window
-            .modal-inner
-              %label.modal-close{:for => "modal-1"}
-              %h1
-                = "¿Cómo adoptar a #{@pet.name}?"
-              %p.intro En la siguiente dirección te indicarán los pasos a seguir.
-              %p.body
-                Información de adopción: 
-                %a{:href => @pet.more_info_url}
-                  = @pet.more_info_url
-              %p ¡Muchas gracias por salvar un animal!
-              %p Recuerda comunicarnos que lo has adoptado para recibir consultas veterinarias ilimitadas totalmente gratis.
+        - if @pet.more_info_url?
+          .modal
+            = label_tag 'modal-1' do
+              .btn.js-btn ¡Quiero adoptarlo!
+            = check_box_tag 'modal-1', nil, nil, class: 'modal-state'
+            .modal-window
+              .modal-inner
+                %label.modal-close{for: "modal-1"}
+                %h1
+                  = "¿Cómo adoptar a #{@pet.name}?"
+                %p.intro En la siguiente dirección te indicarán los pasos a seguir.
+                %p.body
+                  Información de adopción:
+                  = link_to @pet.more_info_url, @pet.more_info_url, rel: 'nofollow'
+                %p ¡Muchas gracias por salvar a un animal!
+                %p Recuerda comunicarnos que lo has adoptado para recibir consultas veterinarias ilimitadas totalmente gratis.
 
-  = link_to 'Edit', edit_pet_path(@pet)
+        .social-likes{"data-title" => "Ayúdanos a adoptar a #{@pet.name}", "data-url" => request.fullpath }
+          %h6 Quiero ayudar a que otros lo adopten
+          %br
+          .facebook{title: "Comparte el enlace en Facebook"} Facebook
+          .twitter{"data-via" => "barkibu", title: "Comparte el enlace en Twitter"} Twitter
+          .plusone{title: "Comparte el enlace en Google+"} Google+
+          - if @pet.pet_pictures.any?
+            .pinterest{"data-media" => @pet.pet_pictures.first.asset.url, title: "Comparte la imagen en Pinterest"} Pinterest
 
-  .line-behind-text
-    %h6#er-toc-id-9.er_toc_tag 
-      = "Otras mascotas en adopción en #{@pet.location}"
+
+- unless @pets.empty?
+  %section
+    .line-behind-text
+      %h6#er-toc-id-9.er_toc_tag
+        = "Otras mascotas en adopción en #{@pet.location}"
+    .cards
+      = render @pets

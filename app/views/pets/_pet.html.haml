@@ -2,23 +2,11 @@
   - if pet.urgent?
     .ribbon-wrapper
       .ribbon URGENTE
-  .card-image
-    = image_tag 'https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png'
+  - if pet.pet_pictures.any?
+    .card-image
+      = image_tag pet.pet_pictures.first.asset.url(:home)
   .card-header
     = pet.name
   .card-copy
-    %p= simple_format pet.description
-  .card-stats
-    %ul
-      - if pet.age?
-        %li
-          = pet.age
-          %span Edad
-      - if pet.size?
-        %li
-          = pet.size
-          %span Tamaño
-      - if pet.location?
-        %li
-          = pet.location
-          %span Lugar
+    %p= simple_format(truncate(pet.description, length: 230, separator: ' '))
+  = render 'pets/stats', pet: pet
