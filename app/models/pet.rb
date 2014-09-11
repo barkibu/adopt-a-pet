@@ -5,11 +5,11 @@ class Pet < ActiveRecord::Base
 
   enum ages: [:young, :adult]
   enum sex: [:male, :female]
-  enum state: [:adoption, :adopted]
+  enum status: [:adoption, :adopted]
   enum size: [:small, :medium, :big]
   enum specie: [:dog, :cat]
 
-  after_initialize :set_default_state, if: :new_record?
+  after_initialize :set_default_status, if: :new_record?
 
   validates :name, presence: true
   validates :specie, presence: true
@@ -23,7 +23,7 @@ class Pet < ActiveRecord::Base
 
   accepts_nested_attributes_for :pet_pictures, reject_if: :new_record?, allow_destroy: true
 
-  scope :default_filter_and_order, -> { where(state: Pet.states[:adoption]).order('urgent DESC') }
+  scope :default_filter_and_order, -> { where(status: Pet.statuses[:adoption]).order('urgent DESC') }
   scope :filter_age, ->(value) { where(age: value) }
   scope :filter_location, ->(value) { where(location: value) }
   scope :filter_size, ->(value) { where(size: value) }
@@ -35,8 +35,8 @@ class Pet < ActiveRecord::Base
     .limit(3)
   end
 
-  def set_default_state
-    self.state ||= :adoption
+  def set_default_status
+    self.status ||= :adoption
   end
 
   def self.filtering_params(params)

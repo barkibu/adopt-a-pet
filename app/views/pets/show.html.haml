@@ -18,7 +18,7 @@
         = link_to image_tag(picture.asset.url(:vertical)), picture.asset.url
     .content
       %h4
-        = t "activerecord.attributes.pet.states.#{@pet.state}"
+        = t "activerecord.attributes.pet.statuses.#{@pet.status}"
       - if @pet.urgent?
         %h4
           = t 'activerecord.attributes.pet.urgent'

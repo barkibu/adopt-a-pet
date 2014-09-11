@@ -42,8 +42,8 @@ es:
         species:
           dog: 'Perro'
           cat: 'Gato'
-        state: 'Estado'
-        states:
+        status: 'Estado'
+        statuses:
           adoption: 'En adopción'
           adopted: 'Adoptado'
         urgent: 'Urgente'
