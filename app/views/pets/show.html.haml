@@ -46,7 +46,7 @@
                 %p ¡Muchas gracias por salvar a un animal!
                 %p Recuerda comunicarnos que lo has adoptado para recibir consultas veterinarias ilimitadas totalmente gratis.
 
-        .social-likes{"data-title" => "Ayúdanos a adoptar a #{@pet.name}", "data-url" => request.fullpath }
+        .social-likes{"data-title" => "Ayúdanos a adoptar a #{@pet.name}", "data-url" => request.original_url }
           %h6 Quiero ayudar a que otros lo adopten
           %br
           .facebook{title: "Comparte el enlace en Facebook"} Facebook
