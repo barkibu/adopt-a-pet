@@ -33,3 +33,24 @@ programming in style.
 * [Protocol](http://github.com/thoughtbot/guides/blob/master/protocol)
 * [Best Practices](http://github.com/thoughtbot/guides/blob/master/best-practices)
 * [Style](http://github.com/thoughtbot/guides/blob/master/style)
+
+Contributing
+------------
+
+Please see [CONTRIBUTING.md](CONTRIBUTING.md) for further details.
+
+Credits
+-------
+
+![barkibu](http://barkibu.s3.amazonaws.com/assets/logos/full/default.png)
+
+Adopt-a-pet is made with [Suspenders](https://github.com/thoughtbot/suspenders)
+and maintained by [Barkibu](http://www.barkibu.com).
+
+License
+-------
+
+![creative-commons](https://i.creativecommons.org/l/by-sa/4.0/88x31.png)
+Adopt-a-pet by [Barkibu](http://www.barkibu.com) is licensed under a
+[Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional License][cc].
+[cc]: http://creativecommons.org/licenses/by-sa/4.0/
