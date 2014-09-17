@@ -10,6 +10,9 @@ en:
       pet:
         one: Pet
         other: Pets
+      shelter:
+        one: Shelter
+        other: Shelters
     attributes:
       user:
         address: 'Address'
@@ -47,6 +50,11 @@ en:
           adoption: 'In adoption'
           adopted: 'Adopted'
         urgent: 'Urgent'
+      shelter:
+        name: 'Name'
+        description: 'Description'
+        web_url: 'Web'
+        location: 'Location'
 
   views:
     pagination:
