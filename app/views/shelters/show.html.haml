@@ -12,6 +12,7 @@
     %b Ubicación:
     = @shelter.location
 
-  = link_to 'Editar', edit_shelter_path(@shelter)
-  \|
+  - if current_admin_user
+    = link_to 'Editar', edit_shelter_path(@shelter)
+    \|
   = link_to 'Volver a lista', shelters_path

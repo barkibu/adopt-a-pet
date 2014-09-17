@@ -7,8 +7,9 @@
       %th Descripción
       %th Web
       %th Ubicación
-      %th
-      %th
+      - if current_admin_user
+        %th
+        %th
 
     - @shelters.each do |shelter|
       %tr
@@ -16,9 +17,10 @@
         %td= shelter.description
         %td= link_to shelter.web_url, shelter.web_url
         %td= shelter.location
-        %td= link_to 'Editar', edit_shelter_path(shelter)
-        %td= link_to 'Borrar', shelter, :method => :delete, :data => { :confirm => '¿Estás seguro?' }
+        -if current_admin_user
+          %td= link_to 'Editar', edit_shelter_path(shelter)
+          %td= link_to 'Borrar', shelter, :method => :delete, :data => { :confirm => '¿Estás seguro?' }
 
   %br
 
-  = link_to 'Crear protectora', new_shelter_path
+  = link_to 'Crear protectora', new_shelter_path if current_admin_user
