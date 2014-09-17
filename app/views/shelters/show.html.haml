@@ -1,17 +1,17 @@
 %section
   %p
-    %b Name:
+    %b Nombre:
     = @shelter.name
   %p
-    %b Description:
+    %b Descripción:
     = @shelter.description
   %p
-    %b Web url:
+    %b Web:
     = @shelter.web_url
   %p
-    %b Location:
+    %b Ubicación:
     = @shelter.location
 
-  = link_to 'Edit', edit_shelter_path(@shelter)
+  = link_to 'Editar', edit_shelter_path(@shelter)
   \|
-  = link_to 'Back', shelters_path
+  = link_to 'Volver a lista', shelters_path

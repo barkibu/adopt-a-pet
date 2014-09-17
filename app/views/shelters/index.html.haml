@@ -1,12 +1,12 @@
 %section
-  %h1 Listing shelters
+  %h1 Protectoras
 
   %table
     %tr
-      %th Name
-      %th Description
-      %th Web url
-      %th Location
+      %th Nombre
+      %th Descripción
+      %th Web
+      %th Ubicación
       %th
       %th
       %th
@@ -17,10 +17,10 @@
         %td= shelter.description
         %td= shelter.web_url
         %td= shelter.location
-        %td= link_to 'Show', shelter
-        %td= link_to 'Edit', edit_shelter_path(shelter)
-        %td= link_to 'Destroy', shelter, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to 'Ver', shelter
+        %td= link_to 'Editar', edit_shelter_path(shelter)
+        %td= link_to 'Borrar', shelter, :method => :delete, :data => { :confirm => '¿Estás seguro?' }
 
   %br
 
-  = link_to 'New Shelter', new_shelter_path
+  = link_to 'Crear protectora', new_shelter_path
