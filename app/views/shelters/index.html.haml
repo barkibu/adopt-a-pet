@@ -1,0 +1,26 @@
+%section
+  %h1 Listing shelters
+
+  %table
+    %tr
+      %th Name
+      %th Description
+      %th Web url
+      %th Location
+      %th
+      %th
+      %th
+
+    - @shelters.each do |shelter|
+      %tr
+        %td= shelter.name
+        %td= shelter.description
+        %td= shelter.web_url
+        %td= shelter.location
+        %td= link_to 'Show', shelter
+        %td= link_to 'Edit', edit_shelter_path(shelter)
+        %td= link_to 'Destroy', shelter, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+  %br
+
+  = link_to 'New Shelter', new_shelter_path

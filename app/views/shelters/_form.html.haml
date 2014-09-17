@@ -1,0 +1,12 @@
+%fieldset
+  = simple_form_for(@shelter) do |f|
+    = f.error_notification
+
+    .form-inputs
+      = f.input :name
+      = f.input :description
+      = f.input :web_url
+      = f.input :location
+
+    .form-actions
+      = f.button :submit

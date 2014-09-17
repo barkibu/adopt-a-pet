@@ -1,0 +1,17 @@
+%section
+  %p
+    %b Name:
+    = @shelter.name
+  %p
+    %b Description:
+    = @shelter.description
+  %p
+    %b Web url:
+    = @shelter.web_url
+  %p
+    %b Location:
+    = @shelter.location
+
+  = link_to 'Edit', edit_shelter_path(@shelter)
+  \|
+  = link_to 'Back', shelters_path
