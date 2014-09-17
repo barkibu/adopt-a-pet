@@ -1,6 +1,6 @@
 class SheltersController < ApplicationController
   before_action :set_shelter, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin_user!, except: [:index]
+  before_action :authenticate_admin_user!, except: [:index, :show]
 
   # GET /shelters
   def index
