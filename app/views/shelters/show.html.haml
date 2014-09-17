@@ -7,7 +7,7 @@
     = @shelter.description
   %p
     %b Web:
-    = @shelter.web_url
+    = link_to @shelter.web_url, @shelter.web_url
   %p
     %b Ubicación:
     = @shelter.location
