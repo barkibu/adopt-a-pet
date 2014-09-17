@@ -52,6 +52,11 @@ GEM
       activesupport (>= 3.0.0)
     arel (5.0.1.20140414130214)
     awesome_print (1.2.0)
+    aws-sdk (1.52.0)
+      aws-sdk-v1 (= 1.52.0)
+    aws-sdk-v1 (1.52.0)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
     bcrypt (3.1.7)
     bourbon (3.2.3)
       sass (~> 3.2)
@@ -326,6 +331,7 @@ DEPENDENCIES
   activeadmin!
   airbrake
   awesome_print
+  aws-sdk
   bourbon (~> 3.2.1)
   byebug
   capybara-webkit (>= 1.2.0)
