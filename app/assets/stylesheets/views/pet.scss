@@ -29,6 +29,7 @@ $side-image-border: 1px solid darken(transparentize($side-image-background-botto
   .content {
     @include span-columns(12);
     padding: 1em 1em 4em 1em;
+    vertical-align: top;
 
     @include media($large-screen) {
       @include span-columns(8);
