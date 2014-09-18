@@ -11,8 +11,8 @@ es:
         one: Mascota
         other: Mascotas
       shelter:
-        one: Protectora
-        other: Protectoras
+        one: Protectora de animales
+        other: Protectoras de animales
     attributes:
       user:
         address: 'Dirección'
