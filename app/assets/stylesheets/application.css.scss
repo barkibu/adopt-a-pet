@@ -10,9 +10,13 @@
 @import 'views/home';
 @import 'views/pet';
 
-section{
+section {
   @include outer-container;
-  margin-bottom: 2em;
+  $vertical-margin: 2em;
+  margin: {
+    top: $vertical-margin;
+    bottom: $vertical-margin;
+  }
   padding-bottom: 1em;
   position: relative;
 }
