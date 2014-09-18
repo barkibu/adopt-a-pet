@@ -5,14 +5,14 @@
     %b Nombre:
     = @shelter.name
   %p
-    %b Descripción:
-    = @shelter.description
-  %p
     %b Web:
     = link_to @shelter.web_url, @shelter.web_url
   %p
     %b Ubicación:
     = @shelter.location
+  %p
+    %b Descripción:
+    = @shelter.description
 
   - if current_admin_user
     = link_to 'Editar', edit_shelter_path(@shelter)
