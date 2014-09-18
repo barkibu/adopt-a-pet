@@ -18,6 +18,12 @@ $side-image-border: 1px solid darken(transparentize($side-image-background-botto
     display: block;
     min-height: 12em;
     padding: $wrappers-padding;
+    text-align: center;
+
+    a {
+      display: inline-block;
+      margin: 0 1.5em;
+    }
 
     @include media($large-screen) {
       @include span-columns(4);
