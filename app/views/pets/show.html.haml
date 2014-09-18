@@ -4,32 +4,32 @@
   = stylesheet_link_tag 'social-likes_flat'
 
 %section
-  = link_to 'Edit', edit_pet_path(@pet)
+  = link_to 'Edit', edit_pet_path(pet)
 
 %section
   .breadcrumb
-    = link_to 'Especie', root_path(@pet.specie => '1')
-    = link_to 'Raza', root_path(breed: @pet.breed.underscore)
-    = link_to 'Nombre', root_path(name: @pet.name.underscore)
+    = link_to 'Especie', breadcrumb_specie_path(params)
+    = link_to 'Provincia', breadcrumb_province_path(params)
+    = link_to 'Raza', breadcrumb_breed_path(params)
 
   .side-image
     .images-wrapper
-      - @pet.pet_pictures.each do |picture|
+      - pet.pet_pictures.each do |picture|
         = link_to image_tag(picture.asset.url(:vertical)), picture.asset.url
     .content
       %h4
-        = t "activerecord.attributes.pet.statuses.#{@pet.status}"
-      - if @pet.urgent?
+        = t "activerecord.attributes.pet.statuses.#{pet.status}"
+      - if pet.urgent?
         %h4
           = t 'activerecord.attributes.pet.urgent'
       %h1
-        = @pet.name
+        = pet.name
       %p
-        = simple_format @pet.description
-      = render 'stats', pet: @pet
+        = simple_format pet.description
+      = render 'stats', pet: pet
 
       .adopt-buttons
-        - if @pet.more_info_url?
+        - if pet.more_info_url?
           .modal
             = label_tag 'modal-1' do
               .btn.js-btn ¡Quiero adoptarlo!
@@ -38,28 +38,27 @@
               .modal-inner
                 %label.modal-close{for: "modal-1"}
                 %h1
-                  = "¿Cómo adoptar a #{@pet.name}?"
+                  = "¿Cómo adoptar a #{pet.name}?"
                 %p.intro En la siguiente dirección te indicarán los pasos a seguir.
                 %p.body
                   Información de adopción:
-                  = link_to @pet.more_info_url, @pet.more_info_url, rel: 'nofollow'
+                  = link_to pet.more_info_url, pet.more_info_url, rel: 'nofollow'
                 %p ¡Muchas gracias por salvar a un animal!
                 %p Recuerda comunicarnos que lo has adoptado para recibir consultas veterinarias ilimitadas totalmente gratis.
 
-        .social-likes{"data-title" => "Ayúdanos a adoptar a #{@pet.name}", "data-url" => request.original_url }
+        .social-likes{"data-title" => "Ayúdanos a adoptar a #{pet.name}", "data-url" => request.original_url }
           %h6 Quiero ayudar a que otros lo adopten
           %br
           .facebook{title: "Comparte el enlace en Facebook"} Facebook
           .twitter{"data-via" => "barkibu", title: "Comparte el enlace en Twitter"} Twitter
           .plusone{title: "Comparte el enlace en Google+"} Google+
-          - if @pet.pet_pictures.any?
-            .pinterest{"data-media" => @pet.pet_pictures.first.asset.url, title: "Comparte la imagen en Pinterest"} Pinterest
+          - if pet.pet_pictures.any?
+            .pinterest{"data-media" => pet.pet_pictures.first.asset.url, title: "Comparte la imagen en Pinterest"} Pinterest
 
-
-- unless @pets.empty?
+- unless pets.empty?
   %section
     .line-behind-text
       %h6#er-toc-id-9.er_toc_tag
-        = "Otras mascotas en adopción en #{@pet.location}"
+        = "Otras mascotas en adopción en #{pet.location}"
     .cards
-      = render @pets
+      = render pets

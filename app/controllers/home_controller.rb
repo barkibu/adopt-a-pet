@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+  decorates_assigned :pets
+
   def index
     filtered_params = Pet.filtering_params valid_params(params)
     @pets = Pet.filter(filtered_params).default_filter_and_order.page(params[:page])
@@ -6,6 +8,11 @@ class HomeController < ApplicationController
 
   def find
     redirect_to root_path(valid_params(params))
+  end
+
+  def adopt
+    @pets = Pet.default_filter_and_order.page(params[:page])
+    render 'index'
   end
 
   private
