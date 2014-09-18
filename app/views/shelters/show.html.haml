@@ -1,4 +1,6 @@
 %section
+  - if @shelter.logo?
+    %p= image_tag @shelter.logo(:show), alt: @shelter.name
   %p
     %b Nombre:
     = @shelter.name
