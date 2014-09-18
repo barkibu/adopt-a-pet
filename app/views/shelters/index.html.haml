@@ -4,7 +4,7 @@
   %table
     - @shelters.each do |shelter|
       %tr
-        %td= image_tag shelter.logo(:thumb)
+        %td= image_tag shelter.logo(:thumb) if shelter.logo?
         %td= link_to shelter.name, shelter
         %td= link_to shelter.web_url, shelter.web_url
         %td= shelter.location
