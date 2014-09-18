@@ -10,6 +10,9 @@ es:
       pet:
         one: Mascota
         other: Mascotas
+      shelter:
+        one: Protectora
+        other: Protectoras
     attributes:
       user:
         address: 'Dirección'
@@ -47,6 +50,11 @@ es:
           adoption: 'En adopción'
           adopted: 'Adoptado'
         urgent: 'Urgente'
+      shelter:
+        name: 'Nombre'
+        description: 'Descripción'
+        web_url: 'Web'
+        location: 'Ubicación'
 
   views:
     pagination:

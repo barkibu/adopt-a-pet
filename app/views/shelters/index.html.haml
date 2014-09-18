@@ -1,0 +1,26 @@
+%section
+  %h1 Protectoras
+
+  %table
+    %tr
+      %th Nombre
+      %th Descripción
+      %th Web
+      %th Ubicación
+      - if current_admin_user
+        %th
+        %th
+
+    - @shelters.each do |shelter|
+      %tr
+        %td= link_to shelter.name, shelter
+        %td= shelter.description
+        %td= link_to shelter.web_url, shelter.web_url
+        %td= shelter.location
+        -if current_admin_user
+          %td= link_to 'Editar', edit_shelter_path(shelter)
+          %td= link_to 'Borrar', shelter, :method => :delete, :data => { :confirm => '¿Estás seguro?' }
+
+  %br
+
+  = link_to 'Crear protectora', new_shelter_path if current_admin_user
