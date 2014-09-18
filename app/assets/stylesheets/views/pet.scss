@@ -3,6 +3,7 @@ $side-image-background-bottom: #5DAC5D;
 $side-image-border: 1px solid darken(transparentize($side-image-background-bottom, .8), 30);
 
 .side-image {
+  $wrappers-padding: 2em;
   background: #F9F9F9;
 
   @include media($large-screen) {
@@ -16,7 +17,7 @@ $side-image-border: 1px solid darken(transparentize($side-image-background-botto
     background-size: cover;
     display: block;
     min-height: 12em;
-    padding: 3em;
+    padding: $wrappers-padding;
 
     @include media($large-screen) {
       @include span-columns(4);
@@ -28,12 +29,11 @@ $side-image-border: 1px solid darken(transparentize($side-image-background-botto
 
   .content {
     @include span-columns(12);
-    padding: 1em 1em 4em 1em;
+    padding: $wrappers-padding;
     vertical-align: top;
 
     @include media($large-screen) {
       @include span-columns(8);
-      padding: 4em 4em 8em 4em;
     }
   }
 
