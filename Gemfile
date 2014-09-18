@@ -44,6 +44,8 @@ group :development, :test do
   gem "pry-rails"
   gem "rspec-rails", "~> 3.0.0"
   gem 'ffaker'
+  gem 'meta_request'
+  gem 'better_errors'
 end
 
 group :test do
