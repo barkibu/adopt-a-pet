@@ -3,6 +3,9 @@ class PetsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :create, :update]
   before_action :authenticate_admin_user!, only: [:destroy]
 
+  decorates_assigned :pets
+  decorates_assigned :pet
+
   def show
     @pets = Pet.near_from_location(@pet.location, @pet.id)
   end

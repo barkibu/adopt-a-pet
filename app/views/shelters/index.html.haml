@@ -1,5 +1,5 @@
 %section
-  %h1 Protectoras
+  %h1 Protectoras de animales
 
   %table
     - @shelters.each do |shelter|
@@ -11,7 +11,6 @@
         -if current_admin_user
           %td= link_to 'Editar', edit_shelter_path(shelter)
           %td= link_to 'Borrar', shelter, :method => :delete, :data => { :confirm => '¿Estás seguro?' }
-
   %br
 
   = link_to 'Crear protectora', new_shelter_path if current_admin_user

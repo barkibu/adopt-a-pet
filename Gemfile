@@ -30,6 +30,7 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'postmark-rails'
 gem 'paperclip'
 gem 'aws-sdk'
+gem 'draper'
 
 group :development do
   gem "spring"

@@ -47,7 +47,12 @@ RSpec.describe PetsController, :type => :controller do
   describe "GET show" do
     it "assigns the requested pet as @pet" do
       pet = Pet.create! valid_attributes
-      get :show, {:id => pet.to_param}
+      get :show, {
+        id: pet.to_param,
+        specie: pet.enum_to_s(:specie).parameterize,
+        location: pet.location.parameterize,
+        breed: pet.breed.parameterize,
+      }
       expect(assigns(:pet)).to eq(pet)
     end
   end
