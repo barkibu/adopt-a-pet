@@ -1,6 +1,7 @@
 RSpec.configure do |config|
   config.before(:suite) do
     DatabaseCleaner.clean_with(:deletion)
+    ActiveRecord::Base.connection.reset_pk_sequence!('provinces')
     load "#{::Rails.root}/db/seeds.rb"
   end
 

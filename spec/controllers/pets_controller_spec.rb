@@ -51,7 +51,7 @@ RSpec.describe PetsController, :type => :controller do
       get :show, {
         id: pet.to_param,
         specie: pet.enum_to_s(:specie).parameterize,
-        location: pet.location.parameterize,
+        province: pet.province,
         breed: pet.breed.parameterize,
       }
       expect(assigns(:pet)).to eq(pet)
