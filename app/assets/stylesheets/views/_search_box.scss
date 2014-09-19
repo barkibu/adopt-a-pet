@@ -1,5 +1,6 @@
 .search-tools {
-  $search-tools-border-color: $base-border-color;
+  $search-tools-border-color: $form-border-color;
+  $search-tools-border-color-hover: $form-border-color-hover;
   $search-tools-background: lighten($search-tools-border-color, 10);
 
   @include clearfix;
