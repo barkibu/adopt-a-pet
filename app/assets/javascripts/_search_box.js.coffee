@@ -19,7 +19,7 @@ Filter = (->
 
   Filter::_buildUI = ->
     @_summaryElement = $("<label></label>").addClass("summary").attr("data-role", "summary").prependTo(@_optionsContainer)
-    @_clearSelectionButton = $("<button></button>").text("Clear").attr("type", "button").insertAfter(@_summaryElement)
+    @_clearSelectionButton = $("<button></button>").text("Borrar").attr("type", "button").insertAfter(@_summaryElement)
     @_optionsContainer.addClass @constructor.hideOptionsClass
     @_updateSummary()
     return
