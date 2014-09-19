@@ -3,7 +3,7 @@ class Pet < ActiveRecord::Base
 
   paginates_per 24
 
-  enum ages: [:young, :adult]
+  enum age: [:young, :adult]
   enum sex: [:male, :female]
   enum status: [:adoption, :adopted]
   enum size: [:small, :medium, :big]
