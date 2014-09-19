@@ -107,17 +107,19 @@ $card-stats-color: lighten($base-accent-color, 10);
   overflow: auto;
 
   ul li {
-    display: inline;
+    $li-horizontal-spacing: .7em;
+    $li-vertical-spacing: .3em;
+    display: inline-block;
     color: $card-stats-color;
     font-weight: 800;
     font-size: 1.2em;
     float: left;
     border-right: 1px solid transparentize($base-font-color, .8);
     line-height: 1.1em;
-    padding: 0 .7em 0 .7em;
-
-    &:first-child {
-      padding-left: 0;
+    padding-right: $li-horizontal-spacing;
+    margin: {
+      right: $li-horizontal-spacing;
+      bottom: $li-vertical-spacing
     }
 
     &:last-child {
