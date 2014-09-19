@@ -9,6 +9,10 @@ class Province < ActiveRecord::Base
     self.slug = name.parameterize
   end
 
+  def to_s
+    name
+  end
+
   def to_param
     slug
   end

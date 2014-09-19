@@ -27,11 +27,11 @@ class Pet < ActiveRecord::Base
 
   scope :default_filter_and_order, -> { where(status: Pet.statuses[:adoption]).order('urgent DESC') }
   scope :filter_age, ->(value) { where(age: value) }
-  scope :filter_location, ->(value) { where(location: value) }
+  scope :filter_province, ->(value) { where(province_id: value) }
   scope :filter_size, ->(value) { where(size: value) }
   scope :filter_specie, ->(value) { where(specie: value) }
-  scope :near_from_location, ->(location, id) do
-    filter_location(location)
+  scope :near_from_province, ->(province_id, id) do
+    filter_province(province_id)
     .where('id <> ?', id)
     .default_filter_and_order
     .limit(3)

@@ -7,7 +7,7 @@ class PetsController < ApplicationController
   decorates_assigned :pet
 
   def show
-    @pets = Pet.near_from_location(@pet.location, @pet.id)
+    @pets = Pet.near_from_province(@pet.province_id, @pet.id)
   end
 
   def new
