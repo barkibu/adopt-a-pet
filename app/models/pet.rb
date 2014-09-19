@@ -17,8 +17,10 @@ class Pet < ActiveRecord::Base
   validates :sex, presence: true
   validates :description, presence: true
   validates :location, presence: true
+  validates :province_id, presence: true
 
   belongs_to :user
+  belongs_to :province
   has_many :pet_pictures, dependent: :destroy
 
   accepts_nested_attributes_for :pet_pictures, reject_if: :new_record?, allow_destroy: true

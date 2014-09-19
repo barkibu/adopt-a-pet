@@ -30,7 +30,8 @@ RSpec.describe PetsController, :type => :controller do
       breed: 'MyString',
       sex: :male,
       description: 'MyString',
-      location: 'MyString'
+      location: 'MyString',
+      province_id: 46
     }
   }
 
