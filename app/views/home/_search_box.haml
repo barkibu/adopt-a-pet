@@ -12,4 +12,6 @@
 
   = render 'search_box_filter', filter: 'size'
   = render 'search_box_filter', filter: 'age'
+  - province_options = options_from_collection_for_select(Province.all, :id, :name)
+  = render 'search_box_dropdown', field: 'province', options: province_options, prompt: 'Seleccionar'
   .trigger= button_tag 'Buscar'
