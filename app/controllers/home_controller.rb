@@ -2,23 +2,44 @@ class HomeController < ApplicationController
   decorates_assigned :pets
 
   def index
-    filtered_params = Pet.filtering_params valid_search_params(params)
-    @pets = Pet.filter(filtered_params).default_filter_and_order.page(params[:page])
+    @pets = Pet.default_filter_and_order.page(params[:page])
   end
 
   def find
-    redirect_to root_path(valid_search_params(params))
+    filtered_params = valid_search_params(params)
+    redirect_to adopt_species_path({specie: species_params_to_url_params(params)}.merge(filtered_params))
   end
 
   def adopt
-    @pets = Pet.default_filter_and_order.page(params[:page])
+    @specie = Specie.find_by_specie! params[:specie]
+    @province = Province.find_by_slug!(params[:province]) if params[:province]
+
+    filtered_params = {}
+    filtered_params[:specie] = Pet.species[@specie]
+    filtered_params[:province] = @province.id if @province
+
+    filtered_params.merge!(Pet.filtering_params valid_search_params(params))
+
+    @pets = Pet.filter(filtered_params).default_filter_and_order.page(params[:page])
     render 'index'
   end
 
   private
 
   def valid_search_params(params)
-    filter_keys = Pet.species.keys + Pet.sizes.keys + Pet.ages.keys
+    filter_keys = Pet.sizes.keys + Pet.ages.keys
     params.slice(*filter_keys.map(&:to_sym))
+  end
+
+  def species_params_to_url_params(params)
+    if params[:dog] and params[:cat]
+      'animales'
+    elsif params[:dog]
+      'perros'
+    elsif params[:cat]
+      'gatos'
+    else
+      'animales'
+    end
   end
 end

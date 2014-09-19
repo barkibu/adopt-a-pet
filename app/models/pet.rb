@@ -44,7 +44,6 @@ class Pet < ActiveRecord::Base
   def self.filtering_params(params)
     result = {}
 
-    result[:specie] = get_enum_values params, :species
     result[:size] = get_enum_values params, :sizes
     result[:age] = get_enum_values params, :ages
 
