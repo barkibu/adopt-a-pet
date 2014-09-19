@@ -50,6 +50,7 @@ en:
           adoption: 'In adoption'
           adopted: 'Adopted'
         urgent: 'Urgent'
+        province: 'Province'
       shelter:
         name: 'Name'
         description: 'Description'
