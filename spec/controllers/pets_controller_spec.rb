@@ -30,7 +30,8 @@ RSpec.describe PetsController, :type => :controller do
       breed: 'MyString',
       sex: :male,
       description: 'MyString',
-      location: 'MyString'
+      location: 'MyString',
+      province_id: 46
     }
   }
 
@@ -50,7 +51,7 @@ RSpec.describe PetsController, :type => :controller do
       get :show, {
         id: pet.to_param,
         specie: pet.enum_to_s(:specie).parameterize,
-        location: pet.location.parameterize,
+        province: pet.province,
         breed: pet.breed.parameterize,
       }
       expect(assigns(:pet)).to eq(pet)
@@ -91,7 +92,7 @@ RSpec.describe PetsController, :type => :controller do
 
         it "redirects to the created pet" do
           post :create, {:pet => valid_attributes}
-          expect(response).to redirect_to(Pet.last)
+          expect(response).to redirect_to(Pet.last.decorate.adopt_specie_path)
         end
       end
 
@@ -130,7 +131,7 @@ RSpec.describe PetsController, :type => :controller do
         it "redirects to the pet" do
           pet = Pet.create! valid_attributes
           put :update, {:id => pet.to_param, :pet => valid_attributes}
-          expect(response).to redirect_to(pet)
+          expect(response).to redirect_to(pet.decorate.adopt_specie_path)
         end
       end
 

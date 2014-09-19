@@ -11,11 +11,11 @@ class PetDecorator < Draper::Decorator
   #   end
 
   def adopt_specie_path
-    specie = object.enum_to_s(:specie).parameterize
-    location = object.location.parameterize
+    specie = object.enum_to_s(:specie).pluralize.parameterize
+    province = object.province
     breed = object.breed.parameterize
 
-    h.adopt_specie_path(specie: specie, location: location, breed: breed, id: self)
+    h.adopt_specie_path(specie: specie, province: province, breed: breed, id: self)
   end
 
   def to_param

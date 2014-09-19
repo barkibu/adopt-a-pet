@@ -1,5 +1,15 @@
 = form_tag find_path, class: 'search-tools' do |f|
-  = render 'search_box_filter', filter: 'specie'
+  .filter
+    = label_tag 'Especie'
+    %div
+      %ol
+        %li
+          = check_box_tag :dog, '1', check_specie_dog?(params)
+          = label_tag :dog, 'Perros'
+        %li
+          = check_box_tag :cat, '1', check_specie_cat?(params)
+          = label_tag :cat, 'Gatos'
+
   = render 'search_box_filter', filter: 'size'
   = render 'search_box_filter', filter: 'age'
   .trigger= button_tag 'Buscar'

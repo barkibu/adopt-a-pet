@@ -8,6 +8,6 @@ Rails.application.routes.draw do
 
   root :to => 'home#index'
   post '/find' => 'home#find', as: :find
-  get '/en-adopcion/:specie(/:location)(/:breed)' => 'home#adopt', as: :adopt_species
-  get '/en-adopcion/:specie/:location/:breed/:id' => 'pets#show', as: :adopt_specie
+  get '/en-adopcion/:specie(/:province)(/:breed)' => 'home#adopt', as: :adopt_species
+  get '/en-adopcion/:specie/:province/:breed/:id' => 'pets#show', as: :adopt_specie
 end

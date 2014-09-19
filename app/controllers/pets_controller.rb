@@ -7,7 +7,7 @@ class PetsController < ApplicationController
   decorates_assigned :pet
 
   def show
-    @pets = Pet.near_from_location(@pet.location, @pet.id)
+    @pets = Pet.near_from_province(@pet.province_id, @pet.id)
   end
 
   def new
@@ -23,7 +23,7 @@ class PetsController < ApplicationController
     @pet = current_user.pets.new(pet_params)
 
     if @pet.save
-      redirect_to @pet, notice: 'Pet was successfully created.'
+      redirect_to pet.adopt_specie_path, notice: 'Pet was successfully created.'
     else
       render :new
     end
@@ -31,7 +31,7 @@ class PetsController < ApplicationController
 
   def update
     if @pet.update(pet_params)
-      redirect_to @pet, notice: 'Pet was successfully updated.'
+      redirect_to pet.adopt_specie_path, notice: 'Pet was successfully updated.'
     else
       render :edit
     end
@@ -50,6 +50,7 @@ class PetsController < ApplicationController
     def pet_params
       params.require(:pet).permit(:age, :breed, :description, :location,
                                   :more_info_url, :name, :sex, :size, :specie,
-                                  :urgent, pet_pictures_attributes: [:asset, :_destroy, :id])
+                                  :urgent, :province_id,
+                                  pet_pictures_attributes: [:asset, :_destroy, :id])
     end
 end

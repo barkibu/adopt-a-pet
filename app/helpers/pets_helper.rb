@@ -4,10 +4,10 @@ module PetsHelper
   end
 
   def breadcrumb_province_path(params)
-    adopt_species_path(params.slice :specie, :location)
+    adopt_species_path(params.slice :specie, :province)
   end
 
   def breadcrumb_breed_path(params)
-    adopt_species_path(params.slice :specie, :location, :breed)
+    adopt_species_path(params.slice :specie, :province, :breed)
   end
 end
