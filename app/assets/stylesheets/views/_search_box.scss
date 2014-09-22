@@ -50,30 +50,12 @@
   }
 
   .dropdown {
-    .dropdown-wrapper {
-      &:after {
-        $triangle-width: 1em;
-        $triangle-height: .6em;
-        @include triangle($triangle-width $triangle-height, $form-border-color, down);
-        content: '';
-        position: absolute;
-        top: 50%;
-        margin-top: -($triangle-height / 2);
-        right: .7em;
-      }
-
-      &:hover:after {
-        border-top-color: $form-border-color-hover;
-      }
-    }
-
     select {
-      @include appearance(none);
       color: $base-font-color;
       border: none;
       background: transparent;
       margin: 0;
-      padding: .17em 0;
+      line-height: 1.5em;
       width: 100%;
       height: 100%;
       cursor: pointer;
