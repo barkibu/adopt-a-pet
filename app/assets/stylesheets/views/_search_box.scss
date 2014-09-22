@@ -1,5 +1,6 @@
 .search-tools {
-  $search-tools-border-color: $base-border-color;
+  $search-tools-border-color: $form-border-color;
+  $search-tools-border-color-hover: $form-border-color-hover;
   $search-tools-background: lighten($search-tools-border-color, 10);
 
   @include clearfix;
@@ -8,11 +9,11 @@
   padding: $gutter / 2;
   border-radius: $base-border-radius;
 
-  .filter {
+  .filter, .dropdown {
     margin-bottom: 1em;
 
     @include media($large-screen) {
-      @include span-columns(3.5);
+      @include span-columns(2.625);
       margin-bottom: 0;
     }
 
@@ -26,7 +27,9 @@
         margin-bottom: 0;
       }
     }
+  }
 
+  .filter {
     ol label {
       display: inline;
     }
@@ -43,6 +46,36 @@
       ol, button {
         display: none;
       }
+    }
+  }
+
+  .dropdown {
+    .dropdown-wrapper {
+      &:after {
+        $triangle-width: 1em;
+        $triangle-height: .6em;
+        @include triangle($triangle-width $triangle-height, $form-border-color, down);
+        content: '';
+        position: absolute;
+        top: 50%;
+        margin-top: -($triangle-height / 2);
+        right: .7em;
+      }
+
+      &:hover:after {
+        border-top-color: $form-border-color-hover;
+      }
+    }
+
+    select {
+      @include appearance(none);
+      border: none;
+      background: transparent;
+      margin: 0;
+      padding: .17em 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
     }
   }
 
