@@ -182,6 +182,7 @@ GEM
     kgio (2.9.2)
     launchy (2.4.2)
       addressable (~> 2.3)
+    magnific-popup-rails (0.9.9)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -370,6 +371,7 @@ DEPENDENCIES
   i18n-tasks
   jquery-rails
   launchy
+  magnific-popup-rails
   meta-tags
   meta_request
   neat (~> 1.5.1)

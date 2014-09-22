@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require magnific-popup
 //= require _header
 //= require _search_box
 //= require_tree.
