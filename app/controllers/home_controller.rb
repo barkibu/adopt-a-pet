@@ -3,6 +3,8 @@ class HomeController < ApplicationController
 
   def index
     @pets = Pet.default_filter_and_order.page(params[:page])
+    set_meta_tags title: SEO.default_title,
+      description: SEO.default_description
   end
 
   def find
@@ -21,6 +23,10 @@ class HomeController < ApplicationController
     filtered_params.merge!(Pet.filtering_params valid_search_params(params))
 
     @pets = Pet.filter(filtered_params).default_filter_and_order.page(params[:page])
+
+    set_meta_tags title: SEO.title_for_adopt(Specie.to_s(@specie), @province.to_s, nil),
+      description: SEO.default_description
+
     render 'index'
   end
 

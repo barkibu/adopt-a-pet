@@ -185,6 +185,8 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    meta-tags (2.0.0)
+      actionpack (>= 3.0.0)
     meta_request (0.3.4)
       callsite (~> 0.0, >= 0.0.11)
       rack-contrib (~> 1.1)
@@ -318,9 +320,6 @@ GEM
     tilt (1.4.1)
     timecop (0.7.1)
     tins (1.3.2)
-    title (0.0.5)
-      i18n
-      rails (>= 3.1)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -371,6 +370,7 @@ DEPENDENCIES
   i18n-tasks
   jquery-rails
   launchy
+  meta-tags
   meta_request
   neat (~> 1.5.1)
   newrelic_rpm (>= 3.7.3)
@@ -391,7 +391,6 @@ DEPENDENCIES
   spring
   spring-commands-rspec
   timecop
-  title
   uglifier
   unicorn
   webmock

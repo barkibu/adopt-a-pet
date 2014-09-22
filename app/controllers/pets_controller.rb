@@ -7,6 +7,9 @@ class PetsController < ApplicationController
   decorates_assigned :pet
 
   def show
+    set_meta_tags title: SEO.title_for_show(pet),
+      description: SEO.title_for_show(pet)
+
     @pets = Pet.near_from_province(@pet.province_id, @pet.id)
   end
 
