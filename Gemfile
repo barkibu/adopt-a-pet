@@ -19,7 +19,6 @@ gem "rails", "4.1.4"
 gem "recipient_interceptor"
 gem "sass-rails", "~> 4.0.3"
 gem "simple_form"
-gem "title"
 gem "uglifier"
 gem "unicorn"
 gem 'haml-rails'
@@ -31,6 +30,7 @@ gem 'postmark-rails'
 gem 'paperclip'
 gem 'aws-sdk'
 gem 'draper'
+gem 'meta-tags'
 
 group :development do
   gem "spring"

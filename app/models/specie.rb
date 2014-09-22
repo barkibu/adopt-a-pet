@@ -8,4 +8,8 @@ class Specie
       raise ActiveRecord::RecordNotFound
     end
   end
+
+  def self.to_s(key)
+    Specie::PARAMS[key]
+  end
 end
