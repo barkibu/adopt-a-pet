@@ -1,7 +1,18 @@
-- content_for :javascript do
-  = javascript_include_tag 'social-likes.min'
 - content_for :extra_css do
   = stylesheet_link_tag 'social-likes_flat'
+- content_for :javascript do
+  = javascript_include_tag 'social-likes.min'
+
+  :javascript
+    $(document).ready(function(){
+    	$(".images-wrapper a").magnificPopup({
+        type: 'image',
+        gallery: {
+          enabled: true
+        }
+      });
+    });
+
 
 %section
   = link_to 'Edit', edit_pet_path(pet)

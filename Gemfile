@@ -31,6 +31,7 @@ gem 'paperclip'
 gem 'aws-sdk'
 gem 'draper'
 gem 'meta-tags'
+gem 'magnific-popup-rails'
 
 group :development do
   gem "spring"
