@@ -1,23 +1,22 @@
-%h1 Listing imported_pets
+%section
+  %h1 Listing imported_pets
 
-%table
-  %tr
-    %th Pet
-    %th Data
-    %th Fail logs
-    %th
-    %th
-    %th
-
-  - @imported_pets.each do |imported_pet|
+  %table
     %tr
-      %td= imported_pet.pet
-      %td= imported_pet.data
-      %td= imported_pet.fail_logs
-      %td= link_to 'Show', imported_pet
-      %td= link_to 'Edit', edit_imported_pet_path(imported_pet)
-      %td= link_to 'Destroy', imported_pet, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %th Data
+      %th Fail logs
+      %th
+      %th
+      %th
 
-%br
+    - imported_pets.each do |imported_pet|
+      %tr
+        %td{ title: imported_pet.data }= imported_pet.data_truncated
+        %td{ title: imported_pet.fail_logs }= imported_pet.fail_logs_truncated
+        %td= link_to 'Show', imported_pet
+        %td= link_to 'Edit', edit_imported_pet_path(imported_pet)
+        %td= link_to 'Destroy', imported_pet, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-= link_to 'New Imported pet', new_imported_pet_path
+  %br
+
+  = link_to 'New Imported pet', new_imported_pet_path

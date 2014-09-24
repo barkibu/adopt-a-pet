@@ -2,9 +2,12 @@ class ImportedPetsController < ApplicationController
   before_action :set_imported_pet, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_admin_user!
 
+  decorates_assigned :imported_pets
+  decorates_assigned :imported_pets
+
   # GET /imported_pets
   def index
-    @imported_pets = ImportedPet.all
+    @imported_pets = ImportedPet.where(pet_id: nil).all
   end
 
   # GET /imported_pets/1

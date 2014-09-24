@@ -10,4 +10,11 @@ class ImportedPetDecorator < Draper::Decorator
   #     end
   #   end
 
+  def fail_logs_truncated
+    fail_logs.truncate(30) if fail_logs
+  end
+
+  def data_truncated
+    data.truncate(30) if data
+  end
 end
