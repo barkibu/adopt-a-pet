@@ -1,0 +1,17 @@
+.loader-on {
+  background: asset-url('loader.gif') center bottom no-repeat;
+  padding-bottom: 20px;
+  text-align: center;
+  line-height: 1em;
+  margin-bottom: 1.5em;
+
+  span {
+    font-size: .9em;
+  }
+}
+
+.loader-off {
+  span {
+    display: none;
+  }
+}

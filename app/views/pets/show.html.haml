@@ -40,22 +40,7 @@
       = render 'stats', pet: pet
 
       .adopt-buttons
-        - if pet.more_info_url?
-          .modal
-            = label_tag 'modal-1' do
-              .btn.js-btn ¡Quiero adoptarlo!
-            = check_box_tag 'modal-1', nil, nil, class: 'modal-state'
-            .modal-window
-              .modal-inner
-                %label.modal-close{for: "modal-1"}
-                %h1
-                  = "¿Cómo adoptar a #{pet.name_formatted}?"
-                %p.intro En la siguiente dirección te indicarán los pasos a seguir.
-                %p.body
-                  Información de adopción:
-                  = link_to pet.more_info_url, pet.more_info_url, rel: 'nofollow'
-                %p ¡Muchas gracias por salvar a un animal!
-                %p Recuerda comunicarnos que lo has adoptado para recibir consultas veterinarias ilimitadas totalmente gratis.
+        = render 'modal' if pet.more_info_url?
 
         .social-likes{"data-title" => "Ayúdanos a adoptar a #{pet.name_formatted}", "data-url" => request.original_url }
           %h6 Quiero ayudar a que otros lo adopten

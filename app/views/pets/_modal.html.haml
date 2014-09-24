@@ -1,0 +1,26 @@
+.modal
+  = label_tag 'modal-1' do
+    .btn.js-btn ¡Quiero adoptarlo!
+  = check_box_tag 'modal-1', nil, nil, class: 'modal-state'
+  .modal-window
+    .modal-inner
+      %label.modal-close{for: "modal-1"}
+      %h1
+        = "¿Cómo adoptar a #{pet.name_formatted}?"
+      %p ¡Muchas gracias por salvar a un animal!
+      %p
+        Ahora sólo has de ir a la ficha de #{pet.name_formatted} en la web de su protectora para pedir la adopción.
+      .js-loader.loader-off
+        = link_to '¡Adóptalo ya!', pet.more_info_url, class: 'btn js-redirect', rel: 'nofollow'
+        %span
+          Redirigiendo a
+          = link_to pet.more_info_url, pet.more_info_url, rel: 'nofollow'
+      %p
+        Una vez adoptado,
+        %b
+          escríbenos a
+          = mail_to 'adopciones@barkibu.com'
+          para conseguir consultas veterinarias ilimitadas gratis
+        a través de
+        = succeed '.' do
+          = link_to 'Barkibu', 'http://www.barkibu.com'
