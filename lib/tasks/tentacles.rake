@@ -7,6 +7,7 @@ namespace :tentacles do
 
   desc "Import all data from tentacles"
   task import: :environment do
+    launch(Tentacles::Feeds::BAMBU_DIFUNDE, Tentacles::Importer.new)
     launch(Tentacles::Feeds::ANAAWEB_DOGS, Tentacles::Importer.new)
     launch(Tentacles::Feeds::ANAAWEB_CATS, Tentacles::Importer.new)
   end
