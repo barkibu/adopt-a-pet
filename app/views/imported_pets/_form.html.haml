@@ -1,0 +1,11 @@
+%fieldset
+  = simple_form_for(imported_pet) do |f|
+    = f.error_notification
+
+    .form-inputs
+      = f.association :pet
+      = f.input :data
+      = f.input :fail_logs
+
+    .form-actions
+      = f.button :submit

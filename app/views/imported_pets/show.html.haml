@@ -1,0 +1,16 @@
+%section
+  %p#notice= notice
+
+  %p
+    %b Pet:
+    = imported_pet.pet
+  %p
+    %b Data:
+    = imported_pet.data
+  %p
+    %b Fail logs:
+    = imported_pet.fail_logs
+
+  = link_to 'Edit', edit_imported_pet_path(imported_pet)
+  \|
+  = link_to 'Back', imported_pets_path

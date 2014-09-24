@@ -17,6 +17,10 @@ class Tentacles::Importer
   end
 
   def save_object(object)
+    imported = ImportedPet.new
+    imported.data = object.to_s
+    imported.save!
+
     return unless object['breed'].present?
 
     Pet.new do |pet|
@@ -38,12 +42,18 @@ class Tentacles::Importer
         picture = pet.pet_pictures.new
         begin
           picture.asset = object['img']
-        rescue OpenURI::HTTPError
-          return
+        rescue OpenURI::HTTPError => e
+          imported.add_fail_to_log("La img <#{object['img']}> no es correcta. Error: #{e.message}.")
+          picture.destroy
         end
       end
 
-      pet.save!
+      if pet.save
+        imported.pet_id = pet.id
+      else
+        imported.add_fail_to_log(pet.errors.messages)
+      end
+      imported.save!
     end
   end
 
