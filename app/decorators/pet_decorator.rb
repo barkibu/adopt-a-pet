@@ -21,4 +21,16 @@ class PetDecorator < Draper::Decorator
   def to_param
     "#{id}-#{name.parameterize}"
   end
+
+  def location_formatted
+    if province_id
+      location.sub(/\(.*\)/, '').strip
+    else
+      location
+    end
+  end
+
+  def name_formatted
+    name.titleize
+  end
 end

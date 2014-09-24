@@ -34,7 +34,7 @@
         %h4
           = t 'activerecord.attributes.pet.urgent'
       %h1
-        = pet.name
+        = pet.name_formatted
       %p
         = simple_format pet.description
       = render 'stats', pet: pet
@@ -49,7 +49,7 @@
               .modal-inner
                 %label.modal-close{for: "modal-1"}
                 %h1
-                  = "¿Cómo adoptar a #{pet.name}?"
+                  = "¿Cómo adoptar a #{pet.name_formatted}?"
                 %p.intro En la siguiente dirección te indicarán los pasos a seguir.
                 %p.body
                   Información de adopción:
@@ -57,7 +57,7 @@
                 %p ¡Muchas gracias por salvar a un animal!
                 %p Recuerda comunicarnos que lo has adoptado para recibir consultas veterinarias ilimitadas totalmente gratis.
 
-        .social-likes{"data-title" => "Ayúdanos a adoptar a #{pet.name}", "data-url" => request.original_url }
+        .social-likes{"data-title" => "Ayúdanos a adoptar a #{pet.name_formatted}", "data-url" => request.original_url }
           %h6 Quiero ayudar a que otros lo adopten
           %br
           .facebook{title: "Comparte el enlace en Facebook"} Facebook
