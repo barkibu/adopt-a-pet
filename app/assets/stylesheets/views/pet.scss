@@ -63,8 +63,8 @@ $side-image-border: 1px solid darken(transparentize($side-image-background-botto
   }
 
   .content p {
-    color: gray;
-    margin-bottom: 3em;
+    color: $base-font-color;
+    margin-bottom: 1.5em;
   }
 
   .content {
