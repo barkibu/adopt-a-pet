@@ -27,6 +27,7 @@ class Tentacles::Importer
       pet.specie = object['specie']
       pet.status = object['status']
       pet.urgent = object['urgent']
+      pet.province_id = get_province_id(object['location'])
 
       picture = pet.pet_pictures.new
       picture.asset = object['img']
@@ -45,5 +46,13 @@ class Tentacles::Importer
 
   def file_name(name)
     "db/tentacles/data/#{name}.json"
+  end
+
+  def get_province_id(province)
+    match_data = province.match(/\((.*)\)/)
+    return unless match_data
+
+    province = Province.where('slug ILIKE ?', match_data[1].parameterize).first
+    province.try :id
   end
 end
