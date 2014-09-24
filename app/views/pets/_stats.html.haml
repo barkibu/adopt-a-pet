@@ -19,7 +19,7 @@
       %li
         %span Lugar
         = pet.location_formatted
-    - if pet.province.name != pet.location
+    - if pet.show_province?
       %li
         %span Provincia
         = pet.province

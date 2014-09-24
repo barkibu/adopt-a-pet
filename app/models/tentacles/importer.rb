@@ -29,8 +29,14 @@ class Tentacles::Importer
       pet.urgent = object['urgent']
       pet.province_id = get_province_id(object['location'])
 
-      picture = pet.pet_pictures.new
-      picture.asset = object['img']
+      if object['img'].present?
+        picture = pet.pet_pictures.new
+        begin
+          picture.asset = object['img']
+        rescue OpenURI::HTTPError
+          return
+        end
+      end
 
       pet.save!
     end
