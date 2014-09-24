@@ -15,7 +15,7 @@ RSpec.describe Tentacles::Importer do
   end
 
   context 'file not exists' do
-    before { allow(subject).to receive(:get_json) }
+    before { allow(subject).to receive(:get_json_from_local) }
 
     it 'exits' do
       expect(subject.run(feed)).to be_falsey
