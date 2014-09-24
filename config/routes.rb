@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :imported_pets
+
   resources :shelters, path: 'protectoras-de-animales'
   resources :pets, only: [:new, :create, :edit, :update, :destroy]
 
