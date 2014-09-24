@@ -1,0 +1,38 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Date: Tue, 16 Sep 2014 08:40:40 GMT
+Etag: "45605568"
+Vary: Accept-Encoding
+X-Powered-By: Express
+Content-Length: 64560
+Connection: keep-alive
+
+{
+  "name": "bambu-ficha",
+  "count": 61,
+  "frequency": "On demand",
+  "version": 10,
+  "newdata": false,
+  "lastrunstatus": "success",
+  "thisversionrun": "Tue Sep 16 2014 08:03:14 GMT+0000 (UTC)",
+  "lastsuccess": "Tue Sep 16 2014 08:17:34 GMT+0000 (UTC)",
+  "results": {
+    "data": [
+      {
+        "name": "MILAN",
+        "description": "Descripción\nPequeño romanito en busca de hogar, Milán es super cariñoso y sociable con sus compis, muy juguetón, pero nos da mucha pena ver a los mas peques en la protectora, no es el mejor sitio para crecer, buscamos una familia responsable para él.\nCONTACTO: CALLOSINA.ALOE@GMAIL.COM",
+        "img": "http://protectora-apadac.org/imas/animales/_2021/a_20211410517014.jpg",
+        "status": "en adopción",
+        "publisher": "http://bambu-difunde.net/externo/ficha-53155",
+        "extra-status": "Estado: \nen adopción",
+        "publish-date": "Desde: \n12-09-2014",
+        "specie": "Clase: \ngato",
+        "sex": "Sexo: \nMacho",
+        "age": "Edad: \nCachorrito (3 meses y 4 días)",
+        "size": "Tamaño: \nPequeño",
+        "breed": "Raza: \nMESTIZO",
+        "location": "Lugar: \nCallosa de Segura (Alicante)"
+      }
+    ]
+  }
+}
