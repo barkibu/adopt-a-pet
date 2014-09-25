@@ -19,9 +19,9 @@
 
 %section
   .breadcrumb
-    = link_to 'Especie', breadcrumb_specie_path(params)
-    = link_to 'Provincia', breadcrumb_province_path(params)
-    = link_to 'Raza', breadcrumb_breed_path(params)
+    = link_to pet.specie_formatted, breadcrumb_specie_path(params)
+    = link_to pet.province, breadcrumb_province_path(params)
+    = link_to pet.breed_formatted, breadcrumb_breed_path(params)
 
   .side-image
     .images-wrapper
