@@ -22,6 +22,7 @@ class Pet < ActiveRecord::Base
   belongs_to :user
   belongs_to :province
   has_many :pet_pictures, dependent: :destroy
+  has_one :imported_pet, dependent: :destroy
 
   accepts_nested_attributes_for :pet_pictures, reject_if: :new_record?, allow_destroy: true
 
