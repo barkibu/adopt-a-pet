@@ -32,6 +32,7 @@ gem 'aws-sdk'
 gem 'draper'
 gem 'meta-tags'
 gem 'magnific-popup-rails'
+gem 'delayed_paperclip'
 
 group :development do
   gem "spring"
