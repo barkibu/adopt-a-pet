@@ -4,5 +4,6 @@
 require File.expand_path('../config/application', __FILE__)
 
 Rails.application.load_tasks
+require File.expand_path('../lib/tasks/delayed_tasks', __FILE__)
 task(:default).clear
 task default: [:spec]

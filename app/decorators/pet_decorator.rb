@@ -35,6 +35,14 @@ class PetDecorator < Draper::Decorator
   end
 
   def show_province?
-    province.name != pet.location
+    province.name != object.location
+  end
+
+  def breed_formatted
+    breed.titleize
+  end
+
+  def specie_formatted
+    Specie.to_s(object.specie.to_sym).titleize
   end
 end

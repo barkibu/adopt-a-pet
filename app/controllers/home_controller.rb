@@ -9,7 +9,9 @@ class HomeController < ApplicationController
 
   def find
     filtered_params = valid_search_params(params)
-    redirect_to adopt_species_path({specie: species_params_to_url_params(params)}.merge(filtered_params))
+    filtered_params.merge!(specie: species_params_to_url_params(params))
+    filtered_params.merge!(province: params[:province]) if valid_province_param params[:province]
+    redirect_to adopt_species_path(filtered_params)
   end
 
   def adopt
@@ -35,6 +37,11 @@ class HomeController < ApplicationController
   def valid_search_params(params)
     filter_keys = Pet.sizes.keys + Pet.ages.keys
     params.slice(*filter_keys.map(&:to_sym))
+  end
+
+  def valid_province_param(param)
+    return unless param
+    Province.where(slug: param).count == 1
   end
 
   def species_params_to_url_params(params)
