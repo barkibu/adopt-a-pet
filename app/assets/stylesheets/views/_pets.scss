@@ -11,7 +11,7 @@ $card-stats-color: lighten($base-accent-color, 10);
   $card-hover-background: lighten($card-background, 5);
   $card-image-background: #DBD199;
   $card-image-hover-background: lighten($card-image-background, 5);
-  
+
 
   @include transition (all 0.2s ease-in-out);
   background-color: $card-background;
@@ -25,7 +25,7 @@ $card-stats-color: lighten($base-accent-color, 10);
   display: block;
 
   @include media($large-screen) {
-    @include span-columns(4);  
+    @include span-columns(4);
     @include omega(3n);
   }
 
@@ -85,11 +85,11 @@ $card-stats-color: lighten($base-accent-color, 10);
 
   &:hover {
     background-color: $card-hover-background;
-    
+
     .card-image img {
       background: $card-image-hover-background;
     }
-  
+
     .card-header {
       background-color: $card-hover-background;
     }
@@ -136,4 +136,3 @@ $card-stats-color: lighten($base-accent-color, 10);
     }
   }
 }
-

@@ -61,7 +61,7 @@ class CreateProvinces < ActiveRecord::Migration
     Province.create! ine_name: 'Zamora', name: 'Zamora'
     Province.create! ine_name: 'Zaragoza', name: 'Zaragoza'
     Province.create! ine_name: 'Ceuta', name: 'Ceuta'
-    Province.create! ine_name: 'Melilla', name: 'Melilla' 
+    Province.create! ine_name: 'Melilla', name: 'Melilla'
   end
 
   def down

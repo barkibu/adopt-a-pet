@@ -16,11 +16,11 @@
   height: $centered-navigation-height;
   width: 100%;
   z-index: 9999;
-  
+
   // Mobile view
 
   .mobile-logo {
-    display: inline;    
+    display: inline;
     float: left;
     max-height: $centered-navigation-height;
     padding-left: $centered-navigation-padding;
@@ -64,7 +64,7 @@
     z-index: 999;
   }
 
-  ul.centered-navigation-menu {    
+  ul.centered-navigation-menu {
     -webkit-transform-style: preserve-3d; // stop webkit flicker
     clear: both;
     display: none;
@@ -101,13 +101,13 @@
     @include media($horizontal-bar-mode) {
       background: transparent;
       display: inline;
-      line-height: $centered-navigation-height;  
+      line-height: $centered-navigation-height;
 
       a {
         padding-right: $centered-navigation-item-padding;
       }
     }
-    
+
     a {
       color: $centered-navigation-color;
       display: inline-block;
@@ -183,7 +183,7 @@
         font-size: 1.2em;
         position: absolute;
         right: $centered-navigation-submenu-padding / 2;
-      }      
+      }
     }
 
     &:hover > .submenu {
