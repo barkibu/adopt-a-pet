@@ -3,12 +3,12 @@ class PetPicture < ActiveRecord::Base
 
   has_attached_file :asset,
     styles: {
-    home: "340x150#",
+    home: "",
     vertical: "360x640>",
     thumb: "100x100>",
   },
   convert_options: {
-    home: "-strip",
+    home: "-strip -gravity north -thumbnail 456x342^ -extent 456x342",
     vertical: "-strip",
     thumb: "-quality 75 -strip",
   },
