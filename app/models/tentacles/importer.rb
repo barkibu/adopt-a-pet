@@ -17,44 +17,56 @@ class Tentacles::Importer
   end
 
   def save_object(object)
-    imported = ImportedPet.new
-    imported.data = object.to_s
+    pet = Pet.find_or_initialize_by(
+      age: Pet.ages[object['age']],
+      breed: object['breed'],
+      description: object['description'],
+      location: object['location'],
+      more_info_url: object['more_info_url'],
+      name: object['name'],
+      sex: Pet.sexes[object['sex']],
+      size: Pet.sizes[object['size']],
+      specie: Pet.species[object['specie']],
+      province_id: get_province_id(object['location'])
+    )
+
+    if pet.new_record?
+      imported = ImportedPet.new
+      imported.data = object.to_s
+      pet.created_at = object['created_at']
+    else
+      imported = pet.imported_pet
+      imported.add_fail_to_log(imported.data.to_s)
+      imported.data = object.to_s
+      imported.add_fail_to_log("Updated pet at: #{Time.current}")
+    end
     imported.save!
 
-    return unless object['breed'].present?
-
-    Pet.new do |pet|
-      pet.age = object['age']
-      pet.breed = object['breed']
-      pet.created_at = object['created_at']
-      pet.description = object['description']
-      pet.location = object['location']
-      pet.more_info_url = object['more_info_url']
-      pet.name = object['name']
-      pet.sex = object['sex']
-      pet.size = object['size']
-      pet.specie = object['specie']
-      pet.status = object['status']
-      pet.urgent = object['urgent']
-      pet.province_id = get_province_id(object['location'])
-
-      if object['img'].present?
-        picture = pet.pet_pictures.new
-        begin
-          picture.asset = object['img']
-        rescue OpenURI::HTTPError => e
-          imported.add_fail_to_log("La img <#{object['img']}> no es correcta. Error: #{e.message}.")
-          picture.destroy
-        end
-      end
-
-      if pet.save
-        imported.pet_id = pet.id
-      else
-        imported.add_fail_to_log(pet.errors.messages)
-      end
+    unless object['breed'].present?
+      imported.add_fail_to_log('Breed is empty')
       imported.save!
+      return
     end
+
+    pet.status = object['status']
+    pet.urgent = object['urgent']
+
+    if object['img'].present? && pet.new_record?
+      picture = pet.pet_pictures.new
+      begin
+        picture.asset = object['img']
+      rescue OpenURI::HTTPError, SocketError => e
+        imported.add_fail_to_log("Img <#{object['img']}> is not valid. Error: #{e.message}.")
+        picture.destroy
+      end
+    end
+
+    if pet.save
+      imported.pet_id = pet.id
+    else
+      imported.add_fail_to_log(pet.errors.messages.to_s)
+    end
+    imported.save!
   end
 
   def get_json_from_local(name)
