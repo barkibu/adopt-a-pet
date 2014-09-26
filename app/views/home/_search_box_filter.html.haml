@@ -1,5 +1,5 @@
 .filter
-  = label_tag t("activerecord.attributes.pet.#{ filter }")
+  %label= t("activerecord.attributes.pet.#{ filter }")
   %div
     %ol
       - t("activerecord.attributes.pet.#{ filter.pluralize }").each do |k, v|
