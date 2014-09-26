@@ -11,7 +11,7 @@ class SEO
 
   def self.title_for_adopt(specie, province, breed)
     title = [
-      "Adopta a #{specie}",
+      "Adopta a #{specie_with_preposition(specie)}",
       "#{ ('en ' + province) if province.present?}"
     ]
     title.join(' ')
@@ -23,5 +23,14 @@ class SEO
 
   def self.description_for_show(pet)
     default_description
+  end
+
+  def self.extra_title(specie)
+    "Al adoptar a #{specie_with_preposition(specie)} tendrás un amigo fiel para toda
+    la vida que te ayudará a sonreír hasta en los momentos más difíciles."
+  end
+
+  def self.specie_with_preposition(specie)
+    I18n.t "species_prepositions.#{specie}"
   end
 end

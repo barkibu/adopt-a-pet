@@ -57,6 +57,11 @@ en:
         web_url: 'Web'
         location: 'Location'
 
+  species_prepositions:
+    cat: 'a cat'
+    dog: 'a dog'
+    pet: 'a pet'
+
   views:
     pagination:
       first: "&laquo; First"
