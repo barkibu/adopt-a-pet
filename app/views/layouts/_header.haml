@@ -1,7 +1,7 @@
 %header.centered-navigation
   .centered-navigation-wrapper
     = link_to image_tag('logo_cortado_transparente.png'), root_path, class: 'mobile-logo'
-    %a.centered-navigation-menu-button{href: ""} MENÚ
+    %a.centered-navigation-menu-button{href: "javascript:void(0)"} MENÚ
     %ul.centered-navigation-menu
       %li.nav-link
         = link_to 'Perros en adopción', breadcrumb_specie_path(specie: Specie.to_s(:dog))
