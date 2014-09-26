@@ -46,13 +46,13 @@ class HomeController < ApplicationController
 
   def species_params_to_url_params(params)
     if params[:dog] and params[:cat]
-      'animales'
+      'mascotas'
     elsif params[:dog]
       'perros'
     elsif params[:cat]
       'gatos'
     else
-      'animales'
+      'mascotas'
     end
   end
 end
