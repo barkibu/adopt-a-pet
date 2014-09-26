@@ -1,6 +1,6 @@
 !!! 5
 
-%head
+%html{html_attrs('es')}
   %meta{charset: "utf-8"}/
   %meta{content: "NOODP", name: "ROBOTS"}/
   %meta{content: "initial-scale=1", name: "viewport"}/
@@ -8,9 +8,9 @@
   = stylesheet_link_tag :application, media: "all"
   = yield :extra_css
   = csrf_meta_tags
-%body{class: body_class}
-  = render "layouts/header"
-  = render "flashes"
-  = yield
-  = render "layouts/footer"
-  = render "javascript"
+  %body{class: body_class}
+    = render "layouts/header"
+    = render "flashes"
+    = yield
+    = render "layouts/footer"
+    = render "javascript"
