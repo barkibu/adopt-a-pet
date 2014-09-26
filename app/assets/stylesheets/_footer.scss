@@ -15,7 +15,7 @@
     img {
       height: 3em;
     }
-  } 
+  }
 
   .footer-links {
     @include clearfix;
@@ -57,7 +57,7 @@
     font-size: 1em;
     font-weight: 800;
     margin-bottom: .4em;
-  }  
+  }
 
   hr {
     border: 1px solid transparentize($footer-disclaimer-color, .3);
