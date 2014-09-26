@@ -1,17 +1,17 @@
 class SEO
   def self.default_description
-    'Adopta una mascota es un proyecto donde puedes
+    'Adopta a una mascota es un proyecto donde puedes
     buscar entre perros, gatos y otros animales de todas las
     protectoras de España. Así encontrarás a tu mascota ideal'
   end
 
   def self.default_title
-    'Adopta una mascota'
+    'Adopta a una mascota'
   end
 
   def self.title_for_adopt(specie, province, breed)
     title = [
-      "Adopta #{specie}",
+      "Adopta a #{specie}",
       "#{ ('en ' + province) if province.present?}"
     ]
     title.join(' ')
