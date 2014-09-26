@@ -1,11 +1,10 @@
 %section
   .intro-text
-    %h3 Adopta una mascota
-    %h2
-    %h4 Tendrás un amigo fiel para toda la vida que te ayudará a sonreír hasta en los momentos más difíciles.
+    %h3= title
+    %h4= SEO.extra_title(Specie.find_by_specie(params[:specie]))
     %p
-      Ahora con "BarkiAdopta (Cambiar nombre)" puedes buscar entre miles de perros, gatos y otros animales de todas las protectoras de España. Así encontrás a tu mascota ideal.
-      %a{:href => ""}
+      Ahora con barkiAdopta puedes buscar entre cientos de perros, gatos y otros animales de todas las protectoras de España. Así encontrás a tu mascota ideal.
+      %a{:href => "javascript:void(0)"}
         Leer más
         %span »
 %section
@@ -19,5 +18,5 @@
 
 %section
   .line-behind-text
-    %h6#er-toc-id-9.er_toc_tag Ventajas de adoptar unas mascota frente a comprarla
+    %h6#er-toc-id-9.er_toc_tag Ventajas de adoptar a una mascota frente a comprarla
   = render "benefits"

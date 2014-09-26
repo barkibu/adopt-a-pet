@@ -1,12 +1,12 @@
 %header.centered-navigation
   .centered-navigation-wrapper
     = link_to image_tag('logo_cortado_transparente.png'), root_path, class: 'mobile-logo'
-    %a.centered-navigation-menu-button{href: ""} MENÚ
+    %a.centered-navigation-menu-button{href: "javascript:void(0)"} MENÚ
     %ul.centered-navigation-menu
       %li.nav-link
-        = link_to 'Perros en adopción', root_path(dog: '1')
+        = link_to 'Perros en adopción', breadcrumb_specie_path(specie: Specie.to_s(:dog))
       %li.nav-link
-        = link_to 'Gatos en adopción', root_path(cat: '1')
+        = link_to 'Gatos en adopción', breadcrumb_specie_path(specie: Specie.to_s(:cat))
       %li.nav-link
         %a{href: "javascript:void(0)"} ¿Adoptar?
       %li.nav-link.logo

@@ -57,6 +57,11 @@ es:
         web_url: 'Web'
         location: 'Ubicación'
 
+  species_prepositions:
+    cat: 'un gato'
+    dog: 'un perro'
+    pet: 'una mascota'
+
   views:
     pagination:
       first: "&laquo; Primera"

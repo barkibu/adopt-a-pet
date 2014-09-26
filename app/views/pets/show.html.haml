@@ -14,8 +14,9 @@
     });
 
 
-%section
-  = link_to 'Edit', edit_pet_path(pet)
+- if current_admin_user
+  %section
+    = link_to 'Edit', edit_pet_path(pet)
 
 %section
   .breadcrumb
