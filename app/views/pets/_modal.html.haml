@@ -1,6 +1,5 @@
 .modal
-  = label_tag 'modal-1' do
-    .btn.js-btn ¡Quiero adoptarlo!
+  = label_tag 'modal-1', '¡Quiero adoptarlo!', class: 'btn js-btn'
   = check_box_tag 'modal-1', nil, nil, class: 'modal-state'
   .modal-window
     .modal-inner

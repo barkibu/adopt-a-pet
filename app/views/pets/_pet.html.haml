@@ -7,6 +7,5 @@
       = image_tag pet.pet_pictures.first.asset.url(:home)
   .card-header
     = pet.name
-  .card-copy
-    %p= simple_format(truncate(pet.description, length: 230, separator: ' '))
+  .card-copy= simple_format(truncate(pet.description, length: 230, separator: ' '))
   = render 'pets/stats', pet: pet
