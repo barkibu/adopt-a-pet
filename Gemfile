@@ -33,6 +33,7 @@ gem 'draper'
 gem 'meta-tags'
 gem 'magnific-popup-rails'
 gem 'delayed_paperclip'
+gem 'sitemap_generator'
 
 group :development do
   gem "spring"
