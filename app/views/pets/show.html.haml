@@ -36,8 +36,7 @@
           = t 'activerecord.attributes.pet.urgent'
       %h1
         = pet.name_formatted
-      %p
-        = simple_format pet.description
+      = simple_format pet.description
       = render 'stats', pet: pet
 
       .adopt-buttons
