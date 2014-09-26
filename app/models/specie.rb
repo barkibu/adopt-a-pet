@@ -1,5 +1,5 @@
 class Specie
-  PARAMS = { dog: 'perros', cat: 'gatos', animals: 'animales' }
+  PARAMS = { dog: 'perros', cat: 'gatos', pet: 'mascotas' }
 
   def self.find_by_specie!(specie)
     if PARAMS.values.include? specie
