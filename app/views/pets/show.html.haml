@@ -18,7 +18,7 @@
   %section
     = link_to 'Edit', edit_pet_path(pet)
 
-%section
+%section{ itemscope: true, itemtype: "http://schema.org/Article" }
   .breadcrumb
     = link_to pet.specie_formatted, breadcrumb_specie_path(params)
     = link_to pet.province, breadcrumb_province_path(params)
@@ -27,16 +27,18 @@
   .side-image
     .images-wrapper
       - pet.pet_pictures.each do |picture|
-        = link_to image_tag(picture.asset.url(:vertical)), picture.asset.url
+        = link_to image_tag(picture.asset.url(:vertical), itemprop: "image"), picture.asset.url
     .content
       %h4
         = t "activerecord.attributes.pet.statuses.#{pet.status}"
       - if pet.urgent?
         %h4
           = t 'activerecord.attributes.pet.urgent'
-      %h1
-        = pet.name_formatted
-      = simple_format pet.description
+      %h1{ itemprop: "name" }= pet.name_formatted
+      %p
+        Publicado hace
+        %span{ itemprop: "datePublished", content: pet.created_at }= time_ago_in_words pet.created_at
+      %div{ itemprop: "articleBody" }= simple_format pet.description
       = render 'stats', pet: pet
 
       .adopt-buttons
