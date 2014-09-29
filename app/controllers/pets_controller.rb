@@ -11,7 +11,7 @@ class PetsController < ApplicationController
     set_meta_tags title: SEO.title_for_show(pet),
       description: SEO.title_for_show(pet)
 
-    @pets = Pet.near_from_province(@pet.province_id, @pet.id)
+    @pets = Pet.near_from_province(@pet.province_id, @pet.specie, @pet.id)
   end
 
   def new

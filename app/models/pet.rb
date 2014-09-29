@@ -31,9 +31,10 @@ class Pet < ActiveRecord::Base
   scope :filter_province, ->(value) { where(province_id: value) }
   scope :filter_size, ->(value) { where(size: value) }
   scope :filter_specie, ->(value) { where(specie: value) }
-  scope :near_from_province, ->(province_id, id) do
+  scope :near_from_province, ->(province_id, specie, id) do
     filter_province(province_id)
     .where('id <> ?', id)
+    .where(specie: Pet.species[specie])
     .default_filter_and_order
     .limit(3)
   end
