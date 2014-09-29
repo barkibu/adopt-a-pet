@@ -1,5 +1,6 @@
 class PetsController < ApplicationController
   before_action :set_pet, only: [:show, :edit, :update, :destroy]
+  before_action :redirect_pet, only: [:show]
   before_action :authenticate_user!, only: [:new, :edit, :create, :update]
   before_action :authenticate_admin_user!, only: [:destroy]
 
@@ -48,6 +49,12 @@ class PetsController < ApplicationController
   private
     def set_pet
       @pet = Pet.includes(:pet_pictures).find(params[:id])
+    end
+
+    def redirect_pet
+      unless pet.adopt_specie_path == request.path
+        redirect_to pet.adopt_specie_path, status: 301
+      end
     end
 
     def pet_params
