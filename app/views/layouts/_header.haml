@@ -14,27 +14,8 @@
         = link_to image_tag('horizontal-color.png'), root_path, class: 'logo'
       %li.nav-link
         %a{href: "javascript:void(0)"} Nosotros
-      %li.nav-link.more
-        %a{href: "javascript:void(0)"} Para Protectoras
-        %ul.submenu
-          %li
-            = link_to 'Protectoras de animales', shelters_path
-          %li
-            %a{href: "javascript:void(0)"} Another Item
-          %li.more
-            %a{href: "javascript:void(0)"} Item with submenu
-            %ul.submenu
-              %li
-                %a{href: "javascript:void(0)"} Sub-submenu Item
-              %li
-                %a{href: "javascript:void(0)"} Another Item
-          %li.more
-            %a{href: "javascript:void(0)"} Another submenu
-            %ul.submenu
-              %li
-                %a{href: "javascript:void(0)"} Sub-submenu
-              %li
-                %a{href: "javascript:void(0)"} An Item
+      %li.nav-link
+        = link_to 'Protectoras de animales', shelters_path
       %li.nav-link
         - if user_signed_in?
           = link_to t('logout'), destroy_user_session_path, method: :delete
