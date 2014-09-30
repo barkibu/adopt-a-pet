@@ -34,7 +34,7 @@
         - picture = pet.pet_pictures.first
         - if picture
           .main-image
-            = link_to image_tag(picture.asset.url(:vertical), itemprop: "image"), picture.asset.url
+            = link_to image_tag(picture.asset.url(:show_main), itemprop: "image"), picture.asset.url
           .data
             %h4
               = t "activerecord.attributes.pet.statuses.#{pet.status}"
@@ -47,7 +47,7 @@
               %span{ itemprop: "datePublished", content: pet.created_at }= time_ago_in_words pet.created_at
       .images
         - pet.pet_pictures.to_a.from(1).each do |picture|
-          = link_to image_tag(picture.asset.url(:vertical), itemprop: "image"), picture.asset.url
+          = link_to image_tag(picture.asset.url(:thumb), itemprop: "image"), picture.asset.url
       %div{ itemprop: "articleBody" }= simple_format pet.description
       = render 'stats', pet: pet
 
