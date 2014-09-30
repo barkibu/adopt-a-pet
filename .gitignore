@@ -13,5 +13,4 @@
 /tmp/*
 config/database.yml
 /db/tentacles/data/*
-/public/sitemap.xml.gz
 /public/sitemap.xml
