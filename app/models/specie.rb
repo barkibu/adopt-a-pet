@@ -18,6 +18,10 @@ class Specie
   end
 
   def self.to_s(key)
-    Specie::PARAMS[key]
+    PARAMS[key]
+  end
+
+  def self.keys_without_pets
+    PARAMS.keys.reject{ |x| x == :pet }
   end
 end

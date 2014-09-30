@@ -38,6 +38,7 @@ class Pet < ActiveRecord::Base
     .default_filter_and_order
     .limit(3)
   end
+  scope :count_by_province, ->(specie) { where(specie: Pet.species[specie]).group(:province_id).count }
 
   def set_default_status
     self.status ||= :adoption
