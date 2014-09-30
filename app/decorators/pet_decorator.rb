@@ -35,7 +35,7 @@ class PetDecorator < Draper::Decorator
   end
 
   def show_province?
-    province.name != object.location
+    province.name != location_formatted
   end
 
   def breed_formatted
