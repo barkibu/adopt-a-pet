@@ -108,10 +108,50 @@ $side-image-border: 1px solid darken(transparentize($side-image-background-color
 
   .content p {
     color: $base-font-color;
-    margin-bottom: 1.5em;
+    margin: 1.5em 0;
   }
 
   .content {
+    .content-header {
+      .main-image {
+        img {
+          width: 100%;
+        }
+      }
+
+      h1 {
+        margin: 0;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      @include media($large-screen) {
+        display: table-row;
+
+        .main-image, .data {
+          display: table-cell;
+          vertical-align: top;
+        }
+
+        .main-image {
+          width: 33%;
+          padding-right: $wrappers-padding / 2;
+        }
+      }
+    }
+
+    .images {
+      img {
+        height: 5em;
+
+        @include media($large-screen) {
+          height: 4em;
+        }
+      }
+    }
+
     .adopt-buttons{
       margin-top: 1em;
       button {
@@ -119,6 +159,10 @@ $side-image-border: 1px solid darken(transparentize($side-image-background-color
         font-size: $base-font-size;
         outline: none;
       }
+    }
+
+    .card-stats {
+      padding-left: 0;
     }
   }
 
