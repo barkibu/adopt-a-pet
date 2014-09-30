@@ -92,13 +92,16 @@
       }
     }
   }
-}
 
-ul.pet-count-and-province {
-  @include columns(4);
-  span {
-    width: 3em;
-    text-align: right;
-    display: inline-block;
+  ul.pet-count-and-province {
+    span {
+      width: 3em;
+      text-align: right;
+      display: inline-block;
+    }
+
+    @include media($tab-mode) {
+      @include columns(4);
+    }
   }
 }
