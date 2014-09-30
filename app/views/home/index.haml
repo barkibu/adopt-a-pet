@@ -1,18 +1,19 @@
 %section
   .intro-text
     %h3= title
-    %h4= SEO.extra_title(Specie.find_by_specie(params[:specie]))
+    %h1= SEO.extra_title(Specie.find_by_specie(params[:specie]))
     %p
       BarkiAdopta es el primer buscador de mascotas en adopción de España, puedes buscar entre miles de perros, gatos y otros animales de todas las protectoras de España.
 
 - if current_page?(controller: 'home', action: 'index')
   %section
-    %h6.er_toc_tag Busca perros y gatos en adopción por provincia
+    .line-behind-text
+      %h6.er_toc_tag Busca perros y gatos en adopción por provincia
     = render 'species_tabs'
 
 %section
   .line-behind-text
-    %h6.er_toc_tag Usa nuestro Buscador de mascotas adorables
+    %h6.er_toc_tag O usa nuestro Buscador de mascotas adorables
   = render "search_box"
 
 %section
