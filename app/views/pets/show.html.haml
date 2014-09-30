@@ -60,3 +60,4 @@
         = "Otros #{ params[:specie] } en adopción en #{pet.province}"
     .cards
       = render pets
+    = link_to "Ver más #{ params[:specie] } en #{pet.province}", breadcrumb_province_path(params)
