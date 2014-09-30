@@ -16,4 +16,5 @@
 //= require magnific-popup-config
 //= require _header
 //= require _search_box
+//= require _tabs
 //= require_tree .
