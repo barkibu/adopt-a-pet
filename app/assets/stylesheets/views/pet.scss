@@ -1,6 +1,6 @@
-$side-image-background-top: #B5EBEB;
 $side-image-background-bottom: #5DAC5D;
-$side-image-border: 1px solid darken(transparentize($side-image-background-bottom, .8), 30);
+$side-image-background-color: $barkigray;
+$side-image-border: 1px solid darken(transparentize($side-image-background-color, .8), 30);
 
 .side-image {
   $wrappers-padding: 2em;
@@ -11,18 +11,15 @@ $side-image-border: 1px solid darken(transparentize($side-image-background-botto
   }
 
   .images-wrapper {
-    @include background(asset-url('mountains.png'), linear-gradient($side-image-background-top, $side-image-background-bottom), no-repeat $side-image-background-top scroll);
-    background-color: $side-image-background-top;
+    background-color: $side-image-background-color;
     border-bottom: $side-image-border;
     background-size: cover;
     display: block;
-    min-height: 12em;
-    padding: $wrappers-padding;
+    padding: 1em $wrappers-padding;
     text-align: center;
 
     a {
       display: inline-block;
-      margin: 0 1.5em;
     }
 
     img {
@@ -30,10 +27,57 @@ $side-image-border: 1px solid darken(transparentize($side-image-background-botto
     }
 
     @include media($large-screen) {
-      @include span-columns(4);
-      background-position: bottom;
-      background-size: cover;
+      @include span-columns(3);
       border-right: $side-image-border;
+      padding: $wrappers-padding;
+    }
+
+    .barkibanner {
+      display: table-row;
+      vertical-align: top;
+      padding: 0;
+      margin: 0;
+
+      img, h1 {
+        display: table-cell;
+        vertical-align: top;
+      }
+
+      img {
+        height: auto;
+        width: 150px;
+      }
+
+      h1 {
+        $background-logo-height: 30px;
+        color: white;
+        text-align: left;
+        padding: {
+          left: 1em;
+          bottom: $background-logo-height + 15;
+        }
+        background: {
+          image: asset-url('horizontal-blanco.png');
+          repeat: no-repeat;
+          position: bottom right ;
+          size: auto $background-logo-height;
+        }
+      }
+
+      @include media($large-screen) {
+        img, h1 {
+          display: block;
+        }
+
+        img {
+          width: 100%;
+        }
+
+        h1 {
+          padding-left: 0;
+          margin-top: 1em;
+        }
+      }
     }
   }
 
@@ -43,7 +87,7 @@ $side-image-border: 1px solid darken(transparentize($side-image-background-botto
     vertical-align: top;
 
     @include media($large-screen) {
-      @include span-columns(8);
+      @include span-columns(9);
     }
   }
 
@@ -64,10 +108,50 @@ $side-image-border: 1px solid darken(transparentize($side-image-background-botto
 
   .content p {
     color: $base-font-color;
-    margin-bottom: 1.5em;
+    margin: 1.5em 0;
   }
 
   .content {
+    .content-header {
+      .main-image {
+        img {
+          width: 100%;
+        }
+      }
+
+      h1 {
+        margin: 0;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      @include media($large-screen) {
+        display: table-row;
+
+        .main-image, .data {
+          display: table-cell;
+          vertical-align: top;
+        }
+
+        .main-image {
+          width: 33%;
+          padding-right: $wrappers-padding / 2;
+        }
+      }
+    }
+
+    .images {
+      img {
+        height: 5em;
+
+        @include media($large-screen) {
+          height: 4em;
+        }
+      }
+    }
+
     .adopt-buttons{
       margin-top: 1em;
       button {
@@ -75,6 +159,10 @@ $side-image-border: 1px solid darken(transparentize($side-image-background-botto
         font-size: $base-font-size;
         outline: none;
       }
+    }
+
+    .card-stats {
+      padding-left: 0;
     }
   }
 

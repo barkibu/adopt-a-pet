@@ -5,7 +5,7 @@
 
   :javascript
     $(document).ready(function(){
-    	$(".images-wrapper a").magnificPopup({
+    	$(".main-image a, .images a").magnificPopup({
         type: 'image',
         gallery: {
           enabled: true
@@ -26,18 +26,28 @@
 
   .side-image
     .images-wrapper
-      - pet.pet_pictures.each do |picture|
-        = link_to image_tag(picture.asset.url(:vertical), itemprop: "image"), picture.asset.url
+      %section.barkibanner
+        = image_tag 'barkibanner.png', alt: 'Barkibu'
+        %h1.s Adopta y llévate gratis 3 meses de consultas veterinarias en Barkibu
     .content
-      %h4
-        = t "activerecord.attributes.pet.statuses.#{pet.status}"
-      - if pet.urgent?
-        %h4
-          = t 'activerecord.attributes.pet.urgent'
-      %h1{ itemprop: "name" }= pet.name_formatted
-      %p
-        Publicado hace
-        %span{ itemprop: "datePublished", content: pet.created_at }= time_ago_in_words pet.created_at
+      .content-header
+        - picture = pet.pet_pictures.first
+        - if picture
+          .main-image
+            = link_to image_tag(picture.asset.url(:show_main), itemprop: "image"), picture.asset.url
+          .data
+            %h4
+              = t "activerecord.attributes.pet.statuses.#{pet.status}"
+            - if pet.urgent?
+              %h4
+                = t 'activerecord.attributes.pet.urgent'
+            %h1{ itemprop: "name" }= pet.name_formatted
+            %p
+              Publicado hace
+              %span{ itemprop: "datePublished", content: pet.created_at }= time_ago_in_words pet.created_at
+      .images
+        - pet.pet_pictures.to_a.from(1).each do |picture|
+          = link_to image_tag(picture.asset.url(:thumb), itemprop: "image"), picture.asset.url
       %div{ itemprop: "articleBody" }= simple_format pet.description
       = render 'stats', pet: pet
 
