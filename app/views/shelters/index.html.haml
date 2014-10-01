@@ -1,5 +1,13 @@
 %section
   %h1 Protectoras de animales
+  %hr
+
+  %p
+    ¿Quieres que te ayudemos con las adopciones y salgan aquí tus animales?
+    = link_to 'Contáctanos', new_contact_path
+  %p
+    Quizás también te interesen nuestras
+    = link_to 'ayudas para protectoras', page_path('ayudas-para-protectoras')
 
   %table
     - @shelters.each do |shelter|
