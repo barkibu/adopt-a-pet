@@ -60,6 +60,7 @@
   .centered-navigation-wrapper {
     @include outer-container;
     @include clearfix;
+    max-width: none;
     position: relative;
     z-index: 999;
   }
