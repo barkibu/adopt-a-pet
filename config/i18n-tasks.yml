@@ -1,6 +1,8 @@
 search:
   paths:
-    - "app/controllers"
+    # - "app/controllers" i18n-tasks does not support relative-keys for controllers
+    # https://github.com/glebm/i18n-tasks#relative-keys
+    # https://github.com/glebm/i18n-tasks/issues/46
     - "app/helpers"
     - "app/presenters"
     - "app/views"

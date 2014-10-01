@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get '/contact' => 'contact_messages#new', as: :new_contact
+  post '/contact' => 'contact_messages#create'
+
   resources :imported_pets
 
   resources :shelters, path: 'protectoras-de-animales'

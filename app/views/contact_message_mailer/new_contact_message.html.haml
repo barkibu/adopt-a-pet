@@ -1,0 +1,13 @@
+%p
+  = @contact_message.name
+  nos ha contactado:
+
+%hr
+%h1= @contact_message.subject
+
+= simple_format @contact_message.body
+%hr
+
+%p
+  Responder a:
+  = mail_to @contact_message.email
