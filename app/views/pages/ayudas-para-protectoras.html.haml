@@ -1,0 +1,27 @@
+%section
+  %article
+    %h1 ¿Eres una asociación o protectora de animales?
+    %hr
+    %p Esto es lo que podemos hacer para ayudarte:
+
+    %ol.default
+      %li
+        1. Donamos 1€ al mes a traves de
+        = link_to 'Teaming', 'https://www.teaming.net/', rel: 'nofollow'
+        a muchas protectoras. Cada mes añadimos nuevas protectoras. Aquí puedes ver
+        = succeed '.' do
+          = link_to 'la lista entera', 'https://www.teaming.net/barkibu-comteleconsulta-veterinaria', rel: 'nofollow'
+      %li 2. Proporcionamos consultas veterinarias online gratuitas para las protectoras de animales y sus afiliados. También os podemos proporcionar un widget de consulta veterinaria online para que lo integréis de forma totalmente gratuita. Nuestros veterinarios responderán las consultas al instante.
+      %li
+        3. Promoción de tu asociación. A través de nuestro Blog de mascotas
+        = succeed ',' do
+          = link_to 'Barkinews', 'http://www.barkinews.com/', title: 'Blog de mascotas'
+        podemos dar promoción a protectoras para que lleguéis a más gente.
+      %li
+        4. ¿Qué necesitas y en qué crees que podemos ayudarte? Aunque no sea ninguno de los puntos anteriores,
+        = link_to 'cuéntanos', new_contact_path
+        cómo podríamos ayudarte y lo intentaremos.
+
+    %hr/
+    %p.author El equipo de Barkibu
+
