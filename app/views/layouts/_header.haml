@@ -9,7 +9,7 @@
       %li.nav-link
         = link_to 'Gatos en adopción', breadcrumb_specie_path(specie: Specie.to_s(:cat))
       %li.nav-link
-        %a{href: "javascript:void(0)"} ¿Adoptar?
+        = link_to '¿Adoptar?', page_path('adoptar')
       %li.nav-link.logo
         = link_to image_tag('logo-barkiadopta.png'), root_path, class: 'logo'
       %li.nav-link
