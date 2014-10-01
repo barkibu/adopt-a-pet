@@ -2,6 +2,12 @@ en:
   login: 'Sign in'
   logout: 'Sign out'
 
+  activemodel:
+    models:
+      contact_message:
+        one: Message
+        other: Messages
+
   activerecord:
     models:
       user:
@@ -57,6 +63,11 @@ en:
         web_url: 'Web'
         location: 'Location'
 
+  contact_messages:
+    create:
+      notice: Message was successfully sent.
+      alert: Please fill all fields.
+
   species_prepositions:
     cat: 'a cat'
     dog: 'a dog'
@@ -78,6 +89,10 @@ en:
           other: "Displaying <b>all %{count}</b> %{entry_name}"
       more_pages:
         display_entries: "Displaying %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> of <b>%{total}</b> in total"
+
+  contact_message_mailer:
+    new_contact_message:
+      subject: '[barkiadopta.org] Contact form'
 
   date:
     abbr_day_names:
@@ -222,6 +237,8 @@ en:
       create: Create %{model}
       submit: Save %{model}
       update: Update %{model}
+      contact_message:
+        create: Send %{model}
   number:
     currency:
       format:

@@ -13,7 +13,7 @@
       %li.nav-link.logo
         = link_to image_tag('logo-barkiadopta.png'), root_path, class: 'logo'
       %li.nav-link
-        %a{href: "javascript:void(0)"} Nosotros
+        = link_to 'Contactar', new_contact_path
       %li.nav-link
         = link_to 'Protectoras de animales', shelters_path
       %li.nav-link
