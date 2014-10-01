@@ -4,20 +4,13 @@
     = link_to image_tag('logo_cortado_transparente.png'), root_path, class: 'mobile-logo'
     %a.centered-navigation-menu-button{href: "javascript:void(0)"} MENÚ
     %ul.centered-navigation-menu
+      %li.nav-link.logo
+        = link_to image_tag('logo-barkiadopta.png'), root_path, class: 'logo'
       %li.nav-link
         = link_to 'Perros en adopción', breadcrumb_specie_path(specie: Specie.to_s(:dog))
       %li.nav-link
         = link_to 'Gatos en adopción', breadcrumb_specie_path(specie: Specie.to_s(:cat))
       %li.nav-link
-        = link_to '¿Adoptar?', page_path('adoptar')
-      %li.nav-link.logo
-        = link_to image_tag('logo-barkiadopta.png'), root_path, class: 'logo'
-      %li.nav-link
-        = link_to 'Contactar', new_contact_path
+        = link_to '¿Porque adoptar?', page_path('adoptar')
       %li.nav-link
         = link_to 'Protectoras de animales', shelters_path
-      %li.nav-link
-        - if user_signed_in?
-          = link_to t('logout'), destroy_user_session_path, method: :delete
-        - else
-          = link_to t('login'), new_user_session_path
