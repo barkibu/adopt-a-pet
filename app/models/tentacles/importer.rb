@@ -84,7 +84,6 @@ class Tentacles::Importer
     )
     resp = s3.buckets[ENV['S3_BUCKET_NAME']].objects["tentacles/data/#{name}.json"]
     raw_content = resp.read
-    puts raw_content
     content_parsed = JSON.parse(raw_content)
   end
 
