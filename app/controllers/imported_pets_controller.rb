@@ -3,7 +3,7 @@ class ImportedPetsController < ApplicationController
   before_action :authenticate_admin_user!
 
   decorates_assigned :imported_pets
-  decorates_assigned :imported_pets
+  decorates_assigned :imported_pet
 
   # GET /imported_pets
   def index

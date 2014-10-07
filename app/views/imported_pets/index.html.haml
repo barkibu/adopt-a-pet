@@ -1,22 +1,39 @@
 %section
-  %h1 Listing imported_pets
+  %table
+    %tr
+      %th Imported Pets
+      %th= ImportedPet.count
+    %tr
+      %td Importados:
+      %td= ImportedPet.where('pet_id IS NOT NULL').count
+    %tr
+      %td Con errores:
+      %td= ImportedPet.where(pet_id: nil).count
+
+  %table
+    %tr
+      %th Pets
+      %th= Pet.count
+    %tr
+      %td Adopted:
+      %td= Pet.where(status: Pet.statuses[:adopted]).count
+    %tr
+      %td In adoption:
+      %td= Pet.where(status: Pet.statuses[:adoption]).count
+
+  %h1 Listing imported pets
 
   %table
     %tr
       %th Data
       %th Fail logs
       %th
-      %th
-      %th
 
     - imported_pets.each do |imported_pet|
       %tr
         %td{ title: imported_pet.data }= imported_pet.data_truncated
         %td{ title: imported_pet.fail_logs }= imported_pet.fail_logs_truncated
-        %td= link_to 'Show', imported_pet
-        %td= link_to 'Edit', edit_imported_pet_path(imported_pet)
-        %td= link_to 'Destroy', imported_pet, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-  %br
-
-  = link_to 'New Imported pet', new_imported_pet_path
+        %td
+          = link_to 'Show', imported_pet
+          = link_to 'Edit', edit_imported_pet_path(imported_pet)
+          = link_to 'Destroy', imported_pet, :method => :delete, :data => { :confirm => 'Are you sure?' }
