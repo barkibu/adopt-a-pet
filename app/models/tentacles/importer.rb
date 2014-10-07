@@ -17,18 +17,7 @@ class Tentacles::Importer
   end
 
   def save_object(object)
-    pet = Pet.find_or_initialize_by(
-      age: Pet.ages[object['age']],
-      breed: object['breed'],
-      description: object['description'],
-      location: object['location'],
-      more_info_url: object['more_info_url'],
-      name: object['name'],
-      sex: Pet.sexes[object['sex']],
-      size: Pet.sizes[object['size']],
-      specie: Pet.species[object['specie']],
-      province_id: get_province_id(object['location'])
-    )
+    pet = Pet.find_or_initialize_by(Tentacles::PetImporter.get_attributes(object))
 
     if pet.new_record?
       imported = ImportedPet.new
@@ -84,19 +73,10 @@ class Tentacles::Importer
     )
     resp = s3.buckets[ENV['S3_BUCKET_NAME']].objects["tentacles/data/#{name}.json"]
     raw_content = resp.read
-    puts raw_content
     content_parsed = JSON.parse(raw_content)
   end
 
   def file_name(name)
     "db/tentacles/data/#{name}.json"
-  end
-
-  def get_province_id(province)
-    match_data = province.match(/\((.*)\)/)
-    return unless match_data
-
-    province = Province.where('slug ILIKE ?', match_data[1].parameterize).first
-    province.try :id
   end
 end
