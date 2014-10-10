@@ -42,7 +42,7 @@ class ImportedPetsController < ApplicationController
 
         pet = Pet.new(Tentacles::PetImporter.get_attributes(object))
         pet.created_at = object['created_at']
-        imported_pet.add_fail_to_log("Updated pet at: #{Time.current}")
+        imported_pet.add_log("Updated pet at: #{Time.current}")
         imported_pet.save!
 
         Tentacles::PetImporter.object_to_pet(object, pet, imported_pet)
@@ -68,6 +68,6 @@ class ImportedPetsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def imported_pet_params
-    params.require(:imported_pet).permit(:pet_id, :data, :fail_logs)
+    params.require(:imported_pet).permit(:pet_id, :data, :logs)
   end
 end

@@ -32,7 +32,7 @@
     - imported_pets.each do |imported_pet|
       %tr
         %td{ title: imported_pet.data }= imported_pet.data_truncated
-        %td{ title: imported_pet.fail_logs }= imported_pet.fail_logs_truncated
+        %td{ title: imported_pet.logs }= imported_pet.logs_truncated
         %td
           = link_to 'Show', imported_pet
           = link_to 'Edit', edit_imported_pet_path(imported_pet)

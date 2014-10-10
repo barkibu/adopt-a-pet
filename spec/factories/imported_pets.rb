@@ -4,6 +4,6 @@ FactoryGirl.define do
   factory :imported_pet do
     pet nil
     data "MyText"
-    fail_logs "MyText"
+    logs "MyText"
   end
 end

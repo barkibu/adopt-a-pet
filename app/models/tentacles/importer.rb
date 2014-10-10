@@ -24,9 +24,9 @@ class Tentacles::Importer
       pet.created_at = object['created_at']
     else
       imported_pet = pet.imported_pet
-      imported_pet.add_fail_to_log(imported_pet.data.to_s)
+      imported_pet.add_log(imported_pet.data.to_s)
       imported_pet.data = object.to_s
-      imported_pet.add_fail_to_log("Updated pet at: #{Time.current}")
+      imported_pet.add_log("Updated pet at: #{Time.current}")
     end
     imported_pet.save!
 

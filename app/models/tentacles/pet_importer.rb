@@ -37,7 +37,7 @@ class Tentacles::PetImporter
       begin
         picture.asset = object['img']
       rescue OpenURI::HTTPError, SocketError => e
-        imported_pet.add_fail_to_log("Img <#{object['img']}> is not valid. Error: #{e.message}.")
+        imported_pet.add_log("Img <#{object['img']}> is not valid. Error: #{e.message}.")
         picture.destroy
       end
     end
@@ -45,7 +45,7 @@ class Tentacles::PetImporter
     if pet.save
       imported_pet.pet_id = pet.id
     else
-      imported_pet.add_fail_to_log(pet.errors.messages.to_s)
+      imported_pet.add_log(pet.errors.messages.to_s)
     end
     imported_pet.save!
   end
