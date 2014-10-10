@@ -20,15 +20,15 @@ class Tentacles::Importer
     pet = Pet.find_or_initialize_by(Tentacles::PetImporter.get_attributes(object))
 
     if pet.new_record?
-      imported = ImportedPet.find_or_initialize_by(data: object.to_s)
+      imported_pet = ImportedPet.find_or_initialize_by(data: object.to_s)
       pet.created_at = object['created_at']
     else
-      imported = pet.imported_pet
-      imported.add_fail_to_log(imported.data.to_s)
-      imported.data = object.to_s
-      imported.add_fail_to_log("Updated pet at: #{Time.current}")
+      imported_pet = pet.imported_pet
+      imported_pet.add_fail_to_log(imported_pet.data.to_s)
+      imported_pet.data = object.to_s
+      imported_pet.add_fail_to_log("Updated pet at: #{Time.current}")
     end
-    imported.save!
+    imported_pet.save!
 
     pet.status = object['status']
     pet.urgent = object['urgent']
@@ -38,17 +38,17 @@ class Tentacles::Importer
       begin
         picture.asset = object['img']
       rescue OpenURI::HTTPError, SocketError => e
-        imported.add_fail_to_log("Img <#{object['img']}> is not valid. Error: #{e.message}.")
+        imported_pet.add_fail_to_log("Img <#{object['img']}> is not valid. Error: #{e.message}.")
         picture.destroy
       end
     end
 
     if pet.save
-      imported.pet_id = pet.id
+      imported_pet.pet_id = pet.id
     else
-      imported.add_fail_to_log(pet.errors.messages.to_s)
+      imported_pet.add_fail_to_log(pet.errors.messages.to_s)
     end
-    imported.save!
+    imported_pet.save!
   end
 
   def get_json_from_local(name)
