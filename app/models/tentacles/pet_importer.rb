@@ -18,6 +18,7 @@ class Tentacles::PetImporter
 
   def self.get_province_id(province)
     match_data = province.match(/\((.*)\)/)
+    match_data = province.match(/(.*)/) unless match_data
     return unless match_data
 
     province = Province.where('slug ILIKE ?', match_data[1].parameterize).first
