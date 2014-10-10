@@ -4,4 +4,6 @@ module Tentacles::Feeds
   ANAAWEB_DOGS = { name: 'anaaweb_dogs_adopt-a-pet' }
   CIAAM_DOGS = { name: 'ciaam_dogs_adopt-a-pet' }
   CIAAM_CATS = { name: 'ciaam_cats_adopt-a-pet' }
+  CIUDAD_ANIMAL_DOGS = { name: 'ciudad_animal_dogs_adopt-a-pet' }
+  CIUDAD_ANIMAL_CATS = { name: 'ciudad_animal_cats_adopt-a-pet' }
 end
