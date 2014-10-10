@@ -30,25 +30,7 @@ class Tentacles::Importer
     end
     imported_pet.save!
 
-    pet.status = object['status']
-    pet.urgent = object['urgent']
-
-    if object['img'].present? && pet.new_record?
-      picture = pet.pet_pictures.new
-      begin
-        picture.asset = object['img']
-      rescue OpenURI::HTTPError, SocketError => e
-        imported_pet.add_fail_to_log("Img <#{object['img']}> is not valid. Error: #{e.message}.")
-        picture.destroy
-      end
-    end
-
-    if pet.save
-      imported_pet.pet_id = pet.id
-    else
-      imported_pet.add_fail_to_log(pet.errors.messages.to_s)
-    end
-    imported_pet.save!
+    Tentacles::PetImporter.object_to_pet(object, pet, imported_pet)
   end
 
   def get_json_from_local(name)
