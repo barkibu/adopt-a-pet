@@ -37,7 +37,36 @@ class ImportedPetsController < ApplicationController
   # PATCH/PUT /imported_pets/1
   def update
     if imported_pet.update(imported_pet_params)
-      redirect_to imported_pet, notice: 'Imported pet was successfully updated.'
+      unless imported_pet.pet
+        object = imported_pet.data_to_json
+
+        pet = Pet.new(Tentacles::PetImporter.get_attributes(object))
+        pet.created_at = object['created_at']
+        imported_pet.add_fail_to_log("Updated pet at: #{Time.current}")
+        imported_pet.save!
+
+        pet.status = object['status']
+        pet.urgent = object['urgent']
+
+        if object['img'].present?
+          picture = pet.pet_pictures.new
+          begin
+            picture.asset = object['img']
+          rescue OpenURI::HTTPError, SocketError => e
+            imported_pet.add_fail_to_log("Img <#{object['img']}> is not valid. Error: #{e.message}.")
+            picture.destroy
+          end
+        end
+
+        if pet.save
+          imported_pet.pet_id = pet.id
+        else
+          imported_pet.add_fail_to_log(pet.errors.messages.to_s)
+        end
+        imported_pet.save!
+      end
+
+      redirect_to imported_pets_url, notice: 'Imported pet was successfully updated.'
     else
       render :edit
     end
