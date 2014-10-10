@@ -2,10 +2,13 @@ require 'json'
 
 class Tentacles::PetImporter
   def self.get_attributes(object)
+    breed = object['breed'].present? ? object['breed'] : 'Desconocida'
+    description = object['description'].present? ? object['description'] : 'Sin descripción'
+
     {
       age: Pet.ages[object['age']],
-      breed: object['breed'],
-      description: object['description'],
+      breed: breed,
+      description: description,
       location: object['location'],
       more_info_url: object['more_info_url'],
       name: object['name'],

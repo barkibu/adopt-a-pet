@@ -20,8 +20,7 @@ class Tentacles::Importer
     pet = Pet.find_or_initialize_by(Tentacles::PetImporter.get_attributes(object))
 
     if pet.new_record?
-      imported = ImportedPet.new
-      imported.data = object.to_s
+      imported = ImportedPet.find_or_initialize_by(data: object.to_s)
       pet.created_at = object['created_at']
     else
       imported = pet.imported_pet
@@ -30,12 +29,6 @@ class Tentacles::Importer
       imported.add_fail_to_log("Updated pet at: #{Time.current}")
     end
     imported.save!
-
-    unless object['breed'].present?
-      imported.add_fail_to_log('Breed is empty')
-      imported.save!
-      return
-    end
 
     pet.status = object['status']
     pet.urgent = object['urgent']
