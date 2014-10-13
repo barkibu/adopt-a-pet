@@ -13,18 +13,26 @@
   text-align: left;
   margin-bottom: $base-spacing;
 
-  a {
+  .breadcrumb-child {
     @include inline-block;
     background-color: $breadcrumb-background;
     border: $breadcrumb-border;
-    color: $breadcrumb-color;
     line-height: $breadcrumb-height;
     margin-right: -5px;
     font-size: .8em;
     padding: 0 $breadcrumb-height/4 0 $breadcrumb-height/2;
     position: relative;
-    text-decoration: none;
     margin-bottom: 2px;
+
+    a {
+      color: $breadcrumb-color;
+      text-decoration: none;
+
+      &:hover {
+        color: $breadcrumb-color-hover;
+        background-color: $breadcrumb-inactive-hover-color;
+      }
+    }
 
     &:first-child {
       padding-left: $breadcrumb-height/2;
@@ -38,11 +46,6 @@
       border-bottom-right-radius: $base-border-radius;
       border-top-right-radius: $base-border-radius;
       padding-right: $breadcrumb-height/2;
-    }
-
-    &:hover {
-      color: $breadcrumb-color-hover;
-      background-color: $breadcrumb-inactive-hover-color;
     }
 
     &:hover:after {

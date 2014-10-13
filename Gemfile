@@ -34,6 +34,7 @@ gem 'meta-tags'
 gem 'magnific-popup-rails'
 gem 'delayed_paperclip'
 gem 'sitemap_generator'
+gem 'kaminari'
 
 group :development do
   gem "spring"

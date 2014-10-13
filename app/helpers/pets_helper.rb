@@ -1,20 +1,23 @@
 module PetsHelper
-  def breadcrumb_specie_path(params)
-    adopt_species_path(params.slice :specie)
-  end
-
-  def breadcrumb_province_path(params)
+  def adopt_province_path(params)
     adopt_species_path(params.slice :specie, :province)
   end
 
-  def breadcrumb_breed_path(params)
+  def adopt_breed_path(params)
     adopt_species_path(params.slice :specie, :province, :breed)
   end
 
   def link_province_path(specie, province)
-    specie_text = Specie.to_s(specie)
-    title = "#{specie_text.capitalize} en adopción en #{province.name}"
-    path = breadcrumb_province_path(specie: specie_text, province: province)
+    title = SEO.link_title_for_province(specie, province)
+    path = adopt_province_path(specie: Specie.to_s(specie), province: province)
     link_to province.name, path, title: title
+  end
+
+  def breadcrumb_link(title, path)
+    content_tag :div, class: 'breadcrumb-child', itemscope: true, itemtype: "http://data-vocabulary.org/Breadcrumb" do
+      link_to path, { itemprop: "url" } do
+        content_tag :span, title, itemprop: "title"
+      end
+    end
   end
 end

@@ -33,4 +33,18 @@ class SEO
   def self.specie_with_preposition(specie)
     I18n.t "species_prepositions.#{specie}"
   end
+
+  def self.link_title_for_specie(specie)
+    "#{Specie.to_s(specie).capitalize} en adopción"
+  end
+
+  def self.link_title_for_province(specie, province)
+    specie_text = link_title_for_specie(specie)
+    "#{specie_text} en #{province.name}"
+  end
+
+  def self.link_title_for_breed(specie, province, breed)
+    province_text = link_title_for_province(specie, province)
+    "#{province_text} de la raza #{breed}"
+  end
 end
