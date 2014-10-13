@@ -20,9 +20,9 @@
 
 %section{ itemscope: true, itemtype: "http://schema.org/Article" }
   .breadcrumb
-    = link_to pet.specie_formatted, breadcrumb_specie_path(params)
-    = link_to pet.province, breadcrumb_province_path(params)
-    = link_to pet.breed_formatted, breadcrumb_breed_path(params)
+    = link_to pet.specie_formatted, adopt_species_path(params.slice(:specie))
+    = link_to pet.province, adopt_province_path(params)
+    = link_to pet.breed_formatted, adopt_breed_path(params)
 
   .side-image
     .images-wrapper
@@ -70,4 +70,4 @@
         = "Otros #{ params[:specie] } en adopción en #{pet.province}"
     .cards
       = render pets
-    = link_to "Ver más #{ params[:specie] } en #{pet.province}", breadcrumb_province_path(params)
+    = link_to "Ver más #{ params[:specie] } en #{pet.province}", adopt_province_path(params)

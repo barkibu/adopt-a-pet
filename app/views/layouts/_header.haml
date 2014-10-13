@@ -7,9 +7,9 @@
       %li.nav-link.logo
         = link_to image_tag('logo-barkiadopta.png'), root_path, class: 'logo'
       %li.nav-link
-        = link_to 'Perros en adopción', breadcrumb_specie_path(specie: Specie.to_s(:dog))
+        = link_to 'Perros en adopción', adopt_species_path(specie: Specie.to_s(:dog))
       %li.nav-link
-        = link_to 'Gatos en adopción', breadcrumb_specie_path(specie: Specie.to_s(:cat))
+        = link_to 'Gatos en adopción', adopt_species_path(specie: Specie.to_s(:cat))
       %li.nav-link
         = link_to '¿Por qué adoptar?', page_path('adoptar')
       %li.nav-link
