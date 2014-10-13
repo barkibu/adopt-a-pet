@@ -12,4 +12,12 @@ module PetsHelper
     path = adopt_province_path(specie: Specie.to_s(specie), province: province)
     link_to province.name, path, title: title
   end
+
+  def breadcrumb_link(title, path)
+    content_tag :div, class: 'breadcrumb-child', itemscope: true, itemtype: "http://data-vocabulary.org/Breadcrumb" do
+      link_to path, { itemprop: "url" } do
+        content_tag :span, title, itemprop: "title"
+      end
+    end
+  end
 end

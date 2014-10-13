@@ -20,10 +20,9 @@
 
 %section
   .breadcrumb
-    = link_to pet.specie_formatted, adopt_species_path(params.slice(:specie))
-    = link_to pet.province, adopt_province_path(params)
-    = link_to pet.breed_formatted, adopt_breed_path(params)
-
+    = breadcrumb_link pet.specie_formatted, adopt_species_path(params.slice(:specie))
+    = breadcrumb_link pet.province, adopt_province_path(params)
+    = breadcrumb_link pet.breed_formatted, adopt_breed_path(params)
   %div{ itemscope: true, itemtype: "http://schema.org/Article" }
     .side-image
       .images-wrapper
