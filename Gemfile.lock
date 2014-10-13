@@ -369,6 +369,7 @@ DEPENDENCIES
   high_voltage
   i18n-tasks
   jquery-rails
+  kaminari
   launchy
   magnific-popup-rails
   meta-tags
