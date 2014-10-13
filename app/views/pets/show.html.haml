@@ -18,50 +18,51 @@
   %section
     = link_to 'Edit', edit_pet_path(pet)
 
-%section{ itemscope: true, itemtype: "http://schema.org/Article" }
+%section
   .breadcrumb
     = link_to pet.specie_formatted, adopt_species_path(params.slice(:specie))
     = link_to pet.province, adopt_province_path(params)
     = link_to pet.breed_formatted, adopt_breed_path(params)
 
-  .side-image
-    .images-wrapper
-      %section.barkibanner
-        = image_tag 'barkibanner.png', alt: 'Barkibu'
-        %h1.s Adopta y llévate gratis 3 meses de consultas veterinarias en Barkibu
-    .content
-      .content-header
-        - picture = pet.pet_pictures.first
-        - if picture
-          .main-image
-            = link_to image_tag(picture.asset.url(:show_main), itemprop: "image"), picture.asset.url
-          .data
-            %h4
-              = t "activerecord.attributes.pet.statuses.#{pet.status}"
-            - if pet.urgent?
+  %div{ itemscope: true, itemtype: "http://schema.org/Article" }
+    .side-image
+      .images-wrapper
+        %section.barkibanner
+          = image_tag 'barkibanner.png', alt: 'Barkibu'
+          %h1.s Adopta y llévate gratis 3 meses de consultas veterinarias en Barkibu
+      .content
+        .content-header
+          - picture = pet.pet_pictures.first
+          - if picture
+            .main-image
+              = link_to image_tag(picture.asset.url(:show_main), itemprop: "image"), picture.asset.url
+            .data
               %h4
-                = t 'activerecord.attributes.pet.urgent'
-            %h1{ itemprop: "name" }= pet.name_formatted
-            %p
-              Publicado hace
-              %span{ itemprop: "datePublished", content: pet.created_at }= time_ago_in_words pet.created_at
-      .images
-        - pet.pet_pictures.to_a.from(1).each do |picture|
-          = link_to image_tag(picture.asset.url(:thumb), itemprop: "image"), picture.asset.url
-      %div{ itemprop: "articleBody" }= simple_format pet.description
-      = render 'stats', pet: pet
+                = t "activerecord.attributes.pet.statuses.#{pet.status}"
+              - if pet.urgent?
+                %h4
+                  = t 'activerecord.attributes.pet.urgent'
+              %h1{ itemprop: "name" }= pet.name_formatted
+              %p
+                Publicado hace
+                %span{ itemprop: "datePublished", content: pet.created_at }= time_ago_in_words pet.created_at
+        .images
+          - pet.pet_pictures.to_a.from(1).each do |picture|
+            = link_to image_tag(picture.asset.url(:thumb), itemprop: "image"), picture.asset.url
+        %div{ itemprop: "articleBody" }= simple_format pet.description
+        = render 'stats', pet: pet
 
-      .adopt-buttons
-        = render 'modal' if pet.more_info_url?
+        .adopt-buttons
+          = render 'modal' if pet.more_info_url?
 
-        .social-likes{"data-title" => "Ayúdanos a adoptar a #{pet.name_formatted}", "data-url" => request.original_url }
-          %h6 Quiero ayudar a que otros lo adopten
-          %br
-          .facebook{title: "Comparte el enlace en Facebook"} Facebook
-          .twitter{"data-via" => "barkibu", title: "Comparte el enlace en Twitter"} Twitter
-          .plusone{title: "Comparte el enlace en Google+"} Google+
-          - if pet.pet_pictures.any?
-            .pinterest{"data-media" => pet.pet_pictures.first.asset.url, title: "Comparte la imagen en Pinterest"} Pinterest
+          .social-likes{"data-title" => "Ayúdanos a adoptar a #{pet.name_formatted}", "data-url" => request.original_url }
+            %h6 Quiero ayudar a que otros lo adopten
+            %br
+            .facebook{title: "Comparte el enlace en Facebook"} Facebook
+            .twitter{"data-via" => "barkibu", title: "Comparte el enlace en Twitter"} Twitter
+            .plusone{title: "Comparte el enlace en Google+"} Google+
+            - if pet.pet_pictures.any?
+              .pinterest{"data-media" => pet.pet_pictures.first.asset.url, title: "Comparte la imagen en Pinterest"} Pinterest
 
 - unless pets.empty?
   %section
