@@ -25,7 +25,7 @@ class Tentacles::Importer
       imported_pet.data = object.to_s
     end
 
-    Tentacles::PetImporter.object_to_pet(object, pet, imported_pet)
+    Tentacles::PetFactory.save_pet_and_imported_pet(pet, imported_pet, object)
   end
 
   def get_json_from_local(name)
