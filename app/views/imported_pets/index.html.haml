@@ -34,6 +34,8 @@
         %td{ title: imported_pet.data }= imported_pet.data_truncated
         %td{ title: imported_pet.logs }= imported_pet.logs_truncated
         %td
-          = link_to 'Show', imported_pet
+          = link_to 'Show original', imported_pet.url, target: '_blank'
+          |
           = link_to 'Edit', edit_imported_pet_path(imported_pet)
+          |
           = link_to 'Destroy', imported_pet, :method => :delete, :data => { :confirm => 'Are you sure?' }
