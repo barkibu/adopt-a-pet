@@ -2,6 +2,12 @@ require 'json'
 
 class Tentacles::PetImporter
   def self.object_to_pet(object, pet, imported_pet)
+    if pet.new_record?
+      pet.created_at = object['created_at']
+    end
+
+    imported_pet.add_log("Updated at: #{Time.current}")
+
     pet.status = object['status']
     pet.urgent = object['urgent']
 

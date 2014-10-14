@@ -38,14 +38,9 @@ class ImportedPetsController < ApplicationController
   def update
     if imported_pet.update(imported_pet_params)
       unless imported_pet.pet
-        object = imported_pet.data_to_json
-
-        pet = Pet.new(Tentacles::PetAttributesJSONParser.new.parse(object))
-        pet.created_at = object['created_at']
-        imported_pet.add_log("Updated pet at: #{Time.current}")
-        imported_pet.save!
-
-        Tentacles::PetImporter.object_to_pet(object, pet, imported_pet)
+        json_object = imported_pet.data_to_json
+        pet = Tentacles::PetFactory.pet_from_imported_pet_or_object(imported_pet, json_object)
+        Tentacles::PetImporter.object_to_pet(json_object, pet, imported_pet)
       end
 
       redirect_to imported_pets_url, notice: 'Imported pet was successfully updated.'

@@ -17,18 +17,13 @@ class Tentacles::Importer
   end
 
   def save_object(object)
-    pet = Pet.find_or_initialize_by(Tentacles::PetAttributesJSONParser.new.parse(object))
+    imported_pet = Tentacles::PetFactory.imported_pet_from_object(object)
+    pet = Tentacles::PetFactory.pet_from_imported_pet_or_object(imported_pet, object)
 
-    if pet.new_record?
-      imported_pet = ImportedPet.find_or_initialize_by(data: object.to_s)
-      pet.created_at = object['created_at']
-    else
-      imported_pet = pet.imported_pet
+    unless pet.new_record?
       imported_pet.add_log(imported_pet.data.to_s)
       imported_pet.data = object.to_s
-      imported_pet.add_log("Updated pet at: #{Time.current}")
     end
-    imported_pet.save!
 
     Tentacles::PetImporter.object_to_pet(object, pet, imported_pet)
   end
