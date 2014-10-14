@@ -9,8 +9,9 @@ module PetsHelper
 
   def link_province_path(specie, province)
     title = SEO.link_title_for_province(specie, province)
+    link_name = SEO.link_name_for_province(specie, province)
     path = adopt_province_path(specie: Specie.to_s(specie), province: province)
-    link_to province.name, path, title: title
+    link_to link_name, path, title: title
   end
 
   def breadcrumb_link(title, path)
