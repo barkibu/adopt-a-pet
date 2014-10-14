@@ -1,6 +1,8 @@
 Adopt-a-pet
 ===========
 
+[![Code Climate](https://codeclimate.com/github/barkibu/adopt-a-pet/badges/gpa.svg)](https://codeclimate.com/github/barkibu/adopt-a-pet)
+
 Getting Started
 ---------------
 
