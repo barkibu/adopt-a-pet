@@ -40,7 +40,7 @@ class ImportedPetsController < ApplicationController
       unless imported_pet.pet
         object = imported_pet.data_to_json
 
-        pet = Pet.new(Tentacles::PetImporter.get_attributes(object))
+        pet = Pet.new(Tentacles::PetAttributesJSONParser.new.parse(object))
         pet.created_at = object['created_at']
         imported_pet.add_log("Updated pet at: #{Time.current}")
         imported_pet.save!

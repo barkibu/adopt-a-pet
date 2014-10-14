@@ -17,7 +17,7 @@ class Tentacles::Importer
   end
 
   def save_object(object)
-    pet = Pet.find_or_initialize_by(Tentacles::PetImporter.get_attributes(object))
+    pet = Pet.find_or_initialize_by(Tentacles::PetAttributesJSONParser.new.parse(object))
 
     if pet.new_record?
       imported_pet = ImportedPet.find_or_initialize_by(data: object.to_s)
