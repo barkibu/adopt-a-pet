@@ -47,4 +47,9 @@ class SEO
     province_text = link_title_for_province(specie, province)
     "#{province_text} de la raza #{breed}"
   end
+
+   def self.link_name_for_province(specie, province)
+    specie_text = "#{Specie.to_s(specie).capitalize}"
+    "#{specie_text} en #{province.name}"
+  end
 end
