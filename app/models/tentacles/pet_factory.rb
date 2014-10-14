@@ -1,4 +1,9 @@
 class Tentacles::PetFactory
+  def self.update_pet_and_imported_pet(imported_pet, object)
+    pet = pet_from_imported_pet_or_object(imported_pet, object)
+    save_pet_and_imported_pet(pet, imported_pet, object)
+  end
+
   def self.pet_from_imported_pet_or_object(imported_pet, object)
     imported_pet.pet || Pet.new(Tentacles::PetAttributesJSONParser.new.parse(object))
   end
@@ -11,6 +16,11 @@ class Tentacles::PetFactory
   def self.save_pet_and_imported_pet(pet, imported_pet, object)
     if pet.new_record?
       pet.created_at = object['created_at']
+    end
+
+    if !imported_pet.new_record? && !pet.new_record?
+      imported_pet.add_log(imported_pet.data.to_s)
+      imported_pet.data = object.to_s
     end
 
     imported_pet.add_log("Updated at: #{Time.current}")

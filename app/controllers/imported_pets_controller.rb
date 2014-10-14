@@ -38,9 +38,7 @@ class ImportedPetsController < ApplicationController
   def update
     if imported_pet.update(imported_pet_params)
       unless imported_pet.pet
-        json_object = imported_pet.data_to_json
-        pet = Tentacles::PetFactory.pet_from_imported_pet_or_object(imported_pet, json_object)
-        Tentacles::PetFactory.save_pet_and_imported_pet(pet, imported_pet, json_object)
+        Tentacles::PetFactory.update_pet_and_imported_pet(imported_pet, imported_pet.data_to_json)
       end
 
       redirect_to imported_pets_url, notice: 'Imported pet was successfully updated.'

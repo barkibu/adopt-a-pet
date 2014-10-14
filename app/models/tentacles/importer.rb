@@ -18,14 +18,7 @@ class Tentacles::Importer
 
   def save_object(object)
     imported_pet = Tentacles::PetFactory.imported_pet_from_object(object)
-    pet = Tentacles::PetFactory.pet_from_imported_pet_or_object(imported_pet, object)
-
-    unless pet.new_record?
-      imported_pet.add_log(imported_pet.data.to_s)
-      imported_pet.data = object.to_s
-    end
-
-    Tentacles::PetFactory.save_pet_and_imported_pet(pet, imported_pet, object)
+    Tentacles::PetFactory.update_pet_and_imported_pet(imported_pet, object)
   end
 
   def get_json_from_local(name)
