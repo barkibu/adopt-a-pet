@@ -1,46 +1,51 @@
 class Tentacles::PetFactory
-  def self.update_pet_and_imported_pet(imported_pet, object)
-    pet = pet_from_imported_pet_or_object(imported_pet, object)
+  def initialize(object = {}, imported_pet = nil)
+    @object = object
+    @imported_pet = imported_pet || imported_pet_from_object
+  end
+
+  def update
+    pet = pet_from_imported_pet_or_object
     if pet.new_record?
-      pet.created_at = object['created_at']
+      pet.created_at = @object['created_at']
     end
 
-    if !imported_pet.new_record? && !pet.new_record?
-      imported_pet.add_log(imported_pet.data.to_s)
-      imported_pet.data = object.to_s
+    if !@imported_pet.new_record? && !pet.new_record?
+      @imported_pet.add_log(@imported_pet.data.to_s)
+      @imported_pet.data = @object.to_s
     end
 
-    imported_pet.add_log("Updated at: #{Time.current}")
+    @imported_pet.add_log("Updated at: #{Time.current}")
 
-    pet.status = object['status']
-    pet.urgent = object['urgent']
+    pet.status = @object['status']
+    pet.urgent = @object['urgent']
 
-    add_image(pet, imported_pet, object['img'])
+    add_image(pet)
 
     if pet.save
-      imported_pet.pet_id = pet.id
+      @imported_pet.pet_id = pet.id
     else
-      imported_pet.add_log(pet.errors.messages.to_s)
+      @imported_pet.add_log(pet.errors.messages.to_s)
     end
-    imported_pet.save!
+    @imported_pet.save!
   end
 
-  def self.pet_from_imported_pet_or_object(imported_pet, object)
-    imported_pet.pet || Pet.new(Tentacles::PetAttributesJSONParser.new.parse(object))
+  def pet_from_imported_pet_or_object
+    @imported_pet.pet || Pet.new(Tentacles::PetAttributesJSONParser.new.parse(@object))
   end
 
-  def self.imported_pet_from_object(object)
-    imported_pet = ImportedPet.find_by(url: object['more_info_url'])
-    imported_pet ||= ImportedPet.find_or_initialize_by(data: object.to_s)
+  def imported_pet_from_object
+    found_imported_pet = ImportedPet.find_by(url: @object['more_info_url'])
+    found_imported_pet ||= ImportedPet.find_or_initialize_by(data: @object.to_s)
   end
 
-  def self.add_image(pet, image)
-    if image.present?
+  def add_image(pet)
+    if @object['img'].present?
       picture = pet.pet_pictures.new
       begin
-        picture.asset = image
+        picture.asset = @object['img']
       rescue OpenURI::HTTPError, SocketError => e
-        imported_pet.add_log("Img <#{image}> is not valid. Error: #{e.message}.")
+        @imported_pet.add_log("Img <#{@object['img']}> is not valid. Error: #{e.message}.")
         picture.destroy
       end
     end

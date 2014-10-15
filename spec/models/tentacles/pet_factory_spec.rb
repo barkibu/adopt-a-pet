@@ -2,18 +2,17 @@ require 'spec_helper'
 require_relative '../../../app/models/tentacles/pet_factory'
 
 RSpec.describe Tentacles::PetFactory do
-  describe '.imported_pet_from_object' do
-    it 'returns a new imported_pet' do
-      imported_pet = described_class.imported_pet_from_object({})
-      expect(imported_pet).to be_new_record
-    end
+  it '#imported_pet_from_object returns a new imported_pet' do
+    imported_pet = subject.imported_pet_from_object
+    expect(imported_pet).to be_new_record
   end
 
-  describe '.pet_from_imported_pet_or_object' do
+  describe '#pet_from_imported_pet_or_object' do
     let(:imported_pet) { FactoryGirl.build(:imported_pet) }
+    subject { Tentacles::PetFactory.new({}, imported_pet) }
 
     it 'returns a new pet' do
-      pet = described_class.pet_from_imported_pet_or_object(imported_pet, {})
+      pet = subject.pet_from_imported_pet_or_object
       expect(pet).to be_new_record
     end
   end
