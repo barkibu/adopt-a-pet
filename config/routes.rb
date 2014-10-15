@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   get '/contact' => 'contact_messages#new', as: :new_contact
   post '/contact' => 'contact_messages#create'
 
-  resources :imported_pets
+  resources :imported_pets do
+    collection do
+      get :process_update
+    end
+  end
 
   resources :shelters, path: 'protectoras-de-animales'
   resources :pets, only: [:new, :create, :edit, :update, :destroy]
