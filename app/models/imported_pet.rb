@@ -1,11 +1,13 @@
 class ImportedPet < ActiveRecord::Base
   belongs_to :pet
 
-  def add_fail_to_log(fail_message)
-    if fail_logs?
-      self.fail_logs = "#{fail_logs}\n\n#{fail_message}"
+  scope :without_pet, -> { where(pet_id: nil) }
+
+  def add_log(message)
+    if logs?
+      self.logs = "#{logs}\n\n#{message}"
     else
-      self.fail_logs = fail_message
+      self.logs = message
     end
   end
 end

@@ -10,11 +10,19 @@ class ImportedPetDecorator < Draper::Decorator
   #     end
   #   end
 
-  def fail_logs_truncated
-    fail_logs.truncate(30) if fail_logs
+  def logs_truncated
+    logs.truncate(30) if logs
   end
 
   def data_truncated
     data.truncate(30) if data
+  end
+
+  def data_to_json
+    if data.is_a? String
+      JSON.parse data.gsub(/(\bnil\b)/, "\"\"").gsub('=>', ':')
+    else
+      data
+    end
   end
 end

@@ -17,38 +17,8 @@ class Tentacles::Importer
   end
 
   def save_object(object)
-    pet = Pet.find_or_initialize_by(Tentacles::PetImporter.get_attributes(object))
-
-    if pet.new_record?
-      imported = ImportedPet.find_or_initialize_by(data: object.to_s)
-      pet.created_at = object['created_at']
-    else
-      imported = pet.imported_pet
-      imported.add_fail_to_log(imported.data.to_s)
-      imported.data = object.to_s
-      imported.add_fail_to_log("Updated pet at: #{Time.current}")
-    end
-    imported.save!
-
-    pet.status = object['status']
-    pet.urgent = object['urgent']
-
-    if object['img'].present? && pet.new_record?
-      picture = pet.pet_pictures.new
-      begin
-        picture.asset = object['img']
-      rescue OpenURI::HTTPError, SocketError => e
-        imported.add_fail_to_log("Img <#{object['img']}> is not valid. Error: #{e.message}.")
-        picture.destroy
-      end
-    end
-
-    if pet.save
-      imported.pet_id = pet.id
-    else
-      imported.add_fail_to_log(pet.errors.messages.to_s)
-    end
-    imported.save!
+    pet_factory = Tentacles::PetFactory.new(object)
+    pet_factory.update
   end
 
   def get_json_from_local(name)

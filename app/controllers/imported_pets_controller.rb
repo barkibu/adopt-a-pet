@@ -7,7 +7,20 @@ class ImportedPetsController < ApplicationController
 
   # GET /imported_pets
   def index
-    @imported_pets = ImportedPet.where(pet_id: nil).all
+    @imported_pets = ImportedPet.without_pet.all
+  end
+
+  def process_update
+    @imported_pets = ImportedPet.without_pet
+
+    imported_pets.each do |decorated_imported_pet|
+      json_object = decorated_imported_pet.data_to_json
+      imported_pet = decorated_imported_pet.model
+      pet_factory = Tentacles::PetFactory.new(json_object, imported_pet)
+      pet_factory.delay.update
+    end
+
+    redirect_to imported_pets_url, notice: 'Processing the imported pets in background'
   end
 
   # GET /imported_pets/1
@@ -36,8 +49,13 @@ class ImportedPetsController < ApplicationController
 
   # PATCH/PUT /imported_pets/1
   def update
-    if @imported_pet.update(imported_pet_params)
-      redirect_to @imported_pet, notice: 'Imported pet was successfully updated.'
+    if imported_pet.update(imported_pet_params)
+      unless imported_pet.pet
+        pet_factory = Tentacles::PetFactory.new(imported_pet.data_to_json, imported_pet)
+        pet_factory.update
+      end
+
+      redirect_to imported_pets_url, notice: 'Imported pet was successfully updated.'
     else
       render :edit
     end
@@ -45,18 +63,18 @@ class ImportedPetsController < ApplicationController
 
   # DELETE /imported_pets/1
   def destroy
-    @imported_pet.destroy
+    imported_pet.destroy
     redirect_to imported_pets_url, notice: 'Imported pet was successfully destroyed.'
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_imported_pet
-      @imported_pet = ImportedPet.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_imported_pet
+    @imported_pet = ImportedPet.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def imported_pet_params
-      params.require(:imported_pet).permit(:pet_id, :data, :fail_logs)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def imported_pet_params
+    params.require(:imported_pet).permit(:pet_id, :data, :logs)
+  end
 end

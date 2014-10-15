@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140924143006) do
+ActiveRecord::Schema.define(version: 20141014103421) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,12 +50,14 @@ ActiveRecord::Schema.define(version: 20140924143006) do
   create_table "imported_pets", force: true do |t|
     t.integer  "pet_id"
     t.text     "data"
-    t.text     "fail_logs"
+    t.text     "logs"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "url"
   end
 
   add_index "imported_pets", ["pet_id"], name: "index_imported_pets_on_pet_id", using: :btree
+  add_index "imported_pets", ["url"], name: "index_imported_pets_on_url", using: :btree
 
   create_table "pet_pictures", force: true do |t|
     t.integer  "pet_id"

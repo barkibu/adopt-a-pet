@@ -8,7 +8,7 @@
       %td= ImportedPet.where('pet_id IS NOT NULL').count
     %tr
       %td Con errores:
-      %td= ImportedPet.where(pet_id: nil).count
+      %td= ImportedPet.without_pet.count
 
   %table
     %tr
@@ -21,6 +21,9 @@
       %td In adoption:
       %td= Pet.where(status: Pet.statuses[:adoption]).count
 
+  = link_to 'Process the remaining imported pets', process_update_imported_pets_path
+
+%section
   %h1 Listing imported pets
 
   %table
@@ -32,8 +35,10 @@
     - imported_pets.each do |imported_pet|
       %tr
         %td{ title: imported_pet.data }= imported_pet.data_truncated
-        %td{ title: imported_pet.fail_logs }= imported_pet.fail_logs_truncated
+        %td{ title: imported_pet.logs }= imported_pet.logs_truncated
         %td
-          = link_to 'Show', imported_pet
+          = link_to 'Show original', imported_pet.url, target: '_blank'
+          |
           = link_to 'Edit', edit_imported_pet_path(imported_pet)
+          |
           = link_to 'Destroy', imported_pet, :method => :delete, :data => { :confirm => 'Are you sure?' }
