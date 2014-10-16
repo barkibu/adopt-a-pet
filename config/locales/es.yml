@@ -80,6 +80,11 @@ es:
       previous: "&lsaquo; Anterior"
       next: "Siguiente &rsaquo;"
       truncate: "&hellip;"
+  pets:
+    form:
+      picture: "Imagen %{index}"
+      pictures: "Imágenes"
+      destroy_picture: "Imagen %{index} (borrar)"
   helpers:
     page_entries_info:
       one_page:

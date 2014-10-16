@@ -15,15 +15,22 @@
       = f.input :more_info_url
       = f.input :urgent
 
-    .form-inputs
-      = f.simple_fields_for :pet_pictures do |builder|
-        - if builder.object.new_record?
-          = builder.file_field :asset
-    .form-inputs
-      = f.simple_fields_for :pet_pictures do |builder|
-        - unless builder.object.new_record?
-          = link_to image_tag(builder.object.asset.url(:thumb)), builder.object.asset.url
-          = builder.input :_destroy, as: :boolean
+    %hr
+    %h6= t '.pictures'
+    - i = 0
+    .control-group
+      .form-inputs
+        = f.simple_fields_for :pet_pictures do |builder|
+          - unless builder.object.new_record?
+            - i += 1
+            = builder.input :_destroy, as: :boolean, label: t('.destroy_picture', index: i)
+            = link_to image_tag(builder.object.asset.url(:thumb)), builder.object.asset.url
+
+      .form-inputs
+        = f.simple_fields_for :pet_pictures do |builder|
+          - if builder.object.new_record?
+            - i += 1
+            = builder.input :asset, as: :file, label: t('.picture', index: i)
 
     .form-actions
       = f.button :submit
