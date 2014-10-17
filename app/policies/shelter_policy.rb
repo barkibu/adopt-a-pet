@@ -4,14 +4,14 @@ class ShelterPolicy < ApplicationPolicy
   end
 
   def create?
-    user.admin?
+    user and user.admin?
   end
 
   def update?
-    user.admin?
+    user and user.admin?
   end
 
   def destroy?
-    user.admin?
+    user and user.admin?
   end
 end

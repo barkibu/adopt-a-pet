@@ -1,17 +1,14 @@
 class UserPolicy < ApplicationPolicy
-  def index?
-    user.admin?
-  end
-
   def show?
-    user.admin? and super
+    user and user.admin? and super
   end
 
   def create?
-    user.admin?
+    user
   end
 
   def update?
+    return true if user == record
     user.admin?
   end
 
