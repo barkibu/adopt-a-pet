@@ -5,7 +5,11 @@ FactoryGirl.define do
     email     { Faker::Internet.email }
     password 'MyString'
 
-    factory :admin do
+    factory :shelter_user do
+      role :shelter
+    end
+
+    factory :admin_user do
       role :admin
     end
   end

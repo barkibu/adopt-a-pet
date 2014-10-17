@@ -14,7 +14,7 @@
     %b Descripción:
     = @shelter.description
 
-  - if current_admin_user
+  - if policy(@shelter).update?
     = link_to 'Editar', edit_shelter_path(@shelter)
     \|
   = link_to 'Volver a lista', shelters_path

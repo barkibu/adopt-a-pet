@@ -35,6 +35,7 @@ gem 'magnific-popup-rails'
 gem 'delayed_paperclip'
 gem 'sitemap_generator'
 gem 'kaminari'
+gem 'pundit'
 
 group :development do
   gem "spring"

@@ -58,8 +58,8 @@ RSpec.describe PetsController, :type => :controller do
     end
   end
 
-  context 'with an user logged' do
-    login_user
+  context 'with a shelter logged' do
+    login_shelter
 
     describe "GET new" do
       it "assigns a new pet as @pet" do
