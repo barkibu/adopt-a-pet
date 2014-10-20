@@ -1,6 +1,10 @@
 es:
-  login: 'Acceso'
-  logout: 'Salir'
+  login: Acceso
+  login_with: Acceso con %{provider}
+  logout: Salir
+  signup: Registro
+  are_you_sure: ¿Estás seguro?
+  back: Atrás
 
   activemodel:
     models:
@@ -28,6 +32,8 @@ es:
         email: 'E-mail'
         password: 'Contraseña'
         password_confirmation: 'Confirmación de la contraseña'
+        current_password: Contraseña actual
+        remember_me: Recordarme
       pet:
         age: 'Edad'
         ages:
@@ -98,6 +104,35 @@ es:
   contact_message_mailer:
     new_contact_message:
       subject: '[barkiadopta.org] Formulario de contacto'
+
+  devise:
+    confirmations:
+      new:
+        resend_confirmation_instructions: Reenviar instrucciones de confirmación
+    passwords:
+      forgot: ¿Has olvidado tu contraseña?
+      new:
+        send_me_reset_password_instructions: Envíame las instrucciones para resetear mi contraseña
+      edit:
+        change_your_password: Cambiar tu contraseña
+        change_my_password: Cambiar mi contraseña
+        new_password: Nueva contraseña
+        confirm_password: Confirmar tu nueva contraseña
+    registrations:
+      edit:
+        edit: Editar datos de %{name}
+        waiting_confirmation: "Actualmente esperando confirmación para: %{email}"
+        password_hint: déjalo en blanco si no quieres cambiarla
+        current_password_hint: necesitamos tu contraseña actual para guardar los cambios
+        cancel_account: Cancelar mi cuenta
+        unhappy: ¿Descontento? %{link}
+    shared:
+      links:
+        didnt_receive_confirmation_instructions: ¿No has recibido las instrucciones de confirmación?
+        didnt_receive_unlock_instructions: ¿No has recibido las instrucciones para desbloquear?
+    unlocks:
+      new:
+        resend_unlock_instructions: Reenviar las instrucciones para desbloquear
 
   date:
     abbr_day_names:

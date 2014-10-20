@@ -1,5 +1,5 @@
 %section
-  %h2 Sign up
+  %h2= t('signup')
   %fieldset
     = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
       = f.error_notification
@@ -8,5 +8,5 @@
         = f.input :password, required: true
         = f.input :password_confirmation, required: true
       .form-actions
-        = f.button :submit, "Sign up"
+        = f.button :submit, t('signup')
   = render "devise/shared/links"
