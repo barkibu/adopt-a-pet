@@ -27,6 +27,4 @@
               %li= link_to 'Nueva mascota', new_pet_path
             - if policy(Shelter).new?
               %li= link_to 'Nueva protectora de animales', new_shelter_path
-            - if policy(:dashboard).show?
-              %li= link_to 'Dashboard', admin_dashboard_path
             %li= link_to t('logout'), destroy_user_session_path, method: :delete
