@@ -1,28 +1,27 @@
 class SheltersController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_shelter, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin_user!, except: [:index, :show]
+  after_action :verify_authorized
 
-  # GET /shelters
   def index
     @shelters = Shelter.all
+    authorize Shelter
   end
 
-  # GET /shelters/1
   def show
   end
 
-  # GET /shelters/new
   def new
     @shelter = Shelter.new
+    authorize @shelter
   end
 
-  # GET /shelters/1/edit
   def edit
   end
 
-  # POST /shelters
   def create
     @shelter = Shelter.new(shelter_params)
+    authorize @shelter
 
     if @shelter.save
       redirect_to @shelter, notice: 'Shelter was successfully created.'
@@ -31,7 +30,6 @@ class SheltersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /shelters/1
   def update
     if @shelter.update(shelter_params)
       redirect_to @shelter, notice: 'Shelter was successfully updated.'
@@ -40,19 +38,17 @@ class SheltersController < ApplicationController
     end
   end
 
-  # DELETE /shelters/1
   def destroy
     @shelter.destroy
     redirect_to shelters_url, notice: 'Shelter was successfully destroyed.'
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_shelter
       @shelter = Shelter.find(params[:id])
+      authorize @shelter
     end
 
-    # Only allow a trusted parameter "white list" through.
     def shelter_params
       params.require(:shelter).permit(:name, :description, :web_url, :location, :logo)
     end

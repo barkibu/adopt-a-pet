@@ -9,6 +9,7 @@
     Quizás también te interesen nuestras
     = link_to 'ayudas para protectoras', page_path('ayudas-para-protectoras')
 
+%section
   %table
     - @shelters.each do |shelter|
       %tr
@@ -16,9 +17,13 @@
         %td= link_to shelter.name, shelter
         %td= link_to shelter.web_url, shelter.web_url
         %td= shelter.location
-        -if current_admin_user
-          %td= link_to 'Editar', edit_shelter_path(shelter)
-          %td= link_to 'Borrar', shelter, :method => :delete, :data => { :confirm => '¿Estás seguro?' }
-  %br
+        - if policy(shelter).update?
+          %td
+            = link_to 'Editar', edit_shelter_path(shelter)
+            |
+            - if policy(shelter).destroy?
+              = link_to 'Borrar', shelter, :method => :delete, :data => { :confirm => '¿Estás seguro?' }
 
-  = link_to 'Crear protectora', new_shelter_path if current_admin_user
+- if policy(Shelter).new?
+  %section
+    = link_to 'Crear protectora', new_shelter_path

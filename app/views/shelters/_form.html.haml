@@ -4,10 +4,10 @@
 
     .form-inputs
       = f.input :name
-      = f.input :description
+      = f.input :description, input_html: {rows: 10}
       = f.input :web_url
       = f.input :location
-      = f.file_field :logo
+      = f.input :logo, as: :file
 
     .form-actions
       = f.button :submit

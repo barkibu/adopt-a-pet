@@ -1,8 +1,8 @@
 class PetsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_pet, only: [:show, :edit, :update, :destroy]
   before_action :redirect_pet, only: [:show]
-  before_action :authenticate_user!, only: [:new, :edit, :create, :update]
-  before_action :authenticate_admin_user!, only: [:destroy]
+  after_action :verify_authorized
 
   decorates_assigned :pets
   decorates_assigned :pet
@@ -16,6 +16,7 @@ class PetsController < ApplicationController
 
   def new
     @pet = Pet.new
+    authorize @pet
     3.times { @pet.pet_pictures.build }
   end
 
@@ -25,6 +26,7 @@ class PetsController < ApplicationController
 
   def create
     @pet = current_user.pets.new(pet_params)
+    authorize @pet
 
     if @pet.save
       redirect_to pet.adopt_specie_path, notice: 'Pet was successfully created.'
@@ -49,6 +51,7 @@ class PetsController < ApplicationController
   private
     def set_pet
       @pet = Pet.includes(:pet_pictures).find(params[:id])
+      authorize @pet
     end
 
     def redirect_pet

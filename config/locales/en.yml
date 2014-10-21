@@ -1,6 +1,10 @@
 en:
-  login: 'Sign in'
-  logout: 'Sign out'
+  login: Sign in
+  login_with: Sign in with %{provider}
+  logout: Sign out
+  signup: Sign up
+  are_you_sure: Are you sure?
+  back: Back
 
   activemodel:
     models:
@@ -28,6 +32,8 @@ en:
         email: 'E-mail'
         password: 'Password'
         password_confirmation: 'Password confirmation'
+        current_password: Current password
+        remember_me: Remember me
       pet:
         age: 'Age'
         ages:
@@ -80,6 +86,11 @@ en:
       previous: "&lsaquo; Prev"
       next: "Next &rsaquo;"
       truncate: "&hellip;"
+  pets:
+    form:
+      picture: "Picture %{index}"
+      pictures: "Pictures"
+      destroy_picture: "Picture %{index} (destroy)"
   helpers:
     page_entries_info:
       one_page:
@@ -93,6 +104,35 @@ en:
   contact_message_mailer:
     new_contact_message:
       subject: '[barkiadopta.org] Contact form'
+
+  devise:
+    confirmations:
+      new:
+        resend_confirmation_instructions: Resend confirmation instructions
+    passwords:
+      forgot: Forgot your password?
+      new:
+        send_me_reset_password_instructions: Send me reset password instructions
+      edit:
+        change_your_password: Change your password
+        change_my_password: Change my password
+        new_password: New password
+        confirm_password: Confirm your new password
+    registrations:
+      edit:
+        edit: Edit %{name} data
+        waiting_confirmation: "Currently waiting confirmation for: %{email}"
+        password_hint: leave it blank if you don't want to change it
+        current_password_hint: we need your current password to confirm your changes
+        cancel_account: Cancel my account
+        unhappy: Unhappy? %{link}
+    shared:
+      links:
+        didnt_receive_confirmation_instructions: Didn't receive confirmation instructions?
+        didnt_receive_unlock_instructions: Didn't receive unlock instructions?
+    unlocks:
+      new:
+        resend_unlock_instructions: Resend unlock instructions
 
   date:
     abbr_day_names:

@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable
 
-  enum role: [:user, :admin]
+  enum role: [:user, :admin, :shelter]
   after_initialize :set_default_role, :if => :new_record?
 
   validates :email, presence: true, email: true

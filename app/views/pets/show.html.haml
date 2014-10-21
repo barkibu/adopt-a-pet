@@ -14,7 +14,7 @@
     });
 
 
-- if current_admin_user
+- if policy(pet).update?
   %section
     = link_to 'Edit', edit_pet_path(pet)
 

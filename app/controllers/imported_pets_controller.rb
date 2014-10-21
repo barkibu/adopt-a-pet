@@ -1,17 +1,19 @@
 class ImportedPetsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_imported_pet, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin_user!
+  after_action :verify_authorized
 
   decorates_assigned :imported_pets
   decorates_assigned :imported_pet
 
-  # GET /imported_pets
   def index
     @imported_pets = ImportedPet.without_pet.all
+    authorize ImportedPet
   end
 
   def process_update
     @imported_pets = ImportedPet.without_pet
+    authorize ImportedPet
 
     imported_pets.each do |decorated_imported_pet|
       json_object = decorated_imported_pet.data_to_json
@@ -23,22 +25,20 @@ class ImportedPetsController < ApplicationController
     redirect_to imported_pets_url, notice: 'Processing the imported pets in background'
   end
 
-  # GET /imported_pets/1
   def show
   end
 
-  # GET /imported_pets/new
   def new
     @imported_pet = ImportedPet.new
+    authorize @imported_pet
   end
 
-  # GET /imported_pets/1/edit
   def edit
   end
 
-  # POST /imported_pets
   def create
     @imported_pet = ImportedPet.new(imported_pet_params)
+    authorize @imported_pet
 
     if @imported_pet.save
       redirect_to @imported_pet, notice: 'Imported pet was successfully created.'
@@ -47,7 +47,6 @@ class ImportedPetsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /imported_pets/1
   def update
     if imported_pet.update(imported_pet_params)
       unless imported_pet.pet
@@ -61,19 +60,19 @@ class ImportedPetsController < ApplicationController
     end
   end
 
-  # DELETE /imported_pets/1
   def destroy
+    authorize imported_pet
     imported_pet.destroy
     redirect_to imported_pets_url, notice: 'Imported pet was successfully destroyed.'
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
+
   def set_imported_pet
     @imported_pet = ImportedPet.find(params[:id])
+    authorize @imported_pet
   end
 
-  # Only allow a trusted parameter "white list" through.
   def imported_pet_params
     params.require(:imported_pet).permit(:pet_id, :data, :logs)
   end
