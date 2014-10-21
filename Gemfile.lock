@@ -183,6 +183,8 @@ GEM
       cocaine (~> 0.5.3)
       mime-types
     pg (0.17.1)
+    polyamorous (1.1.0)
+      activerecord (>= 3.0)
     postmark (1.3.1)
       json
       rake
@@ -225,6 +227,12 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.13.0)
     rake (10.3.2)
+    ransack (1.4.1)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      activesupport (>= 3.0)
+      i18n
+      polyamorous (~> 1.1)
     recipient_interceptor (0.1.2)
       mail
     request_store (1.1.0)
@@ -294,6 +302,13 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    upmin-admin (0.1.01)
+      haml (>= 3.0.0)
+      jquery-rails
+      kaminari
+      rails
+      ransack
+      sass-rails
     warden (1.2.3)
       rack (>= 1.0)
     webmock (1.19.0)
@@ -359,4 +374,5 @@ DEPENDENCIES
   timecop
   uglifier
   unicorn
+  upmin-admin
   webmock

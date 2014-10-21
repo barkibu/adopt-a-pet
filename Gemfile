@@ -25,6 +25,7 @@ gem 'haml-rails'
 gem 'devise'
 gem "devise-async"
 gem 'devise-i18n'
+gem 'upmin-admin'
 gem 'postmark-rails'
 gem 'paperclip'
 gem 'aws-sdk'
