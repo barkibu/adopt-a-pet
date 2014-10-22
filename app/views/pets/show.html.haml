@@ -35,16 +35,16 @@
           - if picture
             .main-image
               = link_to image_tag(picture.asset.url(:show_main), itemprop: "image"), picture.asset.url
-            .data
+          .data
+            %h4
+              = t "activerecord.attributes.pet.statuses.#{pet.status}"
+            - if pet.urgent?
               %h4
-                = t "activerecord.attributes.pet.statuses.#{pet.status}"
-              - if pet.urgent?
-                %h4
-                  = t 'activerecord.attributes.pet.urgent'
-              %h1{ itemprop: "name" }= pet.name_formatted
-              %p
-                Publicado hace
-                %span{ itemprop: "datePublished", content: pet.created_at }= time_ago_in_words pet.created_at
+                = t 'activerecord.attributes.pet.urgent'
+            %h1{ itemprop: "name" }= pet.name_formatted
+            %p
+              Publicado hace
+              %span{ itemprop: "datePublished", content: pet.created_at }= time_ago_in_words pet.created_at
         .images
           - pet.pet_pictures.to_a.from(1).each do |picture|
             = link_to image_tag(picture.asset.url(:thumb), itemprop: "image"), picture.asset.url
