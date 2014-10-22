@@ -73,4 +73,10 @@
     max-width: 45em;
     text-align: center;
   }
+
+  a {
+    &:hover {
+      color: transparentize($footer-color, 0);
+    }
+  }
 }
