@@ -36,6 +36,7 @@ gem 'delayed_paperclip'
 gem 'sitemap_generator'
 gem 'kaminari'
 gem 'pundit'
+gem 'omniauth-facebook'
 
 group :development do
   gem "spring"
