@@ -26,7 +26,7 @@ class Pet < ActiveRecord::Base
 
   accepts_nested_attributes_for :pet_pictures, reject_if: :new_record?, allow_destroy: true
 
-  scope :default_filter_and_order, -> { where(status: Pet.statuses[:adoption]).order('urgent DESC').includes(:province, :pet_pictures) }
+  scope :default_filter_and_order, -> { where(status: Pet.statuses[:adoption]).order('urgent DESC, created_at DESC').includes(:province, :pet_pictures) }
   scope :filter_age, ->(value) { where(age: value) }
   scope :filter_province, ->(value) { where(province_id: value) }
   scope :filter_size, ->(value) { where(size: value) }
