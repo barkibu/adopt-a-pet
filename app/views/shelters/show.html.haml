@@ -15,6 +15,6 @@
     = @shelter.description
 
   - if policy(@shelter).update?
-    = link_to 'Editar', edit_shelter_path(@shelter)
-    \|
+    = link_to 'Editar', edit_shelter_path(@shelter), class: 'control-link'
+  %br
   = link_to 'Volver a lista', shelters_path

@@ -16,7 +16,7 @@
 
 - if policy(pet).update?
   %section
-    = link_to 'Edit', edit_pet_path(pet)
+    = link_to "Editar a #{ pet.name_formatted }", edit_pet_path(pet), class: 'control-link'
 
 %section
   .breadcrumb
