@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 ruby "2.1.2"
 
-gem "airbrake"
+gem 'rollbar'
 gem "bourbon"
 gem "coffee-rails"
 gem "delayed_job_active_record"
