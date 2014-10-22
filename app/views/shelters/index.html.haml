@@ -3,7 +3,7 @@
   %hr
 
   %p
-    ¿Quieres que te ayudemos con las adopciones y salgan aquí tus animales?
+    ¿Quieres que te ayudemos con las adopciones y salga aquí tu protectora de animales?
     = link_to 'Contáctanos', new_contact_path
   %p
     Quizás también te interesen nuestras
@@ -23,6 +23,7 @@
             - if policy(shelter).destroy?
               = link_to 'Borrar', shelter, method: :delete, data: { confirm: '¿Estás seguro?' }, class: 'control-link'
 
-- if policy(Shelter).new?
-  %section
-    = link_to 'Crear protectora de animales', new_shelter_path, class: 'control-link'
+%section
+  = link_to 'Añadir una nueva mascota', new_pet_path, class: 'control-link'
+  - if policy(Shelter).new?
+    = link_to 'Añadir protectora de animales', new_shelter_path, class: 'control-link'

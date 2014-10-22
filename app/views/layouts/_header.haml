@@ -14,6 +14,8 @@
         = link_to '¿Por qué adoptar?', page_path('adoptar')
       %li.nav-link
         = link_to 'Protectoras de animales', shelters_path
+      %li.nav-link
+        = link_to 'Nueva mascota', new_pet_path
 
       - unless user_signed_in?
         %li.nav-link= link_to t('login'), new_user_session_path
