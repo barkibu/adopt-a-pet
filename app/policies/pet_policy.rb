@@ -4,11 +4,12 @@ class PetPolicy < ApplicationPolicy
   end
 
   def create?
-    user and (user.shelter? or user.admin?)
+    user
   end
 
   def update?
-    user and (user.shelter? or user.admin?)
+    return false unless user
+    (user == record.user) or user.admin?
   end
 
   def destroy?

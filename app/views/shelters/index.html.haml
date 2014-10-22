@@ -19,11 +19,10 @@
         %td= shelter.location
         - if policy(shelter).update?
           %td
-            = link_to 'Editar', edit_shelter_path(shelter)
-            |
+            = link_to 'Editar', edit_shelter_path(shelter), class: 'control-link'
             - if policy(shelter).destroy?
-              = link_to 'Borrar', shelter, :method => :delete, :data => { :confirm => '¿Estás seguro?' }
+              = link_to 'Borrar', shelter, method: :delete, data: { confirm: '¿Estás seguro?' }, class: 'control-link'
 
 - if policy(Shelter).new?
   %section
-    = link_to 'Crear protectora', new_shelter_path
+    = link_to 'Crear protectora de animales', new_shelter_path, class: 'control-link'
