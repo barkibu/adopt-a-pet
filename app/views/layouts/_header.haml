@@ -6,16 +6,15 @@
     %ul.centered-navigation-menu
       %li.nav-link.logo
         = link_to image_tag('logo-barkiadopta.png'), root_path, class: 'logo'
-      %li.nav-link
-        = link_to 'Perros en adopción', adopt_species_path(specie: Specie.to_s(:dog))
-      %li.nav-link
-        = link_to 'Gatos en adopción', adopt_species_path(specie: Specie.to_s(:cat))
-      %li.nav-link
-        = link_to '¿Por qué adoptar?', page_path('adoptar')
+      %li.nav-link.more
+        %a{href: "javascript:void(0)"} Animales en adopción
+        %ul.submenu
+          %li= link_to 'Perros en adopción', adopt_species_path(specie: Specie.to_s(:dog))
+          %li= link_to 'Gatos en adopción', adopt_species_path(specie: Specie.to_s(:cat))
+          %li= link_to '¿Por qué adoptar?', page_path('adoptar')
+          %li= link_to 'Anunciar mascota', new_pet_path
       %li.nav-link
         = link_to 'Protectoras de animales', shelters_path
-      %li.nav-link
-        = link_to 'Nueva mascota', new_pet_path
 
       - unless user_signed_in?
         %li.nav-link= link_to t('login'), new_user_session_path
@@ -25,10 +24,6 @@
           %ul.submenu
             - if policy(current_user).update?
               %li= link_to 'Perfil', edit_user_registration_path
-            - if policy(Pet).new?
-              %li= link_to 'Nueva mascota', new_pet_path
-            - if policy(Shelter).new?
-              %li= link_to 'Nueva protectora de animales', new_shelter_path
             - if policy(:dashboard).show?
               %li= link_to 'Dashboard', upmin_path
             %li= link_to t('logout'), destroy_user_session_path, method: :delete
