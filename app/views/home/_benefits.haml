@@ -3,14 +3,22 @@
     .bullet-icon.bullet-icon-1
     .bullet-content
       %h2 Serás más feliz
-      %p Está demostrado científicamente que convivir con animales ayuda a reducir los niveles de estrés y a disfrutar más de la vida. También ayuda a los niños a crecer más sanos y a respetar la vida animal.
+      %p
+        Está demostrado científicamente que
+        = link_to 'convivir con animales', page_path('adoptar')
+        ayuda a reducir los niveles de estrés y a disfrutar más de la vida. También ayuda a los niños a crecer más sanos y a respetar la vida animal.
   .bullet.three-col-bullet
     .bullet-icon.bullet-icon-2
     .bullet-content
       %h2 Te regalamos Barkibu
-      %p Te regalamos consultas veterinarias ilimitadas en Barkibu.com durante los tres primeros meses de adopción para que resuelvas cualquier duda que tengas con tu nuevo amigo.
+      %p
+        Te regalamos consultas veterinarias ilimitadas en
+        = link_to 'Barkibu.com', 'http://www.barkibu.com/?utm_source=barkiadopta.org&utm_medium=referral&utm_campaign=universal'
+        durante los tres primeros meses de adopción para que resuelvas cualquier duda que tengas con tu nuevo amigo.
   .bullet.three-col-bullet
     .bullet-icon.bullet-icon-3
     .bullet-content
       %h2 Donaremos 1€ al mes
-      %p Además, por cada perro adoptado a través de BarkiAdopta, donaremos un 1€ al mes a una protectora de animales. Ya donamos a más de 80 asociaciones protectoras todos los meses.
+      %p
+        Además, por cada perro adoptado a través de BarkiAdopta, donaremos un 1€ al mes a una protectora de animales.
+        = link_to 'Ya donamos a más de 80 asociaciones protectoras todos los meses.', page_path('ayudas-para-protectoras')
