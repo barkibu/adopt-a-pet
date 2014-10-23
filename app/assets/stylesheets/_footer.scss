@@ -46,10 +46,6 @@
 
   li a {
     color: $footer-link-color;
-
-    &:hover {
-      color: transparentize($footer-color, 0);
-    }
   }
 
   li h3 {
