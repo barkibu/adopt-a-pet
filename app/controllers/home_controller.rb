@@ -27,7 +27,7 @@ class HomeController < ApplicationController
     @pets = Pet.filter(filtered_params).default_filter_and_order.page(params[:page])
 
     set_meta_tags title: SEO.title_for_adopt(specie, @province.to_s, nil),
-      description: SEO.default_description
+      description: SEO.description_for_index(specie, @province.to_s, params[:breed], params[:page])
 
     render 'index'
   end
