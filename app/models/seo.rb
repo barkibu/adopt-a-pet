@@ -21,13 +21,15 @@ class SEO
     "Adopta a #{pet.name} #{pet.breed} en #{pet.province}"
   end
 
-  def self.description_for_index(specie, province, breed)
+  def self.description_for_index(specie, province, breed, page)
+    pagination = page.to_i > 1 ? " (página #{page})" : ''
+
     desc = [
       "Adopta a #{specie_with_preposition(specie)}",
       "#{ breed if breed.present?}",
       "#{ ('en ' + province) if province.present?}",
     ]
-    "#{desc.select(&:present?).join(' ')}. Aquí encontrarás a tu mascota ideal."
+    "#{desc.select(&:present?).join(' ')}. Aquí encontrarás a tu mascota ideal#{pagination}."
   end
 
   def self.description_for_show(pet)
