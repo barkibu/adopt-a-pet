@@ -14,15 +14,29 @@ class SEO
       "Adopta a #{specie_with_preposition(specie)}",
       "#{ ('en ' + province) if province.present?}"
     ]
-    title.join(' ')
+    title.select(&:present?).join(' ')
   end
 
   def self.title_for_show(pet)
     "Adopta a #{pet.name} #{pet.breed} en #{pet.province}"
   end
 
+  def self.description_for_index(specie, province, breed)
+    desc = [
+      "Adopta a #{specie_with_preposition(specie)}",
+      "#{ breed if breed.present?}",
+      "#{ ('en ' + province) if province.present?}",
+    ]
+    "#{desc.select(&:present?).join(' ')}. Aquí encontrarás a tu mascota ideal."
+  end
+
   def self.description_for_show(pet)
-    default_description
+    desc = [
+      "Adopta a #{pet.name}",
+      "#{ ('de la raza ' + breed) if breed.present?}",
+      "#{ ('en ' + province) if pet.province.present?}"
+    ]
+    desc.select(&:present?).join(' ')
   end
 
   def self.extra_title(specie)
