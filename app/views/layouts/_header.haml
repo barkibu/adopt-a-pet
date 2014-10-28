@@ -12,12 +12,12 @@
           %li= link_to 'Perros en adopción', adopt_species_path(specie: Specie.to_s(:dog))
           %li= link_to 'Gatos en adopción', adopt_species_path(specie: Specie.to_s(:cat))
           %li= link_to '¿Por qué adoptar?', page_path('adoptar')
-          %li= link_to 'Anunciar mascota', new_pet_path
+          %li= link_to 'Anunciar mascota', new_pet_path, rel: 'nofollow'
       %li.nav-link
         = link_to 'Protectoras de animales', shelters_path
 
       - unless user_signed_in?
-        %li.nav-link= link_to t('login'), new_user_session_path
+        %li.nav-link= link_to t('login'), new_user_session_path, rel: 'nofollow'
       - else
         %li.nav-link.more
           %a{href: "javascript:void(0)"} Opciones

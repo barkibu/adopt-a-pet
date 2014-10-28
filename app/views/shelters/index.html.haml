@@ -24,6 +24,6 @@
               = link_to 'Borrar', shelter, method: :delete, data: { confirm: '¿Estás seguro?' }, class: 'control-link'
 
 %section
-  = link_to 'Añadir una nueva mascota en adopción', new_pet_path, class: 'control-link'
+  = link_to 'Añadir una nueva mascota en adopción', new_pet_path, class: 'control-link', rel: 'nofollow'
   - if policy(Shelter).new?
     = link_to 'Añadir protectora de animales', new_shelter_path, class: 'control-link'
