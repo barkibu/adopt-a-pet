@@ -45,4 +45,8 @@ class PetDecorator < Draper::Decorator
   def specie_formatted
     Specie.to_s(object.specie.to_sym).titleize
   end
+
+  def sex_label
+    "Sexo del #{specie_formatted.downcase.singularize}"
+  end
 end

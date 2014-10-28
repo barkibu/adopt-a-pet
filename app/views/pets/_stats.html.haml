@@ -9,7 +9,7 @@
         = pet.enum_to_s :age
     - if pet.sex
       %li
-        %span Sexo
+        %span= pet.sex_label
         = pet.enum_to_s :sex
     - if pet.size?
       %li
@@ -17,7 +17,7 @@
         = pet.enum_to_s :size
     - if pet.location?
       %li
-        %span Lugar
+        %span Lugar de la adopción
         = pet.location_formatted
     - if pet.show_province?
       %li
