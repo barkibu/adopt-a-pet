@@ -6,9 +6,9 @@ before_install:
 before_script:
   - cp .sample.env .env
   - cp ./config/database.sample.yml ./config/database.yml
-  
+
   - psql -c 'create database "adopt-a-pet_test";' -U postgres
-  
+
 branches:
   only:
     - master
@@ -23,3 +23,6 @@ rvm:
   - 2.1.2
 addons:
   postgresql: "9.3"
+  code_climate:
+    repo_token:
+      secure: "bF99D9E+F8GgEGyraMJX/2pqzm8DDpRa0y+s73gWHRdSu18/k1QLsxEIL8FfeFYtc0E2GVbXlbPOtYmNcZP9dZrGWf94ztLxtTh9KcO5LdGDd+Vp6WyEdufamdCCXXPLzh/pxGWG6cRkn9hXMdZzTeaDEcPjDn03MPOiz5wgJ28="
