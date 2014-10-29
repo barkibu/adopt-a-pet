@@ -4,6 +4,7 @@ Adopt-a-pet
 [![Build Status](https://travis-ci.org/barkibu/adopt-a-pet.svg?branch=master)](https://travis-ci.org/barkibu/adopt-a-pet)
 [![Code Climate](https://codeclimate.com/github/barkibu/adopt-a-pet/badges/gpa.svg)](https://codeclimate.com/github/barkibu/adopt-a-pet)
 [![Coverage Status](https://coveralls.io/repos/barkibu/adopt-a-pet/badge.png)](https://coveralls.io/r/barkibu/adopt-a-pet)
+[![Dependency Status](https://gemnasium.com/barkibu/adopt-a-pet.svg)](https://gemnasium.com/barkibu/adopt-a-pet)
 
 Getting Started
 ---------------
