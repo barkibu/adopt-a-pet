@@ -1,6 +1,7 @@
 = javascript_include_tag :application
 = yield :javascript
 = render "analytics"
+= render "tag_manager"
 - if Rails.env.test?
   = javascript_tag do
     $.fx.off = true;
