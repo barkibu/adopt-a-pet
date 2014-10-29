@@ -64,7 +64,6 @@ group :test do
   gem "timecop"
   gem "webmock"
   gem 'simplecov', require: false
-  gem 'coveralls', require: false
 end
 
 group :staging, :production do
