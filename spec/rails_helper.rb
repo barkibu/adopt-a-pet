@@ -1,8 +1,8 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
 
-require 'simplecov'
-SimpleCov.start
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
 
 require 'spec_helper'
 require File.expand_path("../../config/environment", __FILE__)
@@ -23,7 +23,7 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 Capybara.javascript_driver = :webkit
-WebMock.disable_net_connect!(allow_localhost: true)
+WebMock.disable_net_connect!(allow_localhost: true, allow: %w{codeclimate.com})
 
 module Features
   # Extend this module in spec/support/features/*.rb
