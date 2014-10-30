@@ -24,4 +24,8 @@ class Specie
   def self.keys_without_pet
     PARAMS.keys.reject{ |x| x == :pet }
   end
+
+  def self.key_without_pet?(key)
+    keys_without_pet.include? key
+  end
 end
