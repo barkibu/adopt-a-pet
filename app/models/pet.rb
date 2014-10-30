@@ -44,6 +44,10 @@ class Pet < ActiveRecord::Base
     self.status ||= :adoption
   end
 
+  def self.provinces_count_by_specie(specie, limit = 2)
+    Pet.where(specie: Pet.species[specie]).group(:province_id).order('1 DESC').limit(limit).count
+  end
+
   def self.filtering_params(params)
     result = {}
 
