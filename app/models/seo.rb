@@ -22,8 +22,11 @@ class SEO
   end
 
   def self.description_for_index(specie, province, breed, page)
-    pagination = page.to_i > 1 ? " (página #{page})" : ''
+    if specie == :pet && province.blank? && breed.blank? && page.blank?
+      return default_description
+    end
 
+    pagination = page.to_i > 1 ? " (página #{page})" : ''
     desc = [
       "Adopta a #{specie_with_preposition(specie)}",
       "#{ breed if breed.present?}",

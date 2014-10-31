@@ -15,5 +15,11 @@ RSpec.describe SEO do
       desc = SEO.description_for_index(:cat, 'Lugo', 'Persa', 3)
       expect(desc).to eq 'Adopta a un gato Persa en Lugo. Aquí encontrarás a tu mascota ideal (página 3).'
     end
+
+    it 'returns default_description if only there is :pet as specie' do
+      desc = SEO.description_for_index(:pet, nil, nil, nil)
+      default_description = SEO.default_description
+      expect(desc).to eq default_description
+    end
   end
 end
