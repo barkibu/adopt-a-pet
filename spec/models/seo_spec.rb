@@ -24,10 +24,9 @@ RSpec.describe SEO do
   end
 
   describe '.title_for_adopt' do
-    it 'returns default_description if only there is :pet as specie' do
+    it 'returns the default description if only there is :pet as specie' do
       title = SEO.title_for_adopt(:pet, nil, nil)
-      default_title = SEO.default_title
-      expect(title).to eq default_title
+      expect(title).to eq 'Adopta a una mascota'
     end
   end
 end

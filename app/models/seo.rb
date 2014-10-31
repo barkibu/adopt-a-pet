@@ -6,7 +6,7 @@ class SEO
   end
 
   def self.default_title
-    'Adopta a una mascota'
+    title_for_adopt(:pet, nil, nil)
   end
 
   def self.title_for_adopt(specie, province, breed)
