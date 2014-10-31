@@ -16,12 +16,16 @@ class HomeController < ApplicationController
 
   def adopt
     specie = Specie.find_by_specie! params[:specie]
+
+    if specie == :pet && params[:province].blank? && request.query_string.empty?
+      redirect_to :root and return
+    end
+
     @province = Province.find_by_slug!(params[:province]) if params[:province]
 
     filtered_params = {}
     filtered_params[:specie] = Pet.species[specie]
     filtered_params[:province] = @province.id if @province
-
     filtered_params.merge!(Pet.filtering_params valid_search_params(params))
 
     @pets = Pet.filter(filtered_params).default_filter_and_order.page(params[:page])
