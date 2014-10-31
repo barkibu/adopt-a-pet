@@ -2,22 +2,9 @@ class HomeController < ApplicationController
   decorates_assigned :pets
 
   def index
-    @pets = Pet.default_filter_and_order.page(params[:page])
-    set_meta_tags title: SEO.default_title,
-      description: SEO.default_description
-  end
+    specie = Specie.find_by_specie params[:specie]
 
-  def find
-    filtered_params = valid_search_params(params)
-    filtered_params.merge!(specie: species_params_to_url_params(params))
-    filtered_params.merge!(province: params[:province]) if valid_province_param params[:province]
-    redirect_to adopt_species_path(filtered_params)
-  end
-
-  def adopt
-    specie = Specie.find_by_specie! params[:specie]
-
-    if specie == :pet && params[:province].blank? && request.query_string.empty?
+    if specie == :pet && params[:province].blank? && request.query_string.empty? && request.path != root_path
       redirect_to :root and return
     end
 
@@ -32,8 +19,13 @@ class HomeController < ApplicationController
 
     set_meta_tags title: SEO.title_for_adopt(specie, @province.to_s, nil),
       description: SEO.description_for_index(specie, @province.to_s, params[:breed], params[:page])
+  end
 
-    render 'index'
+  def find
+    filtered_params = valid_search_params(params)
+    filtered_params.merge!(specie: species_params_to_url_params(params))
+    filtered_params.merge!(province: params[:province]) if valid_province_param params[:province]
+    redirect_to adopt_species_path(filtered_params)
   end
 
   private
