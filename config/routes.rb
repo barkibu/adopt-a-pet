@@ -18,9 +18,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   root :to => 'home#index'
+
   post '/find' => 'home#find', as: :find
-  get '/en-adopcion/mascotas', to: redirect('/')
-  get '/en-adopcion/:specie(/:province)(/:breed)' => 'home#adopt', as: :adopt_species
+  get '/en-adopcion/:specie(/:province)(/:breed)' => 'home#index', as: :adopt_species
   get '/en-adopcion/:specie/:province/:breed/:id' => 'pets#show', as: :adopt_specie
   get '/en-adopcion', to: redirect('/')
 

@@ -1,10 +1,11 @@
 %ul.accordion-tabs-minimal
-  - Specie.keys_without_pet.each do |specie|
+  - Specie.keys_without_pet.each do |specie_key|
     %li.tab-header-and-content
-      = tab_link_for_specie(specie)
+      - specie = Specie.find_by_key(specie_key)
+      = tab_link_for_specie specie
       .tab-content
         %ul.pet-count-and-province
-          - count = Pet.count_by_province(specie)
+          - count = Pet.count_by_province(specie_key)
           - count.keys.sort.each do |province_id|
             - province = Province.find(province_id)
             %li

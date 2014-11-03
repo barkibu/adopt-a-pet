@@ -7,9 +7,9 @@
       %li.nav-link.logo
         = link_to image_tag('logo-barkiadopta.png'), root_path, class: 'logo'
       %li.nav-link.more
-        %a{href: "javascript:void(0)"}= pet_menu_title(params[:specie])
+        %a{href: "javascript:void(0)"}= pet_menu_title(@specie)
         %ul.submenu
-          - pet_submenu_links(params[:specie]).each do |link|
+          - pet_submenu_links(@specie).each do |link|
             %li= link
           %li= link_to '¿Por qué adoptar?', page_path('adoptar')
           %li= link_to 'Anunciar mascota', new_pet_path, rel: 'nofollow'

@@ -14,4 +14,4 @@
   = render 'search_box_filter', filter: 'age'
   - province_options = options_from_collection_for_select(Province.all, :slug, :name, params[:province])
   = render 'search_box_dropdown', field: 'province', options: province_options, prompt: 'Seleccionar'
-  .trigger= button_tag submit_serch_text(params[:specie])
+  .trigger= button_tag submit_serch_text(@specie)

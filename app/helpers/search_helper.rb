@@ -12,8 +12,7 @@ module SearchHelper
   end
 
   def submit_serch_text(specie)
-    specie_key = Specie.find_by_specie(specie)
-    if Specie.key_without_pet?(specie_key)
+    if specie.key_without_pet?
       "Buscar #{specie} en adopción"
     else
       'Buscar animales en adopción'
