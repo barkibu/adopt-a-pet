@@ -33,4 +33,19 @@ RSpec.describe SEO do
       expect(title).to eq 'Adopta a una mascota'
     end
   end
+
+  describe '.link_name_for_province' do
+    it 'returns a valid text' do
+      valencia = FactoryGirl.build(:province)
+      name = SEO.link_name_for_province(dog, valencia)
+      expect(name).to eq 'Perros en Valencia'
+    end
+  end
+
+  describe '.link_title_for_specie' do
+    it 'returns a valid text' do
+      name = SEO.link_title_for_specie(dog)
+      expect(name).to eq 'Perros en adopción'
+    end
+  end
 end
