@@ -43,7 +43,7 @@ class PetDecorator < Draper::Decorator
   end
 
   def specie_formatted
-    Specie.to_s(object.specie.to_sym).titleize
+    Specie.find_by_key(object.specie.to_sym).to_s.titleize
   end
 
   def sex_label

@@ -11,7 +11,7 @@ class SEO
 
   def self.title_for_adopt(specie, province, breed)
     title = [
-      "Adopta a #{specie_with_preposition(specie)}",
+      "Adopta a #{specie.with_preposition}",
       "#{ ('en ' + province) if province.present?}"
     ]
     title.select(&:present?).join(' ')
@@ -22,13 +22,13 @@ class SEO
   end
 
   def self.description_for_index(specie, province, breed, page)
-    if specie == :pet && province.blank? && breed.blank? && page.blank?
+    if specie.key == :pet && province.blank? && breed.blank? && page.blank?
       return default_description
     end
 
     pagination = page.to_i > 1 ? " (página #{page})" : ''
     desc = [
-      "Adopta a #{specie_with_preposition(specie)}",
+      "Adopta a #{specie.with_preposition}",
       "#{ breed if breed.present?}",
       "#{ ('en ' + province) if province.present?}",
     ]
@@ -45,16 +45,12 @@ class SEO
   end
 
   def self.extra_title(specie)
-    "Al adoptar a #{specie_with_preposition(specie)} tendrás un amigo fiel para toda
+    "Al adoptar a #{specie.with_preposition} tendrás un amigo fiel para toda
     la vida que te ayudará a sonreír hasta en los momentos más difíciles."
   end
 
-  def self.specie_with_preposition(specie)
-    I18n.t "species_prepositions.#{specie}"
-  end
-
   def self.link_title_for_specie(specie)
-    "#{Specie.to_s(specie).capitalize} en adopción"
+    "#{specie.to_s.capitalize} en adopción"
   end
 
   def self.link_title_for_province(specie, province)
@@ -68,7 +64,7 @@ class SEO
   end
 
    def self.link_name_for_province(specie, province)
-    specie_text = "#{Specie.to_s(specie).capitalize}"
+    specie_text = "#{specie.to_s.capitalize}"
     "#{specie_text} en #{province.name}"
   end
 end
