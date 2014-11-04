@@ -20,6 +20,9 @@ en:
       contact_message:
         one: Message
         other: Messages
+      adopt_message:
+        one: Message
+        other: Messages
     attributes:
       user:
         address: 'Address'
@@ -70,6 +73,9 @@ en:
         email: E-mail
         subject: Subject
         body: Message
+      adopt_message:
+        email: E-mail
+        body: Message
 
   contact_messages:
     create:
@@ -93,6 +99,8 @@ en:
       picture: "Picture %{index}"
       pictures: "Pictures"
       destroy_picture: "Picture %{index} (destroy)"
+    adopt:
+      notice: Message was successfully sent.
   helpers:
     page_entries_info:
       one_page:
@@ -106,6 +114,9 @@ en:
   contact_message_mailer:
     new_contact_message:
       subject: '[barkiadopta.org] Contact form'
+  adopt_message_mailer:
+    new_adopt_message:
+      subject: 'Someone wants to adopt %{name} in barkiadopta.org'
 
   devise:
     confirmations:
@@ -279,6 +290,8 @@ en:
       create: Create %{model}
       submit: Save %{model}
       update: Update %{model}
+      adopt_message:
+        create: Send %{model}
       contact_message:
         create: Send %{model}
   number:

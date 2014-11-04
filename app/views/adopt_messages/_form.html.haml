@@ -1,0 +1,9 @@
+= simple_form_for @adopt_message, url: adopt_pet_path do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :email
+    = f.input :body, as: :text, input_html: {rows: 5}
+
+  .form-actions
+    = f.button :submit

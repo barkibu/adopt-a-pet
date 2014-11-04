@@ -1,0 +1,6 @@
+%p Ahora sólo has de ir a la ficha de #{pet.name_formatted} en la web de su protectora para pedir la adopción.
+.js-loader.loader-off
+  = link_to '¡Adóptalo ya!', pet.more_info_url, class: 'btn js-redirect', rel: 'nofollow', itemprop: "url"
+  %span
+    Redirigiendo a
+    = link_to pet.more_info_url, pet.more_info_url, rel: 'nofollow'

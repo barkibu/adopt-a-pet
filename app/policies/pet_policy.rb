@@ -15,4 +15,8 @@ class PetPolicy < ApplicationPolicy
   def destroy?
     user and user.admin?
   end
+
+  def adopt?
+    true
+  end
 end

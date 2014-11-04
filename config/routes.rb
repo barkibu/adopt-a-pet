@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   post '/find' => 'home#find', as: :find
   get '/en-adopcion/:specie(/:province)(/:breed)' => 'home#index', as: :adopt_species
   get '/en-adopcion/:specie/:province/:breed/:id' => 'pets#show', as: :adopt_specie
+  post '/en-adopcion/:specie/:province/:breed/:id/adopt' => 'pets#adopt', as: :adopt_pet
   get '/en-adopcion', to: redirect('/')
 
   match '/404', to: 'errors#file_not_found', via: :all

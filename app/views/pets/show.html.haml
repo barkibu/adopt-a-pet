@@ -52,7 +52,7 @@
         = render 'stats', pet: pet
 
         .adopt-buttons
-          = render 'modal' if pet.more_info_url?
+          = render 'modal'
 
           .social-likes{"data-title" => "Ayúdanos a adoptar a #{pet.name_formatted}", "data-url" => request.original_url }
             %h6 Quiero ayudar a que otros lo adopten
