@@ -11,14 +11,14 @@ es:
     error_notification:
       default_message: "Por favor, revisa los errores:"
     # Labels and hints examples
-    labels:
-      # defaults:
-      #   password: 'Password'
-      contact_message:
-        name: Nombre
-        email: E-mail
-        subject: Asunto
-        body: Mensaje
+    # labels:
+    #   defaults:
+    #     password: 'Password'
+    #   user:
+    #     new:
+    #       email: 'E-mail to sign in.'
+    #     edit:
+    #       email: 'E-mail.'
     # hints:
     #   defaults:
     #     username: 'User name to sign in.'

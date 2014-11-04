@@ -6,12 +6,6 @@ en:
   are_you_sure: Are you sure?
   back: Back
 
-  activemodel:
-    models:
-      contact_message:
-        one: Message
-        other: Messages
-
   activerecord:
     models:
       user:
@@ -23,6 +17,9 @@ en:
       shelter:
         one: Shelter
         other: Shelters
+      contact_message:
+        one: Message
+        other: Messages
     attributes:
       user:
         address: 'Address'
@@ -68,6 +65,11 @@ en:
         description: 'Description'
         web_url: 'Web'
         location: 'Location'
+      contact_message:
+        name: Name
+        email: E-mail
+        subject: Subject
+        body: Message
 
   contact_messages:
     create:

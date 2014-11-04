@@ -6,12 +6,6 @@ es:
   are_you_sure: ¿Estás seguro?
   back: Atrás
 
-  activemodel:
-    models:
-      contact_message:
-        one: Mensaje
-        other: Mensajes
-
   activerecord:
     models:
       user:
@@ -23,6 +17,9 @@ es:
       shelter:
         one: Protectora de animales
         other: Protectoras de animales
+      contact_message:
+        one: Mensaje
+        other: Mensajes
     attributes:
       user:
         address: 'Dirección'
@@ -68,6 +65,11 @@ es:
         description: 'Descripción'
         web_url: 'Web'
         location: 'Ubicación'
+      contact_message:
+        name: Nombre
+        email: E-mail
+        subject: Asunto
+        body: Mensaje
 
   contact_messages:
     create:
