@@ -1,21 +1,25 @@
 class PetDecorator < Draper::Decorator
   delegate_all
 
-  # Define presentation-specific methods here. Helpers are accessed through
-  # `helpers` (aka `h`). You can override attributes, for example:
-  #
-  #   def created_at
-  #     helpers.content_tag :span, class: 'time' do
-  #       object.created_at.strftime("%a %m/%d/%y")
-  #     end
-  #   end
+  def adopt_specie_path(extra_params = {})
+    h.adopt_specie_path(adopt_specie_params(extra_params))
+  end
 
-  def adopt_specie_path
+  def adopt_specie_url(extra_params = {})
+    h.adopt_specie_url(adopt_specie_params(extra_params))
+  end
+
+  def adopt_specie_params(extra_params)
     specie = object.enum_to_s(:specie).pluralize.parameterize
     province = object.province
     breed = object.breed.parameterize
 
-    h.adopt_specie_path(specie: specie, province: province, breed: breed, id: self)
+    {
+      specie: specie,
+      province: province,
+      breed: breed,
+      id: self
+    }.merge(extra_params)
   end
 
   def to_param
