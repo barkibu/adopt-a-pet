@@ -1,15 +1,19 @@
 class SearchParams
-  def self.get(params)
-    filter_keys = Pet.sizes.keys + Pet.ages.keys
-    params.slice(*filter_keys.map(&:to_sym))
+  def initialize(params)
+    @params = params
   end
 
-  def self.species_to_url_params(params)
-    key = if params[:dog] and params[:cat]
+  def get
+    filter_keys = Pet.sizes.keys + Pet.ages.keys
+    @params.slice(*filter_keys.map(&:to_sym))
+  end
+
+  def species_to_url_params
+    key = if @params[:dog] and @params[:cat]
       :pet
-    elsif params[:dog]
+    elsif @params[:dog]
       :dog
-    elsif params[:cat]
+    elsif @params[:cat]
       :cat
     else
       :pet
@@ -17,8 +21,8 @@ class SearchParams
     Specie.find_by_key(key).to_s
   end
 
-  def self.valid_province(params)
-    return unless params[:province]
-    Province.where(slug: params[:province]).count == 1
+  def valid_province
+    return unless @params[:province]
+    Province.where(slug: @params[:province]).count == 1
   end
 end

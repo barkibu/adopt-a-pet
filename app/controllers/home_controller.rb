@@ -5,11 +5,12 @@ class HomeController < ApplicationController
 
   def index
     @province = Province.find_by_slug!(params[:province]) if params[:province]
+    search_params = SearchParams.new(params)
 
     filtered_params = {}
     filtered_params[:specie] = Pet.species[@specie.key]
     filtered_params[:province] = @province.id if @province
-    filtered_params.merge!(Pet.filtering_params(SearchParams.get(params)))
+    filtered_params.merge!(Pet.filtering_params(search_params.get))
 
     @pets = Pet.filter(filtered_params).default_filter_and_order.page(params[:page])
 
@@ -18,9 +19,10 @@ class HomeController < ApplicationController
   end
 
   def find
-    adopt_species_params = SearchParams.get(params)
-    adopt_species_params.merge!(specie: SearchParams.species_to_url_params(params))
-    adopt_species_params.merge!(province: params[:province]) if SearchParams.valid_province params
+    search_params = SearchParams.new(params)
+    adopt_species_params = search_params.get
+    adopt_species_params.merge!(specie: search_params.species_to_url_params)
+    adopt_species_params.merge!(province: params[:province]) if search_params.valid_province
     redirect_to adopt_species_path(adopt_species_params)
   end
 
