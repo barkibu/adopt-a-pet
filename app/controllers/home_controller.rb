@@ -9,7 +9,7 @@ class HomeController < ApplicationController
     filtered_params = {}
     filtered_params[:specie] = Pet.species[@specie.key]
     filtered_params[:province] = @province.id if @province
-    filtered_params.merge!(Pet.filtering_params valid_search_params(params))
+    filtered_params.merge!(Pet.filtering_params(SearchParams.get(params)))
 
     @pets = Pet.filter(filtered_params).default_filter_and_order.page(params[:page])
 
@@ -18,10 +18,10 @@ class HomeController < ApplicationController
   end
 
   def find
-    filtered_params = valid_search_params(params)
-    filtered_params.merge!(specie: species_params_to_url_params(params))
-    filtered_params.merge!(province: params[:province]) if valid_province_param params[:province]
-    redirect_to adopt_species_path(filtered_params)
+    adopt_species_params = SearchParams.get(params)
+    adopt_species_params.merge!(specie: SearchParams.species_to_url_params(params))
+    adopt_species_params.merge!(province: params[:province]) if SearchParams.valid_province params
+    redirect_to adopt_species_path(adopt_species_params)
   end
 
   private
@@ -33,28 +33,6 @@ class HomeController < ApplicationController
   def redirect_index
     if @specie.key == :pet && params[:province].blank? && request.query_string.empty? && request.path != root_path
       redirect_to :root
-    end
-  end
-
-  def valid_search_params(params)
-    filter_keys = Pet.sizes.keys + Pet.ages.keys
-    params.slice(*filter_keys.map(&:to_sym))
-  end
-
-  def valid_province_param(param)
-    return unless param
-    Province.where(slug: param).count == 1
-  end
-
-  def species_params_to_url_params(params)
-    if params[:dog] and params[:cat]
-      'mascotas'
-    elsif params[:dog]
-      'perros'
-    elsif params[:cat]
-      'gatos'
-    else
-      'mascotas'
     end
   end
 end
