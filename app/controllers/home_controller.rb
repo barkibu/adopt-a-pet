@@ -1,13 +1,9 @@
 class HomeController < ApplicationController
   decorates_assigned :pets
+  before_action :set_specie, only: [:index]
+  before_action :redirect_index, only: [:index]
 
   def index
-    @specie = Specie.find_by_value params[:specie]
-
-    if @specie.key == :pet && params[:province].blank? && request.query_string.empty? && request.path != root_path
-      redirect_to :root and return
-    end
-
     @province = Province.find_by_slug!(params[:province]) if params[:province]
 
     filtered_params = {}
@@ -29,6 +25,16 @@ class HomeController < ApplicationController
   end
 
   private
+
+  def set_specie
+    @specie = Specie.find_by_value params[:specie]
+  end
+
+  def redirect_index
+    if @specie.key == :pet && params[:province].blank? && request.query_string.empty? && request.path != root_path
+      redirect_to :root
+    end
+  end
 
   def valid_search_params(params)
     filter_keys = Pet.sizes.keys + Pet.ages.keys
