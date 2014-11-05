@@ -2,9 +2,9 @@ module Filterable
   extend ActiveSupport::Concern
 
   module ClassMethods
-    def filter(filtering_params)
+    def filter(params)
       results = self.where(nil)
-      filtering_params.each do |key, value|
+      params.each do |key, value|
         results = results.public_send("filter_#{key}", value) if value.present?
       end
       results
