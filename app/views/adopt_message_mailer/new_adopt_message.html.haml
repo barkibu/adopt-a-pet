@@ -1,0 +1,12 @@
+%p !Hola #{@email_to}!
+
+%p
+  Alguien te ha contactado para adoptar a
+  = succeed ':' do
+    = link_to @pet_name_formatted, @pet_adopt_specie_url
+
+%blockquote= simple_format @adopt_message.body
+
+%p
+  Responde directamente a:
+  = mail_to @adopt_message.email

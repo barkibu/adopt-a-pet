@@ -6,12 +6,6 @@ es:
   are_you_sure: ¿Estás seguro?
   back: Atrás
 
-  activemodel:
-    models:
-      contact_message:
-        one: Mensaje
-        other: Mensajes
-
   activerecord:
     models:
       user:
@@ -23,6 +17,12 @@ es:
       shelter:
         one: Protectora de animales
         other: Protectoras de animales
+      contact_message:
+        one: Mensaje
+        other: Mensajes
+      adopt_message:
+        one: Mensaje
+        other: Mensajes
     attributes:
       user:
         address: 'Dirección'
@@ -34,6 +34,8 @@ es:
         password_confirmation: 'Confirmación de la contraseña'
         current_password: Contraseña actual
         remember_me: Recordarme
+      adopt_message:
+        email: 'pep'
       pet:
         age: 'Edad'
         ages:
@@ -68,6 +70,14 @@ es:
         description: 'Descripción'
         web_url: 'Web'
         location: 'Ubicación'
+      contact_message:
+        name: Nombre
+        email: E-mail
+        subject: Asunto
+        body: Mensaje
+      adopt_message:
+        email: E-mail
+        body: Mensaje
 
   contact_messages:
     create:
@@ -91,6 +101,8 @@ es:
       picture: "Imagen %{index}"
       pictures: "Imágenes"
       destroy_picture: "Imagen %{index} (borrar)"
+    adopt:
+      notice: El mensaje se ha enviado satisfactoriamente.
   helpers:
     page_entries_info:
       one_page:
@@ -104,6 +116,9 @@ es:
   contact_message_mailer:
     new_contact_message:
       subject: '[barkiadopta.org] Formulario de contacto'
+  adopt_message_mailer:
+    new_adopt_message:
+      subject: 'Alguien quiere adoptar a %{name} en barkiadopta.org'
 
   devise:
     confirmations:
@@ -271,6 +286,8 @@ es:
       create: Crear %{model}
       submit: Guardar %{model}
       update: Actualizar %{model}
+      adopt_message:
+        create: Enviar %{model}
       contact_message:
         create: Enviar %{model}
   number:

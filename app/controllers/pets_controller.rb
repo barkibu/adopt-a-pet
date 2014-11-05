@@ -1,6 +1,7 @@
 class PetsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
-  before_action :set_pet, only: [:show, :edit, :update, :destroy]
+  before_action :set_pet, only: [:show, :edit, :update, :destroy, :adopt]
+  before_action :set_adopt_message, only: [:show, :adopt]
   before_action :redirect_pet, only: [:show]
   after_action :verify_authorized
 
@@ -48,10 +49,24 @@ class PetsController < ApplicationController
     redirect_to root_url, notice: 'Pet was successfully destroyed.'
   end
 
+  def adopt
+    if @adopt_message.valid?
+      AdoptMessageMailer.delay.new_adopt_message(@adopt_message, pet.user, pet.name_formatted, pet.adopt_specie_url)
+      redirect_to pet.adopt_specie_path, notice: t('.notice')
+    else
+      errors = @adopt_message.errors.full_messages
+      redirect_to pet.adopt_specie_path(@adopt_message.to_param), alert: errors
+    end
+  end
+
   private
     def set_pet
       @pet = Pet.includes(:pet_pictures).find(params[:id])
       authorize @pet
+    end
+
+    def set_adopt_message
+      @adopt_message = AdoptMessage.new adopt_message_params
     end
 
     def redirect_pet
@@ -65,5 +80,11 @@ class PetsController < ApplicationController
                                   :more_info_url, :name, :sex, :size, :specie,
                                   :urgent, :province_id,
                                   pet_pictures_attributes: [:asset, :_destroy, :id])
+    end
+
+    def adopt_message_params
+      if params[:adopt_message].present?
+        params.require(:adopt_message).permit(:email, :body)
+      end
     end
 end
