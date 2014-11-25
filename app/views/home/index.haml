@@ -1,10 +1,6 @@
 - be_at_home = current_page?(controller: 'home', action: 'index')
-%section
-  .intro-text
-    %h3= title
-    %h1= SEO.extra_title(@specie)
-    %p
-      BarkiAdopta es el primer buscador de mascotas en adopción de España, puedes buscar entre miles de perros, gatos y otros animales de todas las protectoras de España.
+
+= render 'hero_unit'
 
 - if be_at_home
   %section

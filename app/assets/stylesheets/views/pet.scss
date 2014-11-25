@@ -11,6 +11,7 @@ $side-image-border: 1px solid darken(transparentize($side-image-background-color
   }
 
   .images-wrapper {
+    @include background($gradient-background);
     background-color: $side-image-background-color;
     border-bottom: $side-image-border;
     background-size: cover;
