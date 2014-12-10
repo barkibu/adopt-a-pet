@@ -4,6 +4,7 @@
 
     .form-inputs
       = f.input :name
+      = f.input :status, collection: Pet.statuses.keys, label_method: ->(obj){ Pet.enum_to_s :status, obj }
       = f.input :specie, collection: Pet.species.keys, label_method: ->(obj){ Pet.enum_to_s :specie, obj }, as: :radio_buttons
       = f.input :breed
       = f.input :sex, collection: Pet.sexes.keys, label_method: ->(obj){ Pet.enum_to_s :sex, obj }, as: :radio_buttons
