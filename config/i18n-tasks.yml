@@ -1,14 +1,11 @@
 search:
-  paths:
-    # - "app/controllers" i18n-tasks does not support relative-keys for controllers
-    # https://github.com/glebm/i18n-tasks#relative-keys
-    # https://github.com/glebm/i18n-tasks/issues/46
-    - "app/helpers"
-    - "app/presenters"
-    - "app/views"
+  relative_roots:
+    - app/controllers
+    - app/views
 
 ignore_unused:
   - activerecord.*
   - date.*
   - simple_form.*
   - time.*
+  - titles.*
