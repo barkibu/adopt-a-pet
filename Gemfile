@@ -39,6 +39,7 @@ gem 'pundit'
 gem 'omniauth-facebook'
 
 group :development do
+  gem "bundler-audit"
   gem "spring"
   gem "spring-commands-rspec"
 end

@@ -44,6 +44,9 @@ GEM
       sass (~> 3.2)
       thor
     builder (3.2.2)
+    bundler-audit (0.3.1)
+      bundler (~> 1.2)
+      thor (~> 0.18)
     byebug (3.5.1)
       columnize (~> 0.8)
       debugger-linecache (~> 1.2)
@@ -246,7 +249,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     raindrops (0.13.0)
-    rake (10.3.2)
+    rake (10.4.2)
     ransack (1.5.1)
       actionpack (>= 3.0)
       activerecord (>= 3.0)
@@ -349,6 +352,7 @@ DEPENDENCIES
   aws-sdk
   better_errors
   bourbon
+  bundler-audit
   byebug
   capybara-webkit
   codeclimate-test-reporter
