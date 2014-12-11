@@ -3,8 +3,11 @@ before_install:
   - "echo 'gem: --no-document' > ~/.gemrc"
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
-install:
-  - bin/setup
+before_script:
+  - cp .sample.env .env
+  - cp ./config/database.sample.yml ./config/database.yml
+
+  - psql -c 'create database "adopt-a-pet_test";' -U postgres
 branches:
   only:
     - master
