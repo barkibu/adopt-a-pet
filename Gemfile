@@ -15,9 +15,9 @@ gem "neat"
 gem "normalize-rails"
 gem "pg"
 gem "rack-timeout"
-gem "rails", "~> 4.1"
+gem "rails", "4.2.0.rc2"
 gem "recipient_interceptor"
-gem "sass-rails", "~> 4.0"
+gem "sass-rails"
 gem "simple_form"
 gem "uglifier"
 gem "unicorn"
@@ -53,7 +53,7 @@ group :development, :test do
   gem "rspec-rails"
   gem 'ffaker'
   gem 'meta_request'
-  gem 'better_errors'
+  gem 'web-console'
 end
 
 group :test do
