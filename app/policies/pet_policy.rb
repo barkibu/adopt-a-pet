@@ -4,7 +4,7 @@ class PetPolicy < ApplicationPolicy
   end
 
   def create?
-    user
+    user && !user.user?
   end
 
   def update?
