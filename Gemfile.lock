@@ -52,17 +52,16 @@ GEM
       debugger-linecache (~> 1.2)
       slop (~> 3.6)
     callsite (0.0.11)
-    capybara (2.4.4)
+    capybara (2.14.4)
+      addressable
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    capybara-webkit (1.3.1)
-      capybara (>= 2.0.2, < 2.5.0)
-      json
     climate_control (0.0.3)
       activesupport (>= 3.0)
+    cliver (0.3.2)
     cocaine (0.5.4)
       climate_control (>= 0.0.3, < 1.0)
     codeclimate-test-reporter (0.4.1)
@@ -206,6 +205,11 @@ GEM
       cocaine (~> 0.5.3)
       mime-types
     pg (0.17.1)
+    phantomjs (2.1.1.0)
+    poltergeist (1.15.0)
+      capybara (~> 2.1)
+      cliver (~> 0.3.1)
+      websocket-driver (>= 0.2.0)
     polyamorous (1.1.0)
       activerecord (>= 3.0)
     postmark (1.3.1)
@@ -341,7 +345,10 @@ GEM
     webmock (1.20.4)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
-    xpath (2.0.0)
+    websocket-driver (0.6.5)
+      websocket-extensions (>= 0.1.0)
+    websocket-extensions (0.1.2)
+    xpath (2.1.0)
       nokogiri (~> 1.3)
 
 PLATFORMS
@@ -354,7 +361,6 @@ DEPENDENCIES
   bourbon
   bundler-audit
   byebug
-  capybara-webkit
   codeclimate-test-reporter
   coffee-rails
   database_cleaner
@@ -385,6 +391,8 @@ DEPENDENCIES
   omniauth-facebook
   paperclip
   pg
+  phantomjs
+  poltergeist
   postmark-rails
   pry-rails
   pundit

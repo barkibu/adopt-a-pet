@@ -57,7 +57,6 @@ group :development, :test do
 end
 
 group :test do
-  gem "capybara-webkit"
   gem "database_cleaner"
   gem "formulaic"
   gem "launchy"
@@ -65,6 +64,8 @@ group :test do
   gem "timecop"
   gem "webmock"
   gem "codeclimate-test-reporter", require: nil
+  gem 'poltergeist'
+  gem 'phantomjs', require: 'phantomjs/poltergeist'
 end
 
 group :staging, :production do
