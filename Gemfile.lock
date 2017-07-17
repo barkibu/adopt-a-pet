@@ -405,3 +405,9 @@ DEPENDENCIES
   unicorn
   upmin-admin
   webmock
+
+RUBY VERSION
+   ruby 2.1.5p273
+
+BUNDLED WITH
+   1.15.2
