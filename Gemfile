@@ -58,7 +58,6 @@ end
 
 group :test do
   gem "database_cleaner"
-  gem "formulaic"
   gem "launchy"
   gem "shoulda-matchers", require: false
   gem "timecop"

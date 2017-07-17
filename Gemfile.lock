@@ -123,10 +123,6 @@ GEM
       multipart-post (>= 1.2, < 3)
     ffaker (1.25.0)
     flutie (2.0.0)
-    formulaic (0.1.2)
-      activesupport
-      capybara
-      i18n
     haml (4.0.5)
       tilt
     haml-rails (0.5.3)
@@ -375,7 +371,6 @@ DEPENDENCIES
   factory_girl_rails
   ffaker
   flutie
-  formulaic
   haml-rails
   high_voltage
   i18n-tasks
