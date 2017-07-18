@@ -18,8 +18,6 @@ language:
 notifications:
   email:
     - false
-rvm:
-  - 2.1.5
 addons:
   postgresql: "9.3"
   code_climate:
