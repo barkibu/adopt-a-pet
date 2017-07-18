@@ -12,7 +12,6 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |file| require file }
 
 module Features
   # Extend this module in spec/support/features/*.rb
-  include Formulaic::Dsl
 end
 
 RSpec.configure do |config|
@@ -25,4 +24,3 @@ RSpec.configure do |config|
 end
 
 ActiveRecord::Migration.maintain_test_schema!
-Capybara.javascript_driver = :webkit

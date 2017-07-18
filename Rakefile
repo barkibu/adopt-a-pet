@@ -17,5 +17,3 @@ if defined? RSpec
     t.verbose = false
   end
 end
-
-task default: "bundler:audit"
