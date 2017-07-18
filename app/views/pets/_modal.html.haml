@@ -9,13 +9,3 @@
       %p ¡Muchas gracias por salvar a un animal!
 
       = render(pet.more_info_url? ? 'modal_url' : 'modal_contact')
-
-      %p
-        Una vez adoptado,
-        %b
-          escríbenos a
-          = mail_to 'adopciones@barkibu.com'
-          para conseguir 3 meses de consultas veterinarias gratis
-        a través de
-        = succeed '.' do
-          = link_to 'Barkibu', 'http://www.barkibu.com'
