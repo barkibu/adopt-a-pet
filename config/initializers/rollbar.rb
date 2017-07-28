@@ -1,21 +1,21 @@
-require 'rollbar/rails'
 Rollbar.configure do |config|
   # Without configuration, Rollbar is enabled in all environments.
   # To disable in specific environments, set config.enabled=false.
 
   config.access_token = ENV['ROLLBAR_ACCESS_TOKEN']
 
-  if Rails.env.test? || Rails.env.development?
+  # Here we'll disable in 'test':
+  if Rails.env.test?
     config.enabled = false
   end
 
   # By default, Rollbar will try to call the `current_user` controller method
   # to fetch the logged-in user object, and then call that object's `id`,
   # `username`, and `email` methods to fetch those properties. To customize:
-  config.person_method = "current_user"
-  config.person_id_method = "id"
-  config.person_username_method = "name"
-  config.person_email_method = "email"
+  # config.person_method = "my_current_user"
+  # config.person_id_method = "my_id"
+  config.person_username_method = 'name'
+  # config.person_email_method = "my_email"
 
   # If you want to attach custom data to all exception and message reports,
   # provide a lambda like the following. It should return a hash.
@@ -37,7 +37,7 @@ Rollbar.configure do |config|
   # config.use_async = true
   # Supply your own async handler:
   # config.async_handler = Proc.new { |payload|
-  #  Thread.new { Rollbar.process_payload(payload) }
+  #  Thread.new { Rollbar.process_from_async_handler(payload) }
   # }
 
   # Enable asynchronous reporting (using sucker_punch)
@@ -46,5 +46,12 @@ Rollbar.configure do |config|
   # Enable delayed reporting (using Sidekiq)
   # config.use_sidekiq
   # You can supply custom Sidekiq options:
-  # config.use_sidekiq 'queue' => 'my_queue'
+  # config.use_sidekiq 'queue' => 'default'
+
+  # If you run your staging application instance in production environment then
+  # you'll want to override the environment reported by `Rails.env` with an
+  # environment variable like this: `ROLLBAR_ENV=staging`. This is a recommended
+  # setup for Heroku. See:
+  # https://devcenter.heroku.com/articles/deploying-to-a-custom-rails-environment
+  config.environment = ENV['ROLLBAR_ENV'] || Rails.env
 end
