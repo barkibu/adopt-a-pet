@@ -1,6 +1,7 @@
 class Pet < ActiveRecord::Base
   include Filterable
 
+  acts_as_paranoid
   paginates_per 24
 
   enum age: [:young, :adult]
