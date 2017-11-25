@@ -405,7 +405,6 @@ DEPENDENCIES
   recipient_interceptor
   rollbar
   rspec-rails
-  sass-rails (~> 4.0)
   shoulda-matchers
   simple_form
   sitemap_generator
