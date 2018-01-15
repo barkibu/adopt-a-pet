@@ -11,6 +11,7 @@ class AdoptMessageMailer < ActionMailer::Base
       mail(
         subject: subject,
         to: @email_to,
+        reply_to: @adopt_message.email,
         bcc: "guau@barkibu.com"
       )
     end
