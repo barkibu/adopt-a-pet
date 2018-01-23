@@ -36,6 +36,7 @@ gem 'sitemap_generator'
 gem 'kaminari'
 gem 'pundit'
 gem 'omniauth-facebook'
+gem 'paranoia'
 
 group :development do
   gem 'bundler-audit'

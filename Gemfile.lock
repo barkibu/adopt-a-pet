@@ -212,6 +212,8 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (= 0.3.0)
+    paranoia (2.4.0)
+      activerecord (>= 4.0, < 5.2)
     pg (0.21.0)
     phantomjs (2.1.1.0)
     poltergeist (1.15.0)
@@ -394,6 +396,7 @@ DEPENDENCIES
   normalize-rails
   omniauth-facebook
   paperclip
+  paranoia
   pg
   phantomjs
   poltergeist

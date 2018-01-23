@@ -14,9 +14,10 @@
     });
 
 
-- if policy(pet).update?
+- if policy(pet).update? || policy(pet).destroy?
   %section
-    = link_to "Editar a #{ pet.name_formatted }", edit_pet_path(pet), class: 'control-link'
+    = link_to("Editar a #{ pet.name_formatted }", edit_pet_path(pet), class: 'control-link' ) if policy(pet).update?
+    = link_to("Borrar anuncio", pet_path(pet), method: :delete, class: 'control-link alert') if policy(pet).destroy?
 
 %section
   .breadcrumb

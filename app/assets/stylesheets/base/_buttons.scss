@@ -30,5 +30,15 @@ $navigation-nav-button-background: $base-accent-color;
 
   &:hover {
     background: lighten($navigation-nav-button-background, 10);
+    color: white;
+  }
+}
+
+$alert-button-background: $red;
+.control-link.alert {
+  background: $alert-button-background;
+
+  &:hover {
+    background: lighten($alert-button-background, 10);
   }
 }
