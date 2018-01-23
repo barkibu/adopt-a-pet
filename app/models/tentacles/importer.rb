@@ -1,5 +1,5 @@
 require 'json'
-require 'aws/s3'
+require 'aws-sdk-s3'
 
 class Tentacles::Importer
   def run(feed)
@@ -30,11 +30,8 @@ class Tentacles::Importer
   end
 
   def get_json_from_s3(name)
-    s3 = AWS::S3.new(
-      access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-      secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
-    )
-    resp = s3.buckets[ENV['S3_BUCKET_NAME']].objects["tentacles/data/#{name}.json"]
+    s3 = Aws::S3::Resource.new
+    resp = s3.bucket(ENV['S3_BUCKET_NAME']).object("tentacles/data/#{name}.json")
     raw_content = resp.read
     content_parsed = JSON.parse(raw_content)
   end

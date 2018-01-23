@@ -18,6 +18,7 @@ module AdoptAPet
     config.i18n.enforce_available_locales = true
 
     config.active_record.default_timezone = :utc
+    config.active_record.raise_in_transactional_callbacks = true
 
     config.generators do |generate|
       generate.helper false
