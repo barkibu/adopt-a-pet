@@ -8,7 +8,7 @@ RSpec.describe Tentacles::PetFactory do
   end
 
   describe '#pet_from_imported_pet_or_object' do
-    let(:imported_pet) { FactoryGirl.build(:imported_pet) }
+    let(:imported_pet) { FactoryBot.build(:imported_pet) }
     subject { Tentacles::PetFactory.new({}, imported_pet) }
 
     it 'returns a new pet' do

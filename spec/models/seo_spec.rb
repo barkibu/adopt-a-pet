@@ -36,7 +36,7 @@ RSpec.describe SEO do
 
   describe '.link_name_for_province' do
     it 'returns a valid text' do
-      valencia = FactoryGirl.build(:province)
+      valencia = FactoryBot.build(:province)
       name = SEO.link_name_for_province(dog, valencia)
       expect(name).to eq 'Perros en Valencia'
     end

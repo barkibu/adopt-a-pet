@@ -1,6 +1,6 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
+# Read about factories at https://github.com/thoughtbot/factory_bot
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :pet do
     name          { "#{ case specie when :dog then 'Perrito';when :cat then 'Gatito';end } #{ %w(guay viejete happy).sample }" }
     specie        { [:dog, :cat].sample }
