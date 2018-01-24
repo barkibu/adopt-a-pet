@@ -8,15 +8,6 @@
   padding: $base-spacing*2 $gutter;
   width: 100%;
 
-  .footer-logo {
-    text-align: center;
-    margin-bottom: 2em;
-
-    img {
-      height: 3em;
-    }
-  }
-
   .footer-links {
     @include clearfix;
     margin-bottom: $base-spacing;
