@@ -1,9 +1,10 @@
 .centered-navigation {
   $centered-navigation-padding: 1em;
   $centered-navigation-logo-height: 2em;
-  $centered-navigation-background: rgba(213, 228, 236, 1);
-  $centered-navigation-color: transparentize($base-font-color, 0.3);
-  $centered-navigation-color-hover: $base-font-color;
+  $centered-navigation-background: $red;
+  $centered-navigation-opacity: 0.8;
+  $centered-navigation-color: rgba(white, $centered-navigation-opacity);
+  $centered-navigation-color-hover: white;
   $centered-navigation-height: 60px;
   $centered-navigation-item-padding: 1em;
   $centered-navigation-submenu-padding: 1em;
@@ -12,7 +13,6 @@
   $horizontal-bar-mode: $large-screen;
 
   background-color: $centered-navigation-background;
-  border-bottom: 1px solid darken($centered-navigation-background, 6);
   width: 100%;
   z-index: 9999;
 
@@ -26,7 +26,7 @@
 
     img {
       max-height: $centered-navigation-height;
-      opacity: .6;
+      opacity: $centered-navigation-opacity;
       padding: .8em 0;
     }
 
@@ -131,7 +131,7 @@
   .logo img {
     margin-bottom: -$centered-navigation-logo-height / 3;
     max-height: $centered-navigation-logo-height;
-    opacity: .6;
+    opacity: $centered-navigation-opacity;
   }
 
   // Sub menus

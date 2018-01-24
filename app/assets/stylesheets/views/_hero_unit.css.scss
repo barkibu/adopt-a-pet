@@ -1,11 +1,7 @@
 .hero {
   $hero-color: white;
 
-  @include background($gradient-background);
-
-  background-repeat: no-repeat;
-  background-position: top;
-  background-size: cover;
+  background: $red;
 
   .hero-logo img {
     height: 3em;
