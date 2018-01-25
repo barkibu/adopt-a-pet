@@ -26,6 +26,7 @@ class HomeController < ApplicationController
     filtered_params = valid_search_params(params)
     filtered_params.merge!(specie: species_params_to_url_params(params))
     filtered_params.merge!(province: params[:province]) if valid_province_param params[:province]
+    filtered_params.merge!(shelter: params[:shelter]) if params[:shelter].present?
     redirect_to adopt_species_path(filtered_params)
   end
 

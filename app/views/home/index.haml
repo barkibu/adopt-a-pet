@@ -7,6 +7,11 @@
     .line-behind-text
       %h6.er_toc_tag Busca perros y gatos en adopción por provincia
     = render 'species_and_provinces_tabs'
+- elsif @province.present? && params[:shelter].blank?
+  %section
+    .line-behind-text
+      %h6.er_toc_tag Busca perros y gatos por centro de adopción
+    = render 'species_and_shelters_tabs'
 
 %section
   .line-behind-text

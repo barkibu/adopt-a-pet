@@ -1,4 +1,5 @@
 = form_tag find_path, class: 'search-tools' do |f|
+  = hidden_field_tag(:shelter, params[:shelter]) if params[:shelter].present?
   .filter
     %label Especie
     %div
