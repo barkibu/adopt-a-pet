@@ -1,4 +1,5 @@
 en:
+  all: All
   login: Sign in
   login_with: Sign in with %{provider}
   logout: Sign out

@@ -1,4 +1,5 @@
 es:
+  all: Todo
   login: Acceso
   login_with: Acceso con %{provider}
   logout: Salir
