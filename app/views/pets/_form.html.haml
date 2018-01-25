@@ -9,6 +9,7 @@
       = f.input :breed
       = f.input :sex, collection: Pet.sexes.keys, label_method: ->(obj){ Pet.enum_to_s :sex, obj }, as: :radio_buttons
       = f.input :description, input_html: {rows: 10}
+      = f.input :shelter_name
       = f.input :location
       = f.association :province, label_method: :ine_name
       = f.input :age, collection: Pet.ages.keys, label_method: ->(obj){ Pet.enum_to_s :age, obj }, as: :radio_buttons

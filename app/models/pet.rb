@@ -16,6 +16,7 @@ class Pet < ActiveRecord::Base
   validates :breed, presence: true
   validates :sex, presence: true
   validates :description, presence: true
+  validates :shelter_name, presence: true
   validates :location, presence: true
   validates :province_id, presence: true
 

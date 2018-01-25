@@ -48,6 +48,7 @@ en:
         sexes:
           male: 'Male'
           female: 'Female'
+        shelter_name: 'Shelter name'
         size: 'Size'
         sizes:
           small: 'Small'

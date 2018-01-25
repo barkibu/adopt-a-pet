@@ -50,6 +50,7 @@ es:
         sexes:
           male: 'Macho'
           female: 'Hembra'
+        shelter_name: 'Nombre de la protectora o centro de adopción'
         size: 'Tamaño'
         sizes:
           small: 'Pequeño'
