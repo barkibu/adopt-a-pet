@@ -44,6 +44,10 @@ class Pet < ActiveRecord::Base
     query = specie.present? ? where(specie: Pet.species[specie]) : self
     query.group(:province_id).count
   end
+  scope :count_by_shelter, ->(province_id, specie = nil) do
+    query = specie.present? ? where(specie: Pet.species[specie]) : self
+    query.where(province_id: province_id).group(:shelter_name).count
+  end
 
   def set_default_status
     self.status ||= :adoption
