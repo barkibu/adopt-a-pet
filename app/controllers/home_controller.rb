@@ -13,6 +13,7 @@ class HomeController < ApplicationController
     filtered_params = {}
     filtered_params[:specie] = Pet.species[@specie.key]
     filtered_params[:province] = @province.id if @province
+    filtered_params[:shelter] = params[:shelter] if params[:shelter].present?
     filtered_params.merge!(Pet.filtering_params valid_search_params(params))
 
     @pets = Pet.filter(filtered_params).default_filter_and_order.page(params[:page])
