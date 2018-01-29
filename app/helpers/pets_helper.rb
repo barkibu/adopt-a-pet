@@ -1,4 +1,8 @@
 module PetsHelper
+  def adopt_province_shelter_path(params)
+    adopt_species_path(params.slice :specie, :province, :shelter)
+  end
+
   def adopt_province_path(params)
     adopt_species_path(params.slice :specie, :province)
   end
@@ -11,6 +15,13 @@ module PetsHelper
     title = SEO.link_title_for_province(specie, province)
     link_name = SEO.link_name_for_province(specie, province)
     path = adopt_province_path(specie: specie, province: province)
+    link_to link_name, path, title: title
+  end
+
+  def link_province_and_shelter_path(specie, province, shelter)
+    title = SEO.link_title_for_province(specie, province)
+    link_name = SEO.link_name_for_shelter(specie, shelter)
+    path = adopt_province_shelter_path(specie: specie, province: province, shelter: shelter)
     link_to link_name, path, title: title
   end
 

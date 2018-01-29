@@ -1,0 +1,13 @@
+%ul.accordion-tabs-minimal
+  - Specie.keys.each do |specie_key|
+    %li.tab-header-and-content
+      - specie = Specie.find_by_key(specie_key)
+      = tab_link_for_specie specie
+      .tab-content
+        %ul.pet-count-and-province
+          - specie_key = nil if specie_key == :pet
+          - count = Pet.count_by_shelter(@province.id, specie_key)
+          - count.keys.compact.sort.each do |shelter|
+            %li
+              %span= count[shelter]
+              = link_province_and_shelter_path specie, @province, shelter

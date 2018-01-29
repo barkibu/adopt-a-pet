@@ -16,6 +16,7 @@ class Pet < ActiveRecord::Base
   validates :breed, presence: true
   validates :sex, presence: true
   validates :description, presence: true
+  validates :shelter_name, presence: true
   validates :location, presence: true
   validates :province_id, presence: true
 
@@ -31,6 +32,7 @@ class Pet < ActiveRecord::Base
   scope :filter_province, ->(value) { where(province_id: value) }
   scope :filter_size, ->(value) { where(size: value) }
   scope :filter_specie, ->(value) { where(specie: value) }
+  scope :filter_shelter, ->(value) { where(shelter_name: value) }
   scope :near_from_province, ->(province_id, specie, id) do
     filter_province(province_id)
     .where('id <> ?', id)
@@ -38,7 +40,14 @@ class Pet < ActiveRecord::Base
     .default_filter_and_order
     .limit(3)
   end
-  scope :count_by_province, ->(specie) { where(specie: Pet.species[specie]).group(:province_id).count }
+  scope :count_by_province, ->(specie = nil) do
+    query = specie.present? ? where(specie: Pet.species[specie]) : self
+    query.group(:province_id).count
+  end
+  scope :count_by_shelter, ->(province_id, specie = nil) do
+    query = specie.present? ? where(specie: Pet.species[specie]) : self
+    query.where(province_id: province_id).group(:shelter_name).count
+  end
 
   def set_default_status
     self.status ||= :adoption

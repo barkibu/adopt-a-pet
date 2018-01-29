@@ -1,4 +1,5 @@
 en:
+  all: All
   login: Sign in
   login_with: Sign in with %{provider}
   logout: Sign out
@@ -48,6 +49,7 @@ en:
         sexes:
           male: 'Male'
           female: 'Female'
+        shelter_name: 'Shelter name'
         size: 'Size'
         sizes:
           small: 'Small'
