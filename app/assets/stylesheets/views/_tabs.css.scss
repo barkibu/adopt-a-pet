@@ -94,10 +94,17 @@
   }
 
   ul.pet-count-and-province {
+    li {
+      display: table-row;
+    }
+
     span {
-      width: 3em;
       text-align: right;
-      display: inline-block;
+      padding-right: 0.5em;
+    }
+
+    span, a {
+      display: table-cell;
     }
 
     @include media($tab-mode) {

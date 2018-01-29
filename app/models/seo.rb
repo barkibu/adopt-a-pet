@@ -67,4 +67,9 @@ class SEO
     specie_text = "#{specie.to_s.capitalize}"
     "#{specie_text} en #{province.name}"
   end
+
+  def self.link_name_for_shelter(specie, shelter)
+    specie_text = "#{specie.to_s.capitalize}"
+    "#{specie_text} en #{shelter}"
+  end
 end

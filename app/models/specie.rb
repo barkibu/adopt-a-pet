@@ -27,6 +27,10 @@ class Specie
     key ? new(key: key, value: value) : raise(ActiveRecord::RecordNotFound)
   end
 
+  def self.keys
+    PARAMS.keys
+  end
+
   def self.keys_without_pet
     PARAMS.keys.reject{ |x| x == :pet }
   end
