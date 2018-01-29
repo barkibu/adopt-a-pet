@@ -24,11 +24,7 @@
     = breadcrumb_link pet.province, adopt_province_path(params)
     = breadcrumb_link pet.breed_formatted, adopt_breed_path(params)
   %div{ itemscope: true, itemtype: "http://schema.org/Article" }
-    .side-image
-      .images-wrapper
-        %section.barkibanner
-          = image_tag 'barkibanner.png', alt: 'Barkibu'
-          %h1.s Adopta y resuelve todas las dudas sobre tu nueva mascota con Barkibu
+    .pet-box
       .content
         .content-header
           - picture = pet.pet_pictures.first

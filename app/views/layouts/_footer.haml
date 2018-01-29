@@ -1,6 +1,4 @@
 %footer.footer
-  .footer-logo
-    = image_tag 'horizontal-blanco.png'
   .footer-links
     %ul
       %li
@@ -11,23 +9,25 @@
         = link_to 'Contactar', new_contact_path, rel: 'nofollow'
       %li
         = link_to 'Ayudas para protectoras', page_path('ayudas-para-protectoras')
-      %li
-        %a{href: "http://www.barkibu.com/?utm_source=barkiadopta.org&utm_medium=referral&utm_campaign=universal"} Salud animal - Barkibu
     %ul
       %li
-        %h3 Síguenos en Redes Sociales
+        %h3 Sobre Barkibu
       %li
-        %a{href: "http://www.facebook.com/barkibu"} Facebook
+        = link_to 'Veterinario online', 'http://www.barkibu.com/?utm_source=barkiadopta.org&utm_medium=referral&utm_campaign=universal', title: 'Consulta un veterinario online las 24 horas'
       %li
-        %a{href: "https://twitter.com/Barkibu"} Twitter
+        = link_to 'Facebook', 'http://www.facebook.com/barkibu', title: 'Barkibu en Facebook'
       %li
-        %a{href: "http://www.pinterest.com/Barkibu_/"} Pinterest
+        = link_to 'Twitter', 'http://twitter.com/barkibu', title: 'Barkibu en Twitter'
     %ul
       %li
-        %h3 Noticias y curiosidades
-      %li= link_to 'Blog - Barkinews', 'http://www.barkinews.com/?utm_source=barkiadopta.org&utm_medium=referral&utm_campaign=universal', title: 'Blog sobre mascotas'
+        %h3 Sobre Kiwoko
+      %li
+        = link_to 'Kiwoko Mundo Animal', 'http://www.barkibu.com/?utm_source=barkiadopta.org&utm_medium=referral&utm_campaign=universal', title: 'Todo lo que tu mascota necesita'
+      %li
+        = link_to 'Facebook', 'http://www.facebook.com/kiwoko', title: 'Kiwoko en Facebook'
+      %li
+        = link_to 'Twitter', 'http://twitter.com/kiwoko', title: 'Kiwoko en Twitter'
 
   %hr/
   %p
-    BarkiAdopta.org es una iniciativa sin ánimo de lucro de
-    = link_to 'Barkibu consultas veterinarias online', 'http://www.barkibu.com/?utm_source=barkiadopta.org&utm_medium=referral&utm_campaign=universal', title: 'Consulta un veterinario online las 24 horas'
+    BarkiAdopta.org es una iniciativa sin ánimo de lucro de Barkibu y Kiwoko

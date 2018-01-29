@@ -7,7 +7,6 @@
 @import 'neat';
 @import 'base/base';
 @import 'flashes';
-@import 'barkibar';
 @import 'header';
 @import 'footer';
 @import 'views/home';
@@ -43,10 +42,4 @@ section {
 
 h6 {
   margin-bottom: 1.5em;
-}
-
-.barkifamily{
-  .intro-text h2 {
-    color: #2EAADC;
-  }
 }
