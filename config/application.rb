@@ -31,6 +31,13 @@ module AdoptAPet
       generate.scaffold_controller "scaffold_controller"
     end
 
+    config.middleware.insert_before 0, "Rack::Cors" do
+      allow do
+        origins 'http://app.forestadmin.com', 'https://app.forestadmin.com'
+        resource '*', :headers => :any, :methods => [:get, :post, :options]
+      end
+    end
+
     config.action_controller.action_on_unpermitted_parameters = :raise
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

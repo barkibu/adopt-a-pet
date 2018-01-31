@@ -417,6 +417,7 @@ DEPENDENCIES
   poltergeist
   pry-rails
   pundit
+  rack-cors
   rack-timeout
   rails (~> 4.1)
   rails_12factor

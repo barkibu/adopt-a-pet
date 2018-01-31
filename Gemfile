@@ -37,6 +37,7 @@ gem 'kaminari'
 gem 'pundit'
 gem 'omniauth-facebook'
 gem 'forest_liana'
+gem 'rack-cors', :require => 'rack/cors'
 
 group :development do
   gem 'bundler-audit'
