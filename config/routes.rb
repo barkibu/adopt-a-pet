@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount ForestLiana::Engine => '/forest'
   get '/contact' => 'contact_messages#new', as: :new_contact
   post '/contact' => 'contact_messages#create'
 
