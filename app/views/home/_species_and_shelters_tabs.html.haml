@@ -6,7 +6,7 @@
       .tab-content
         %ul.pet-count-and-province
           - specie_key = nil if specie_key == :pet
-          - count = Pet.count_by_shelter(@province.id, specie_key)
+          - count = Pet.adoption.count_by_shelter(@province.id, specie_key)
           - count.keys.compact.sort.each do |shelter|
             %li
               %span= count[shelter]
