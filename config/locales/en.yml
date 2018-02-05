@@ -15,9 +15,6 @@ en:
       pet:
         one: Pet
         other: Pets
-      shelter:
-        one: Shelter
-        other: Shelters
       contact_message:
         one: Message
         other: Messages

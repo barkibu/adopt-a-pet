@@ -67,11 +67,6 @@ es:
           adopted: 'Adoptado'
         urgent: 'Urgente'
         province: 'Provincia'
-      shelter:
-        name: 'Nombre'
-        description: 'Descripción'
-        web_url: 'Web'
-        location: 'Ubicación'
       contact_message:
         name: Nombre
         email: E-mail

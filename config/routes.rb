@@ -10,7 +10,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :shelters, path: 'protectoras-de-animales'
   resources :pets, only: [:new, :create, :edit, :update, :destroy]
 
   authenticate :user, lambda { |u| u.admin? } do
