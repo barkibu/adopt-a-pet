@@ -13,7 +13,7 @@
           %li= link_to '¿Por qué adoptar?', page_path('adoptar')
           %li= link_to 'Anunciar mascota', new_pet_path, rel: 'nofollow'
       %li.nav-link
-        = link_to 'Protectoras de animales', shelters_path
+        = link_to 'Protectoras de animales', page_path('ayudas-para-protectoras')
 
       - unless user_signed_in?
         %li.nav-link= link_to t('login'), new_user_session_path, rel: 'nofollow'
