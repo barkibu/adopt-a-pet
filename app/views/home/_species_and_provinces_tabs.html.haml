@@ -6,7 +6,7 @@
       .tab-content
         %ul.pet-count-and-province
           - specie_key = nil if specie_key == :pet
-          - count = Pet.count_by_province(specie_key)
+          - count = Pet.adoption.count_by_province(specie_key)
           - count.keys.sort.each do |province_id|
             - province = Province.find(province_id)
             %li
