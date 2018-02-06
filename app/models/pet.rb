@@ -27,27 +27,29 @@ class Pet < ActiveRecord::Base
 
   accepts_nested_attributes_for :pet_pictures, allow_destroy: true
 
-  scope :default_filter_and_order, -> { where(status: Pet.statuses[:adoption]).order('urgent DESC, created_at DESC').includes(:province, :pet_pictures) }
+  scope :default_filter_and_order, (lambda do
+    where(status: Pet.statuses[:adoption]).order('urgent DESC, created_at DESC').includes(:province, :pet_pictures)
+  end)
   scope :filter_age, ->(value) { where(age: value) }
   scope :filter_province, ->(value) { where(province_id: value) }
   scope :filter_size, ->(value) { where(size: value) }
   scope :filter_specie, ->(value) { where(specie: value) }
   scope :filter_shelter, ->(value) { where(shelter_name: value) }
-  scope :near_from_province, ->(province_id, specie, id) do
+  scope :near_from_province, (lambda do |province_id, specie, id|
     filter_province(province_id)
       .where('id <> ?', id)
       .where(specie: Pet.species[specie])
       .default_filter_and_order
       .limit(3)
-  end
-  scope :count_by_province, ->(specie = nil) do
+  end)
+  scope :count_by_province, (lambda do |specie = nil|
     query = specie.present? ? where(specie: Pet.species[specie]) : self
     query.group(:province_id).count
-  end
-  scope :count_by_shelter, ->(province_id, specie = nil) do
+  end)
+  scope :count_by_shelter, (lambda do |province_id, specie = nil|
     query = specie.present? ? where(specie: Pet.species[specie]) : self
     query.where(province_id: province_id).group(:shelter_name).count
-  end
+  end)
 
   def set_default_status
     self.status ||= :adoption

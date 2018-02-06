@@ -4,14 +4,30 @@ AllCops:
   TargetRubyVersion: 2.2
   TargetRailsVersion: 4.1
   Exclude:
+   - 'app/models/tentacles/*'
    - 'bin/*'
    - 'db/schema.rb'
    - 'db/migrate/*'
+   - 'config/**/*'
+   - 'spec/factories/*'
 
 Rails:
   Enabled: true
 
+Rails/DynamicFindBy:
+  Whitelist:
+    - find_by_key
+    - find_by_value
+    - find_by_key!
+    - find_by_value!
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
 Style/Encoding:
+  Enabled: false
+
+Style/RegexpLiteral:
   Enabled: false
 
 Documentation:

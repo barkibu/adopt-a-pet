@@ -35,8 +35,8 @@ class Specie
     PARAMS.keys.reject { |x| x == :pet }
   end
 
-  def ==(another_specie)
-    (key == another_specie.key) && (value == another_specie.value)
+  def ==(other)
+    (key == other.key) && (value == other.value)
   end
 
   def to_s
