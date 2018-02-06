@@ -6,9 +6,7 @@ class Tentacles::PetFactory
 
   def update
     pet = pet_from_imported_pet_or_object
-    if pet.new_record?
-      pet.created_at = @object['created_at']
-    end
+    pet.created_at = @object['created_at'] if pet.new_record?
 
     if !@imported_pet.new_record? && !pet.new_record?
       @imported_pet.add_log(@imported_pet.data.to_s)

@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :province do
-    ine_name "Valencia/Valéncia"
-    name "Valencia"
+    ine_name 'Valencia/Valéncia'
+    name 'Valencia'
   end
 end

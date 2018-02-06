@@ -1,14 +1,14 @@
 module PetsHelper
   def adopt_province_shelter_path(params)
-    adopt_species_path(params.slice :specie, :province, :shelter)
+    adopt_species_path(params.slice(:specie, :province, :shelter))
   end
 
   def adopt_province_path(params)
-    adopt_species_path(params.slice :specie, :province)
+    adopt_species_path(params.slice(:specie, :province))
   end
 
   def adopt_breed_path(params)
-    adopt_species_path(params.slice :specie, :province, :breed)
+    adopt_species_path(params.slice(:specie, :province, :breed))
   end
 
   def link_province_path(specie, province)
@@ -26,9 +26,9 @@ module PetsHelper
   end
 
   def breadcrumb_link(title, path)
-    content_tag :div, class: 'breadcrumb-child', itemscope: true, itemtype: "http://data-vocabulary.org/Breadcrumb" do
-      link_to path, { itemprop: "url" } do
-        content_tag :span, title, itemprop: "title"
+    content_tag :div, class: 'breadcrumb-child', itemscope: true, itemtype: 'http://data-vocabulary.org/Breadcrumb' do
+      link_to path, itemprop: 'url' do
+        content_tag :span, title, itemprop: 'title'
       end
     end
   end

@@ -20,7 +20,7 @@ class ImportedPetDecorator < Draper::Decorator
 
   def data_to_json
     if data.is_a? String
-      JSON.parse data.gsub(/(\bnil\b)/, "\"\"").gsub('=>', ':')
+      JSON.parse data.gsub(/(\bnil\b)/, '""').gsub('=>', ':')
     else
       data
     end

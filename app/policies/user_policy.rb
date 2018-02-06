@@ -1,6 +1,6 @@
 class UserPolicy < ApplicationPolicy
   def show?
-    user and user.admin? and super
+    user && user.admin? && super
   end
 
   def create?

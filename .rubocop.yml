@@ -1,0 +1,55 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  TargetRubyVersion: 2.2
+  TargetRailsVersion: 4.1
+  Exclude:
+   - 'app/models/tentacles/*'
+   - 'bin/*'
+   - 'db/schema.rb'
+   - 'db/migrate/*'
+   - 'config/**/*'
+   - 'spec/factories/*'
+
+Rails:
+  Enabled: true
+
+Rails/DynamicFindBy:
+  Whitelist:
+    - find_by_key
+    - find_by_value
+    - find_by_key!
+    - find_by_value!
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
+Style/Encoding:
+  Enabled: false
+
+Style/RegexpLiteral:
+  Enabled: false
+
+Documentation:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/MethodLength:
+  # After a long discussion we agreed that a long method is not a problem. The actual problem are methods with too much
+  # logic within that should be split into tinier units. No tool can measure that but a programmer's brain.
+  Enabled: false
+
+Metrics/BlockLength:
+  # We disable this cop for the same reason we disabled Metrics/MethodLength
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 20
+
+Metrics/ClassLength:
+  Max: 130
+
+Metrics/ModuleLength:
+  Max: 120

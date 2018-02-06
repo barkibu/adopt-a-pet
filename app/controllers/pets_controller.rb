@@ -1,7 +1,7 @@
 class PetsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
-  before_action :set_pet, only: [:show, :edit, :update, :destroy, :adopt]
-  before_action :set_adopt_message, only: [:show, :adopt]
+  before_action :authenticate_user!, only: %i[new edit create update destroy]
+  before_action :set_pet, only: %i[show edit update destroy adopt]
+  before_action :set_adopt_message, only: %i[show adopt]
   before_action :redirect_pet, only: [:show]
   after_action :verify_authorized
 
@@ -10,7 +10,7 @@ class PetsController < ApplicationController
 
   def show
     set_meta_tags title: SEO.title_for_show(pet),
-      description: SEO.title_for_show(pet)
+                  description: SEO.title_for_show(pet)
 
     @pets = Pet.near_from_province(@pet.province_id, @pet.specie, @pet.id)
   end
@@ -60,31 +60,28 @@ class PetsController < ApplicationController
   end
 
   private
-    def set_pet
-      @pet = Pet.includes(:pet_pictures).find(params[:id])
-      authorize @pet
-    end
 
-    def set_adopt_message
-      @adopt_message = AdoptMessage.new adopt_message_params
-    end
+  def set_pet
+    @pet = Pet.includes(:pet_pictures).find(params[:id])
+    authorize @pet
+  end
 
-    def redirect_pet
-      unless pet.adopt_specie_path == request.path
-        redirect_to pet.adopt_specie_path, status: 301
-      end
-    end
+  def set_adopt_message
+    @adopt_message = AdoptMessage.new adopt_message_params
+  end
 
-    def pet_params
-      params.require(:pet).permit(:age, :breed, :description, :location,
-                                  :more_info_url, :name, :sex, :size, :specie,
-                                  :urgent, :province_id, :shelter_name, :status,
-                                  pet_pictures_attributes: [:asset, :_destroy, :id])
-    end
+  def redirect_pet
+    redirect_to pet.adopt_specie_path, status: 301 unless pet.adopt_specie_path == request.path
+  end
 
-    def adopt_message_params
-      if params[:adopt_message].present?
-        params.require(:adopt_message).permit(:email, :body)
-      end
-    end
+  def pet_params
+    params.require(:pet).permit(:age, :breed, :description, :location,
+                                :more_info_url, :name, :sex, :size, :specie,
+                                :urgent, :province_id, :shelter_name, :status,
+                                pet_pictures_attributes: %i[asset _destroy id])
+  end
+
+  def adopt_message_params
+    params.require(:adopt_message).permit(:email, :body) if params[:adopt_message].present?
+  end
 end

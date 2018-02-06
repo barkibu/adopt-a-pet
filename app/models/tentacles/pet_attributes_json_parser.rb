@@ -1,7 +1,7 @@
 class Tentacles::PetAttributesJSONParser
   def parse(json_object)
-    breed = json_object['breed'].present? ? json_object['breed'] : 'Desconocida'
-    description = json_object['description'].present? ? json_object['description'] : 'Sin descripción'
+    breed = json_object['breed'].presence || 'Desconocida'
+    description = json_object['description'].presence || 'Sin descripción'
 
     {
       age: Pet.ages[json_object['age']],
@@ -21,11 +21,10 @@ class Tentacles::PetAttributesJSONParser
     return unless province
 
     match_data = province.match(/\((.*)\)/)
-    match_data = province.match(/(.*)/) unless match_data
+    match_data ||= province.match(/(.*)/)
     return unless match_data
 
     province = Province.where('slug ILIKE ?', match_data[1].parameterize).first
     province.try :id
   end
 end
-

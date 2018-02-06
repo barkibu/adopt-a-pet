@@ -1,5 +1,5 @@
 class Specie
-  PARAMS = { dog: 'perros', cat: 'gatos', pet: 'mascotas' }
+  PARAMS = { dog: 'perros', cat: 'gatos', pet: 'mascotas' }.freeze
 
   attr_accessor :key, :value
 
@@ -32,11 +32,11 @@ class Specie
   end
 
   def self.keys_without_pet
-    PARAMS.keys.reject{ |x| x == :pet }
+    PARAMS.keys.reject { |x| x == :pet }
   end
 
-  def ==(another_specie)
-    (key == another_specie.key) && (value == another_specie.value)
+  def ==(other)
+    (key == other.key) && (value == other.value)
   end
 
   def to_s

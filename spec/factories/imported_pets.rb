@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :imported_pet do
     pet nil
-    data "MyText"
-    logs "MyText"
+    data 'MyText'
+    logs 'MyText'
   end
 end

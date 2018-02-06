@@ -9,11 +9,11 @@ class PetPolicy < ApplicationPolicy
 
   def update?
     return false unless user
-    (user == record.user) or user.admin?
+    (user == record.user) || user.admin?
   end
 
   def destroy?
-    user and user.admin?
+    user && user.admin?
   end
 
   def adopt?

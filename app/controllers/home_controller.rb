@@ -2,31 +2,22 @@ class HomeController < ApplicationController
   decorates_assigned :pets
 
   def index
-    @specie = Specie.find_by_value params[:specie]
+    @specie = Specie.find_by_value(params[:specie])
 
-    if @specie.key == :pet && params[:province].blank? && request.query_string.empty? && request.path != root_path
-      redirect_to :root and return
-    end
+    return redirect_to(:root) if redirect_to_root?
 
-    @province = Province.find_by_slug!(params[:province]) if params[:province]
+    @province = Province.find_by!(slug: params[:province]) if params[:province]
 
-    filtered_params = {}
-    filtered_params[:specie] = Pet.species[@specie.key]
-    filtered_params[:province] = @province.id if @province
-    filtered_params[:shelter] = params[:shelter] if params[:shelter].present?
-    filtered_params.merge!(Pet.filtering_params valid_search_params(params))
+    @pets = Pet.filter(filtered_params_for_index).default_filter_and_order.page(params[:page])
 
-    @pets = Pet.filter(filtered_params).default_filter_and_order.page(params[:page])
-
-    set_meta_tags title: SEO.title_for_adopt(@specie, @province.to_s, nil),
-      description: SEO.description_for_index(@specie, @province.to_s, params[:breed], params[:page])
+    set_meta_tags_for_index
   end
 
   def find
     filtered_params = valid_search_params(params)
-    filtered_params.merge!(specie: species_params_to_url_params(params))
-    filtered_params.merge!(province: params[:province]) if valid_province_param params[:province]
-    filtered_params.merge!(shelter: params[:shelter]) if params[:shelter].present?
+    filtered_params[:specie] = species_params_to_url_params(params)
+    filtered_params[:province] = params[:province] if valid_province_param params[:province]
+    filtered_params[:shelter] = params[:shelter] if params[:shelter].present?
     redirect_to adopt_species_path(filtered_params)
   end
 
@@ -43,7 +34,7 @@ class HomeController < ApplicationController
   end
 
   def species_params_to_url_params(params)
-    if params[:dog] and params[:cat]
+    if params[:dog] && params[:cat]
       'mascotas'
     elsif params[:dog]
       'perros'
@@ -52,5 +43,22 @@ class HomeController < ApplicationController
     else
       'mascotas'
     end
+  end
+
+  def redirect_to_root?
+    @specie.key == :pet && params[:province].blank? && request.query_string.empty? && request.path != root_path
+  end
+
+  def filtered_params_for_index
+    filtered_params = {}
+    filtered_params[:specie] = Pet.species[@specie.key]
+    filtered_params[:province] = @province.id if @province
+    filtered_params[:shelter] = params[:shelter] if params[:shelter].present?
+    filtered_params.merge(Pet.filtering_params(valid_search_params(params)))
+  end
+
+  def set_meta_tags_for_index
+    set_meta_tags title: SEO.title_for_adopt(@specie, @province.to_s, nil),
+                  description: SEO.description_for_index(@specie, @province.to_s, params[:breed], params[:page])
   end
 end

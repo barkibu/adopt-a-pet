@@ -3,11 +3,11 @@ require 'aws/s3'
 
 class Tentacles::Importer
   def run(feed)
-    if Rails.env.production? || Rails.env.staging?
-      data = get_json_from_s3 feed[:name]
-    else
-      data = get_json_from_local feed[:name]
-    end
+    data = if Rails.env.production? || Rails.env.staging?
+             get_json_from_s3 feed[:name]
+           else
+             get_json_from_local feed[:name]
+           end
     return unless data
 
     data.each do |object|

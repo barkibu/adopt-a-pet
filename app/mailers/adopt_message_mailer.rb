@@ -7,12 +7,12 @@ class AdoptMessageMailer < ActionMailer::Base
       @email_to = pet_user.try(:email)
       @pet_name_formatted = pet_name_formatted
       @pet_adopt_specie_url = pet_adopt_specie_url
-      subject = I18n.t("adopt_message_mailer.new_adopt_message.subject", name: @pet_name_formatted)
+      subject = I18n.t('adopt_message_mailer.new_adopt_message.subject', name: @pet_name_formatted)
       mail(
         subject: subject,
         to: @email_to,
         reply_to: @adopt_message.email,
-        bcc: "guau@barkibu.com"
+        bcc: 'guau@barkibu.com'
       )
     end
   end
