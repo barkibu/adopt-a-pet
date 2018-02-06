@@ -2,9 +2,9 @@
 
 FactoryGirl.define do
   factory :shelter do
-    name "MyString"
-    description "MyText"
-    web_url "MyString"
-    location "MyString"
+    name 'MyString'
+    description 'MyText'
+    web_url 'MyString'
+    location 'MyString'
   end
 end

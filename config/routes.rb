@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   mount ForestLiana::Engine => '/forest'
   get '/contact' => 'contact_messages#new', as: :new_contact
   post '/contact' => 'contact_messages#create'
@@ -11,14 +10,14 @@ Rails.application.routes.draw do
   end
 
   resources :shelters, path: 'protectoras-de-animales'
-  resources :pets, only: [:new, :create, :edit, :update, :destroy]
+  resources :pets, only: %i[new create edit update destroy]
 
-  authenticate :user, lambda { |u| u.admin? } do
+  authenticate :user, ->(u) { u.admin? } do
     mount Upmin::Engine => '/admin'
   end
-  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
-  root :to => 'home#index'
+  root to: 'home#index'
 
   post '/find' => 'home#find', as: :find
   get '/en-adopcion/:specie(/:province)(/:breed)' => 'home#index', as: :adopt_species

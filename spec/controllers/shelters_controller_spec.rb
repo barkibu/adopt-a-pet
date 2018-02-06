@@ -18,36 +18,35 @@ require 'rails_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-RSpec.describe SheltersController, :type => :controller do
-
+RSpec.describe SheltersController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # Shelter. As you add validations to Shelter, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
+  let(:valid_attributes) do
     FactoryGirl.attributes_for(:shelter)
-  }
+  end
 
-  let(:invalid_attributes) {
+  let(:invalid_attributes) do
     FactoryGirl.attributes_for(:shelter).merge(name: '')
-  }
+  end
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # SheltersController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  describe "GET index" do
-    it "assigns all shelters as @shelters" do
+  describe 'GET index' do
+    it 'assigns all shelters as @shelters' do
       shelter = Shelter.create! valid_attributes
       get :index, {}, valid_session
       expect(assigns(:shelters)).to eq([shelter])
     end
   end
 
-  describe "GET show" do
-    it "assigns the requested shelter as @shelter" do
+  describe 'GET show' do
+    it 'assigns the requested shelter as @shelter' do
       shelter = Shelter.create! valid_attributes
-      get :show, {:id => shelter.to_param}, valid_session
+      get :show, { id: shelter.to_param }, valid_session
       expect(assigns(:shelter)).to eq(shelter)
     end
   end
@@ -55,106 +54,106 @@ RSpec.describe SheltersController, :type => :controller do
   context 'with an user logged' do
     login_admin
 
-    describe "GET new" do
-      it "assigns a new shelter as @shelter" do
+    describe 'GET new' do
+      it 'assigns a new shelter as @shelter' do
         get :new, {}, valid_session
         expect(assigns(:shelter)).to be_a_new(Shelter)
       end
     end
 
-    describe "GET edit" do
-      it "assigns the requested shelter as @shelter" do
+    describe 'GET edit' do
+      it 'assigns the requested shelter as @shelter' do
         shelter = Shelter.create! valid_attributes
-        get :edit, {:id => shelter.to_param}, valid_session
+        get :edit, { id: shelter.to_param }, valid_session
         expect(assigns(:shelter)).to eq(shelter)
       end
     end
 
-    describe "POST create" do
-      describe "with valid params" do
-        it "creates a new Shelter" do
-          expect {
-            post :create, {:shelter => valid_attributes}, valid_session
-          }.to change(Shelter, :count).by(1)
+    describe 'POST create' do
+      describe 'with valid params' do
+        it 'creates a new Shelter' do
+          expect do
+            post :create, { shelter: valid_attributes }, valid_session
+          end.to change(Shelter, :count).by(1)
         end
 
-        it "assigns a newly created shelter as @shelter" do
-          post :create, {:shelter => valid_attributes}, valid_session
+        it 'assigns a newly created shelter as @shelter' do
+          post :create, { shelter: valid_attributes }, valid_session
           expect(assigns(:shelter)).to be_a(Shelter)
           expect(assigns(:shelter)).to be_persisted
         end
 
-        it "redirects to the created shelter" do
-          post :create, {:shelter => valid_attributes}, valid_session
+        it 'redirects to the created shelter' do
+          post :create, { shelter: valid_attributes }, valid_session
           expect(response).to redirect_to(Shelter.last)
         end
       end
 
-      describe "with invalid params" do
-        it "assigns a newly created but unsaved shelter as @shelter" do
-          post :create, {:shelter => invalid_attributes}, valid_session
+      describe 'with invalid params' do
+        it 'assigns a newly created but unsaved shelter as @shelter' do
+          post :create, { shelter: invalid_attributes }, valid_session
           expect(assigns(:shelter)).to be_a_new(Shelter)
         end
 
         it "re-renders the 'new' template" do
-          post :create, {:shelter => invalid_attributes}, valid_session
-          expect(response).to render_template("new")
+          post :create, { shelter: invalid_attributes }, valid_session
+          expect(response).to render_template('new')
         end
       end
     end
 
-    describe "PUT update" do
-      describe "with valid params" do
-        let(:new_attributes) {
-          skip("Add a hash of attributes valid for your model")
-        }
-
-        it "updates the requested shelter" do
-          shelter = Shelter.create! valid_attributes
-          put :update, {:id => shelter.to_param, :shelter => new_attributes}, valid_session
-          shelter.reload
-          skip("Add assertions for updated state")
+    describe 'PUT update' do
+      describe 'with valid params' do
+        let(:new_attributes) do
+          skip('Add a hash of attributes valid for your model')
         end
 
-        it "assigns the requested shelter as @shelter" do
+        it 'updates the requested shelter' do
           shelter = Shelter.create! valid_attributes
-          put :update, {:id => shelter.to_param, :shelter => valid_attributes}, valid_session
+          put :update, { id: shelter.to_param, shelter: new_attributes }, valid_session
+          shelter.reload
+          skip('Add assertions for updated state')
+        end
+
+        it 'assigns the requested shelter as @shelter' do
+          shelter = Shelter.create! valid_attributes
+          put :update, { id: shelter.to_param, shelter: valid_attributes }, valid_session
           expect(assigns(:shelter)).to eq(shelter)
         end
 
-        it "redirects to the shelter" do
+        it 'redirects to the shelter' do
           shelter = Shelter.create! valid_attributes
-          put :update, {:id => shelter.to_param, :shelter => valid_attributes}, valid_session
+          put :update, { id: shelter.to_param, shelter: valid_attributes }, valid_session
           expect(response).to redirect_to(shelter)
         end
       end
 
-      describe "with invalid params" do
-        it "assigns the shelter as @shelter" do
+      describe 'with invalid params' do
+        it 'assigns the shelter as @shelter' do
           shelter = Shelter.create! valid_attributes
-          put :update, {:id => shelter.to_param, :shelter => invalid_attributes}, valid_session
+          put :update, { id: shelter.to_param, shelter: invalid_attributes }, valid_session
           expect(assigns(:shelter)).to eq(shelter)
         end
 
         it "re-renders the 'edit' template" do
           shelter = Shelter.create! valid_attributes
-          put :update, {:id => shelter.to_param, :shelter => invalid_attributes}, valid_session
-          expect(response).to render_template("edit")
+          put :update, { id: shelter.to_param, shelter: invalid_attributes }, valid_session
+          expect(response).to render_template('edit')
         end
       end
     end
 
-    describe "DELETE destroy" do
-      it "destroys the requested shelter" do
+    describe 'DELETE destroy' do
+      it 'destroys the requested shelter' do
         shelter = Shelter.create! valid_attributes
-        expect {
-          delete :destroy, {:id => shelter.to_param}, valid_session
-        }.to change(Shelter, :count).by(-1)
+        expect do
+          delete :destroy, { id: shelter.to_param }, valid_session
+        end.to change(Shelter, :count).by(-1)
       end
 
-      it "redirects to the shelters list" do
+      it 'redirects to the shelters list' do
         shelter = Shelter.create! valid_attributes
-        delete :destroy, {:id => shelter.to_param}, valid_session
+        delete :destroy, { id: shelter.to_param }, valid_session
         expect(response).to redirect_to(shelters_url)
       end
     end

@@ -3,11 +3,11 @@ class Pet < ActiveRecord::Base
 
   paginates_per 24
 
-  enum age: [:young, :adult]
-  enum sex: [:male, :female]
-  enum status: [:adoption, :adopted]
-  enum size: [:small, :medium, :big]
-  enum specie: [:dog, :cat]
+  enum age: %i[young adult]
+  enum sex: %i[male female]
+  enum status: %i[adoption adopted]
+  enum size: %i[small medium big]
+  enum specie: %i[dog cat]
 
   after_initialize :set_default_status, if: :new_record?
 
@@ -35,10 +35,10 @@ class Pet < ActiveRecord::Base
   scope :filter_shelter, ->(value) { where(shelter_name: value) }
   scope :near_from_province, ->(province_id, specie, id) do
     filter_province(province_id)
-    .where('id <> ?', id)
-    .where(specie: Pet.species[specie])
-    .default_filter_and_order
-    .limit(3)
+      .where('id <> ?', id)
+      .where(specie: Pet.species[specie])
+      .default_filter_and_order
+      .limit(3)
   end
   scope :count_by_province, ->(specie = nil) do
     query = specie.present? ? where(specie: Pet.species[specie]) : self
@@ -69,6 +69,7 @@ class Pet < ActiveRecord::Base
   def self.enum_to_s(enum, enum_value)
     I18n.t "activerecord.attributes.pet.#{enum.to_s.pluralize}.#{enum_value}"
   end
+
   def enum_to_s(enum)
     Pet.enum_to_s enum, public_send(enum)
   end

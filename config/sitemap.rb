@@ -5,7 +5,7 @@ SitemapGenerator::Sitemap.default_host = 'http://www.barkiadopta.org'
 SitemapGenerator::Sitemap.create do
   add '/', changefreq: 'weekly'
 
-  %w(mascotas perros gatos).each do |pet|
+  %w[mascotas perros gatos].each do |pet|
     add "/en-adopcion/#{pet}/", changefreq: 'weekly'
     Province.all.each do |province|
       add "/en-adopcion/#{pet}/#{province.slug}/", changefreq: 'weekly'

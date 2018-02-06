@@ -18,18 +18,17 @@ require 'rails_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-RSpec.describe ImportedPetsController, :type => :controller do
-
+RSpec.describe ImportedPetsController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # ImportedPet. As you add validations to ImportedPet, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
+  let(:valid_attributes) do
+    skip('Add a hash of attributes valid for your model')
+  end
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+  let(:invalid_attributes) do
+    skip('Add a hash of attributes invalid for your model')
+  end
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -38,124 +37,123 @@ RSpec.describe ImportedPetsController, :type => :controller do
 
   login_admin
 
-  describe "GET index" do
-    it "assigns all imported_pets as @imported_pets" do
+  describe 'GET index' do
+    it 'assigns all imported_pets as @imported_pets' do
       imported_pet = ImportedPet.create! valid_attributes
       get :index, {}, valid_session
       expect(assigns(:imported_pets)).to eq([imported_pet])
     end
   end
 
-  describe "GET show" do
-    it "assigns the requested imported_pet as @imported_pet" do
+  describe 'GET show' do
+    it 'assigns the requested imported_pet as @imported_pet' do
       imported_pet = ImportedPet.create! valid_attributes
-      get :show, {:id => imported_pet.to_param}, valid_session
+      get :show, { id: imported_pet.to_param }, valid_session
       expect(assigns(:imported_pet)).to eq(imported_pet)
     end
   end
 
-  describe "GET new" do
-    it "assigns a new imported_pet as @imported_pet" do
+  describe 'GET new' do
+    it 'assigns a new imported_pet as @imported_pet' do
       get :new, {}, valid_session
       expect(assigns(:imported_pet)).to be_a_new(ImportedPet)
     end
   end
 
-  describe "GET edit" do
-    it "assigns the requested imported_pet as @imported_pet" do
+  describe 'GET edit' do
+    it 'assigns the requested imported_pet as @imported_pet' do
       imported_pet = ImportedPet.create! valid_attributes
-      get :edit, {:id => imported_pet.to_param}, valid_session
+      get :edit, { id: imported_pet.to_param }, valid_session
       expect(assigns(:imported_pet)).to eq(imported_pet)
     end
   end
 
-  describe "POST create" do
-    describe "with valid params" do
-      it "creates a new ImportedPet" do
-        expect {
-          post :create, {:imported_pet => valid_attributes}, valid_session
-        }.to change(ImportedPet, :count).by(1)
+  describe 'POST create' do
+    describe 'with valid params' do
+      it 'creates a new ImportedPet' do
+        expect do
+          post :create, { imported_pet: valid_attributes }, valid_session
+        end.to change(ImportedPet, :count).by(1)
       end
 
-      it "assigns a newly created imported_pet as @imported_pet" do
-        post :create, {:imported_pet => valid_attributes}, valid_session
+      it 'assigns a newly created imported_pet as @imported_pet' do
+        post :create, { imported_pet: valid_attributes }, valid_session
         expect(assigns(:imported_pet)).to be_a(ImportedPet)
         expect(assigns(:imported_pet)).to be_persisted
       end
 
-      it "redirects to the created imported_pet" do
-        post :create, {:imported_pet => valid_attributes}, valid_session
+      it 'redirects to the created imported_pet' do
+        post :create, { imported_pet: valid_attributes }, valid_session
         expect(response).to redirect_to(ImportedPet.last)
       end
     end
 
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved imported_pet as @imported_pet" do
-        post :create, {:imported_pet => invalid_attributes}, valid_session
+    describe 'with invalid params' do
+      it 'assigns a newly created but unsaved imported_pet as @imported_pet' do
+        post :create, { imported_pet: invalid_attributes }, valid_session
         expect(assigns(:imported_pet)).to be_a_new(ImportedPet)
       end
 
       it "re-renders the 'new' template" do
-        post :create, {:imported_pet => invalid_attributes}, valid_session
-        expect(response).to render_template("new")
+        post :create, { imported_pet: invalid_attributes }, valid_session
+        expect(response).to render_template('new')
       end
     end
   end
 
-  describe "PUT update" do
-    describe "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
-
-      it "updates the requested imported_pet" do
-        imported_pet = ImportedPet.create! valid_attributes
-        put :update, {:id => imported_pet.to_param, :imported_pet => new_attributes}, valid_session
-        imported_pet.reload
-        skip("Add assertions for updated state")
+  describe 'PUT update' do
+    describe 'with valid params' do
+      let(:new_attributes) do
+        skip('Add a hash of attributes valid for your model')
       end
 
-      it "assigns the requested imported_pet as @imported_pet" do
+      it 'updates the requested imported_pet' do
         imported_pet = ImportedPet.create! valid_attributes
-        put :update, {:id => imported_pet.to_param, :imported_pet => valid_attributes}, valid_session
+        put :update, { id: imported_pet.to_param, imported_pet: new_attributes }, valid_session
+        imported_pet.reload
+        skip('Add assertions for updated state')
+      end
+
+      it 'assigns the requested imported_pet as @imported_pet' do
+        imported_pet = ImportedPet.create! valid_attributes
+        put :update, { id: imported_pet.to_param, imported_pet: valid_attributes }, valid_session
         expect(assigns(:imported_pet)).to eq(imported_pet)
       end
 
-      it "redirects to the imported_pet" do
+      it 'redirects to the imported_pet' do
         imported_pet = ImportedPet.create! valid_attributes
-        put :update, {:id => imported_pet.to_param, :imported_pet => valid_attributes}, valid_session
+        put :update, { id: imported_pet.to_param, imported_pet: valid_attributes }, valid_session
         expect(response).to redirect_to(imported_pet)
       end
     end
 
-    describe "with invalid params" do
-      it "assigns the imported_pet as @imported_pet" do
+    describe 'with invalid params' do
+      it 'assigns the imported_pet as @imported_pet' do
         imported_pet = ImportedPet.create! valid_attributes
-        put :update, {:id => imported_pet.to_param, :imported_pet => invalid_attributes}, valid_session
+        put :update, { id: imported_pet.to_param, imported_pet: invalid_attributes }, valid_session
         expect(assigns(:imported_pet)).to eq(imported_pet)
       end
 
       it "re-renders the 'edit' template" do
         imported_pet = ImportedPet.create! valid_attributes
-        put :update, {:id => imported_pet.to_param, :imported_pet => invalid_attributes}, valid_session
-        expect(response).to render_template("edit")
+        put :update, { id: imported_pet.to_param, imported_pet: invalid_attributes }, valid_session
+        expect(response).to render_template('edit')
       end
     end
   end
 
-  describe "DELETE destroy" do
-    it "destroys the requested imported_pet" do
+  describe 'DELETE destroy' do
+    it 'destroys the requested imported_pet' do
       imported_pet = ImportedPet.create! valid_attributes
-      expect {
-        delete :destroy, {:id => imported_pet.to_param}, valid_session
-      }.to change(ImportedPet, :count).by(-1)
+      expect do
+        delete :destroy, { id: imported_pet.to_param }, valid_session
+      end.to change(ImportedPet, :count).by(-1)
     end
 
-    it "redirects to the imported_pets list" do
+    it 'redirects to the imported_pets list' do
       imported_pet = ImportedPet.create! valid_attributes
-      delete :destroy, {:id => imported_pet.to_param}, valid_session
+      delete :destroy, { id: imported_pet.to_param }, valid_session
       expect(response).to redirect_to(imported_pets_url)
     end
   end
-
 end

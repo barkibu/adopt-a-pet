@@ -9,10 +9,10 @@ class SEO
     title_for_adopt(:pet, nil, nil)
   end
 
-  def self.title_for_adopt(specie, province, breed)
+  def self.title_for_adopt(specie, province, _breed)
     title = [
       "Adopta a #{specie.with_preposition}",
-      "#{ ('en ' + province) if province.present?}"
+      (('en ' + province) if province.present?).to_s
     ]
     title.select(&:present?).join(' ')
   end
@@ -22,15 +22,13 @@ class SEO
   end
 
   def self.description_for_index(specie, province, breed, page)
-    if specie.key == :pet && province.blank? && breed.blank? && page.blank?
-      return default_description
-    end
+    return default_description if specie.key == :pet && province.blank? && breed.blank? && page.blank?
 
     pagination = page.to_i > 1 ? " (página #{page})" : ''
     desc = [
       "Adopta a #{specie.with_preposition}",
-      "#{ breed if breed.present?}",
-      "#{ ('en ' + province) if province.present?}",
+      breed.presence.to_s,
+      (('en ' + province) if province.present?).to_s
     ]
     "#{desc.select(&:present?).join(' ')}. Aquí encontrarás a tu mascota ideal#{pagination}."
   end
@@ -38,8 +36,8 @@ class SEO
   def self.description_for_show(pet)
     desc = [
       "Adopta a #{pet.name}",
-      "#{ ('de la raza ' + breed) if breed.present?}",
-      "#{ ('en ' + province) if pet.province.present?}"
+      (('de la raza ' + breed) if breed.present?).to_s,
+      (('en ' + province) if pet.province.present?).to_s
     ]
     desc.select(&:present?).join(' ')
   end
@@ -63,13 +61,13 @@ class SEO
     "#{province_text} de la raza #{breed}"
   end
 
-   def self.link_name_for_province(specie, province)
-    specie_text = "#{specie.to_s.capitalize}"
+  def self.link_name_for_province(specie, province)
+    specie_text = specie.to_s.capitalize.to_s
     "#{specie_text} en #{province.name}"
-  end
+ end
 
   def self.link_name_for_shelter(specie, shelter)
-    specie_text = "#{specie.to_s.capitalize}"
+    specie_text = specie.to_s.capitalize.to_s
     "#{specie_text} en #{shelter}"
   end
 end
