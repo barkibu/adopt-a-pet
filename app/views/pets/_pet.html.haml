@@ -2,9 +2,11 @@
   - if pet.urgent?
     .ribbon-wrapper
       .ribbon URGENTE
-  - if pet.pet_pictures.any?
-    .card-image
+  .card-image
+    - if pet.pet_pictures.any?
       = image_tag pet.pet_pictures.first.asset.url(:home), itemprop: 'image'
+    - else
+      = image_tag('card-image-placeholder.png')
   .card-header{ itemprop: 'name' }
     = pet.name
   .card-copy= simple_format(truncate(pet.description, length: 230, separator: ' '))
