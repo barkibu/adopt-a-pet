@@ -1,6 +1,6 @@
 class ImportedPetsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_imported_pet, only: [:show, :edit, :update, :destroy]
+  before_action :set_imported_pet, only: %i[show edit update destroy]
   after_action :verify_authorized
 
   decorates_assigned :imported_pets
@@ -25,16 +25,14 @@ class ImportedPetsController < ApplicationController
     redirect_to imported_pets_url, notice: 'Processing the imported pets in background'
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @imported_pet = ImportedPet.new
     authorize @imported_pet
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @imported_pet = ImportedPet.new(imported_pet_params)

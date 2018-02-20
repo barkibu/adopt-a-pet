@@ -1,4 +1,4 @@
-require "webmock/rspec"
+require 'webmock/rspec'
 
 # http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
@@ -14,4 +14,4 @@ RSpec.configure do |config|
   config.order = :random
 end
 
-WebMock.disable_net_connect!(allow_localhost: true, allow: %w{codeclimate.com})
+WebMock.disable_net_connect!(allow_localhost: true, allow: %w[codeclimate.com])

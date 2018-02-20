@@ -4,7 +4,7 @@ class ImportedPetPolicy < ApplicationPolicy
   end
 
   def show?
-    user.admin? and super
+    user.admin? && super
   end
 
   def create?

@@ -15,7 +15,7 @@ class AdoptMessage
     {
       adopt_message: {
         body: body,
-        email: email,
+        email: email
       }
     }
   end

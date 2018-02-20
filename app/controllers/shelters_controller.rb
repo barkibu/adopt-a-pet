@@ -1,6 +1,6 @@
 class SheltersController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
-  before_action :set_shelter, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: %i[new edit create update destroy]
+  before_action :set_shelter, only: %i[show edit update destroy]
   after_action :verify_authorized
 
   def index
@@ -8,16 +8,14 @@ class SheltersController < ApplicationController
     authorize Shelter
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @shelter = Shelter.new
     authorize @shelter
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @shelter = Shelter.new(shelter_params)
@@ -44,12 +42,13 @@ class SheltersController < ApplicationController
   end
 
   private
-    def set_shelter
-      @shelter = Shelter.find(params[:id])
-      authorize @shelter
-    end
 
-    def shelter_params
-      params.require(:shelter).permit(:name, :description, :web_url, :location, :logo)
-    end
+  def set_shelter
+    @shelter = Shelter.find(params[:id])
+    authorize @shelter
+  end
+
+  def shelter_params
+    params.require(:shelter).permit(:name, :description, :web_url, :location, :logo)
+  end
 end

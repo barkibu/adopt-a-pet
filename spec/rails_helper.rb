@@ -1,14 +1,14 @@
-ENV["RAILS_ENV"] = "test"
+ENV['RAILS_ENV'] = 'test'
 
-require "codeclimate-test-reporter"
+require 'codeclimate-test-reporter'
 CodeClimate::TestReporter.start
 
-require File.expand_path("../../config/environment", __FILE__)
+require File.expand_path('../../config/environment', __FILE__)
 
-require "rspec/rails"
-require "shoulda/matchers"
+require 'rspec/rails'
+require 'shoulda/matchers'
 
-Dir[Rails.root.join("spec/support/**/*.rb")].each { |file| require file }
+Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |file| require file }
 
 module Features
   # Extend this module in spec/support/features/*.rb

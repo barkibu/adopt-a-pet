@@ -4,10 +4,10 @@ class ImportedPet < ActiveRecord::Base
   scope :without_pet, -> { where(pet_id: nil) }
 
   def add_log(message)
-    if logs?
-      self.logs = "#{logs}\n\n#{message}"
-    else
-      self.logs = message
-    end
+    self.logs = if logs?
+                  "#{logs}\n\n#{message}"
+                else
+                  message
+                end
   end
 end

@@ -19,11 +19,10 @@ require 'rails_helper'
 # that an instance is receiving a specific message.
 
 RSpec.describe PetsController, type: :controller do
-
   # This should return the minimal set of attributes required to create a valid
   # Pet. As you add validations to Pet, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
+  let(:valid_attributes) do
     {
       name: 'MyString',
       specie: :dog,
@@ -34,9 +33,9 @@ RSpec.describe PetsController, type: :controller do
       location: 'MyString',
       province_id: 46
     }
-  }
+  end
 
-  let(:invalid_attributes) {
+  let(:invalid_attributes) do
     {
       name: 'MyString',
       specie: '',
@@ -44,17 +43,16 @@ RSpec.describe PetsController, type: :controller do
       description: nil,
       location: 'MyString'
     }
-  }
+  end
 
-  describe "GET show" do
-    it "assigns the requested pet as @pet" do
+  describe 'GET show' do
+    it 'assigns the requested pet as @pet' do
       pet = Pet.create! valid_attributes
-      get :show, {
-        id: pet.to_param,
-        specie: pet.enum_to_s(:specie).parameterize,
-        province: pet.province,
-        breed: pet.breed.parameterize,
-      }
+      get :show,
+          id: pet.to_param,
+          specie: pet.enum_to_s(:specie).parameterize,
+          province: pet.province,
+          breed: pet.breed.parameterize
       expect(assigns(:pet)).to eq(pet)
     end
   end
@@ -62,50 +60,50 @@ RSpec.describe PetsController, type: :controller do
   context 'with a shelter logged' do
     login_shelter
 
-    describe "GET new" do
-      it "assigns a new pet as @pet" do
+    describe 'GET new' do
+      it 'assigns a new pet as @pet' do
         get :new
         expect(assigns(:pet)).to be_a_new(Pet)
       end
     end
 
-    describe "GET edit" do
-      it "assigns the requested pet as @pet" do
+    describe 'GET edit' do
+      it 'assigns the requested pet as @pet' do
         pet = Pet.create! valid_attributes
-        get :edit, {id: pet.to_param}
+        get :edit, id: pet.to_param
         expect(assigns(:pet)).to eq(pet)
       end
     end
 
-    describe "POST create" do
-      describe "with valid params" do
-        it "creates a new Pet" do
-          expect {
-            post :create, {pet: valid_attributes}
-          }.to change(Pet, :count).by(1)
+    describe 'POST create' do
+      describe 'with valid params' do
+        it 'creates a new Pet' do
+          expect do
+            post :create, pet: valid_attributes
+          end.to change(Pet, :count).by(1)
         end
 
-        it "assigns a newly created pet as @pet" do
-          post :create, {pet: valid_attributes}
+        it 'assigns a newly created pet as @pet' do
+          post :create, pet: valid_attributes
           expect(assigns(:pet)).to be_a(Pet)
           expect(assigns(:pet)).to be_persisted
         end
 
-        it "redirects to the created pet" do
-          post :create, {pet: valid_attributes}
+        it 'redirects to the created pet' do
+          post :create, pet: valid_attributes
           expect(response).to redirect_to(Pet.last.decorate.adopt_specie_path)
         end
       end
 
-      describe "with invalid params" do
-        it "assigns a newly created but unsaved pet as @pet" do
-          post :create, {pet: invalid_attributes}
+      describe 'with invalid params' do
+        it 'assigns a newly created but unsaved pet as @pet' do
+          post :create, pet: invalid_attributes
           expect(assigns(:pet)).to be_a_new(Pet)
         end
 
         it "re-renders the 'new' template" do
-          post :create, {pet: invalid_attributes}
-          expect(response).to render_template("new")
+          post :create, pet: invalid_attributes
+          expect(response).to render_template('new')
         end
       end
     end
@@ -114,58 +112,58 @@ RSpec.describe PetsController, type: :controller do
   context 'with an admin logged' do
     login_admin
 
-    describe "PUT update" do
-      describe "with valid params" do
-        let(:new_attributes) {
-          skip("Add a hash of attributes valid for your model")
-        }
-
-        it "updates the requested pet" do
-          pet = Pet.create! valid_attributes
-          put :update, {id: pet.to_param, pet: new_attributes}
-          pet.reload
-          skip("Add assertions for updated state")
+    describe 'PUT update' do
+      describe 'with valid params' do
+        let(:new_attributes) do
+          skip('Add a hash of attributes valid for your model')
         end
 
-        it "assigns the requested pet as @pet" do
+        it 'updates the requested pet' do
           pet = Pet.create! valid_attributes
-          put :update, {id: pet.to_param, pet: valid_attributes}
+          put :update, id: pet.to_param, pet: new_attributes
+          pet.reload
+          skip('Add assertions for updated state')
+        end
+
+        it 'assigns the requested pet as @pet' do
+          pet = Pet.create! valid_attributes
+          put :update, id: pet.to_param, pet: valid_attributes
           expect(assigns(:pet)).to eq(pet)
         end
 
-        it "redirects to the pet" do
+        it 'redirects to the pet' do
           pet = Pet.create! valid_attributes
-          put :update, {id: pet.to_param, pet: valid_attributes}
+          put :update, id: pet.to_param, pet: valid_attributes
           expect(response).to redirect_to(pet.decorate.adopt_specie_path)
         end
       end
 
-      describe "with invalid params" do
-        it "assigns the pet as @pet" do
+      describe 'with invalid params' do
+        it 'assigns the pet as @pet' do
           pet = Pet.create! valid_attributes
-          put :update, {id: pet.to_param, pet: invalid_attributes}
+          put :update, id: pet.to_param, pet: invalid_attributes
           expect(assigns(:pet)).to eq(pet)
         end
 
         it "re-renders the 'edit' template" do
           pet = Pet.create! valid_attributes
-          put :update, {id: pet.to_param, pet: invalid_attributes}
-          expect(response).to render_template("edit")
+          put :update, id: pet.to_param, pet: invalid_attributes
+          expect(response).to render_template('edit')
         end
       end
     end
 
-    describe "DELETE destroy" do
-      it "destroys the requested pet" do
+    describe 'DELETE destroy' do
+      it 'destroys the requested pet' do
         pet = Pet.create! valid_attributes
-        expect {
-          delete :destroy, {id: pet.to_param}
-        }.to change(Pet, :count).by(-1)
+        expect do
+          delete :destroy, id: pet.to_param
+        end.to change(Pet, :count).by(-1)
       end
 
-      it "redirects to the pets list" do
+      it 'redirects to the pets list' do
         pet = Pet.create! valid_attributes
-        delete :destroy, {id: pet.to_param}
+        delete :destroy, id: pet.to_param
         expect(response).to redirect_to(root_url)
       end
     end
