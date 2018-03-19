@@ -29,6 +29,14 @@ dl {
   }
 }
 
+.bulleted {
+  @extend %default-ul;
+}
+
+.numbered {
+  @extend %default-ol;
+}
+
 .pagination {
   $pagination-border-color: $base-border-color;
   $pagination-border: 1px solid $pagination-border-color;
