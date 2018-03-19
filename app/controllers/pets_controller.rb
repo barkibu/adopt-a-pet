@@ -46,7 +46,8 @@ class PetsController < ApplicationController
 
   def destroy
     @pet.destroy
-    redirect_to root_url, notice: 'Pet was successfully destroyed.'
+    url_to_redirect = request.referer.presence || root_url
+    redirect_to url_to_redirect, notice: 'Pet was successfully destroyed.'
   end
 
   def adopt
