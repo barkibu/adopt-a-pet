@@ -37,6 +37,7 @@ gem 'pundit'
 gem 'omniauth-facebook'
 gem 'forest_liana'
 gem 'rack-cors', :require => 'rack/cors'
+gem 'paranoia'
 
 group :development do
   gem 'bundler-audit'
