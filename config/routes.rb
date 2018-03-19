@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   resources :shelters, path: 'protectoras-de-animales'
   resources :pets, only: [:new, :create, :edit, :update, :destroy]
 
+  authenticate :user, lambda { |u| u.admin? } do
+    get 'admin', to: 'pets#admin', as: :admin_pets
+  end
+
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   root :to => 'home#index'

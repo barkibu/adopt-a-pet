@@ -1,4 +1,6 @@
 class PetsController < ApplicationController
+  PETS_PER_ADMIN_PAGE = 100
+
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_pet, only: [:show, :edit, :update, :destroy, :adopt]
   before_action :set_adopt_message, only: [:show, :adopt]
@@ -58,6 +60,11 @@ class PetsController < ApplicationController
       errors = @adopt_message.errors.full_messages
       redirect_to pet.adopt_specie_path(@adopt_message.to_param), alert: errors
     end
+  end
+
+  def admin
+    authorize :pet
+    @pets = Pet.order(created_at: :desc).page(params[:page]).per(PETS_PER_ADMIN_PAGE)
   end
 
   private
