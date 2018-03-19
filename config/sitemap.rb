@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'sitemap_generator'
 
-SitemapGenerator::Sitemap.default_host = 'http://www.barkiadopta.org'
+SitemapGenerator::Sitemap.default_host = 'http://www.kiwokoadopta.org'
 SitemapGenerator::Sitemap.create do
   add '/', changefreq: 'weekly'
 
