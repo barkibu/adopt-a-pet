@@ -17,4 +17,8 @@ class PetPolicy < ApplicationPolicy
   def adopt?
     true
   end
+
+  def admin?
+    user && user.admin?
+  end
 end
