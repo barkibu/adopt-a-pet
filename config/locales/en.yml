@@ -115,10 +115,10 @@ en:
 
   contact_message_mailer:
     new_contact_message:
-      subject: '[barkiadopta.org] Contact form'
+      subject: '[kiwokoadopta.org] Contact form'
   adopt_message_mailer:
     new_adopt_message:
-      subject: 'Someone wants to adopt %{name} in barkiadopta.org'
+      subject: 'Someone wants to adopt %{name} in kiwokoadopta.org'
 
   devise:
     confirmations:

@@ -117,10 +117,10 @@ es:
 
   contact_message_mailer:
     new_contact_message:
-      subject: '[barkiadopta.org] Formulario de contacto'
+      subject: '[kiwokoadopta.org] Formulario de contacto'
   adopt_message_mailer:
     new_adopt_message:
-      subject: 'Alguien quiere adoptar a %{name} en barkiadopta.org'
+      subject: 'Alguien quiere adoptar a %{name} en kiwokoadopta.org'
 
   devise:
     confirmations:
