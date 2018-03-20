@@ -1,0 +1,27 @@
+%section
+  %h1 Administrar mascotas
+  %table
+    %thead
+      %tr
+        %th
+        %th Nombre
+        %th Especie
+        %th Raza
+        %th Sexo
+        %th Lugar
+        %th{ colspan: 2 }
+    %tbody
+      - pets.each do |pet|
+        - pet_image = pet.pet_pictures.any? ? pet.pet_pictures.first.asset.url(:thumb) : 'card-image-placeholder.png'
+        %tr
+          %td{ style: 'width: 70px' }
+            = link_to pet.adopt_specie_path do
+              = image_tag pet_image, width: '50'
+          %td= link_to pet.name, pet.adopt_specie_path
+          %td= pet.specie_formatted.singularize
+          %td= pet.breed_formatted
+          %td= pet.enum_to_s :sex
+          %td= pet.location
+          %td= link_to 'Editar', edit_pet_path(pet), class: 'control-link'
+          %td= link_to 'Borrar', pet_path(pet), method: :delete, data: { confirm: "¿Quieres borrar el anuncio de #{pet.name}?" }, class: 'control-link'
+  = paginate pets

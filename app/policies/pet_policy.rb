@@ -12,11 +12,13 @@ class PetPolicy < ApplicationPolicy
     (user == record.user) or user.admin?
   end
 
-  def destroy?
-    user and user.admin?
-  end
+  alias_method :destroy?, :update?
 
   def adopt?
     true
+  end
+
+  def admin?
+    user && user.admin?
   end
 end

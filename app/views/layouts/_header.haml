@@ -23,6 +23,6 @@
           %ul.submenu
             - if policy(current_user).update?
               %li= link_to 'Perfil', edit_user_registration_path
-            - if policy(:dashboard).show?
-              %li= link_to 'Dashboard', upmin_path
+            - if policy(:pets).admin?
+              %li= link_to 'Administrar mascotas', admin_pets_path
             %li= link_to t('logout'), destroy_user_session_path, method: :delete

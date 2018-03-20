@@ -14,8 +14,9 @@ Rails.application.routes.draw do
   resources :pets, only: [:new, :create, :edit, :update, :destroy]
 
   authenticate :user, lambda { |u| u.admin? } do
-    mount Upmin::Engine => '/admin'
+    get 'admin', to: 'pets#admin', as: :admin_pets
   end
+
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   root :to => 'home#index'
