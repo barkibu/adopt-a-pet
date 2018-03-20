@@ -16,6 +16,13 @@
     text-align: center;
     color: $hero-color;
 
+    .hero-image {
+      display: none;
+      @include media($medium-screen-up){
+        display: inline-block;
+      }
+    }
+
     .hero-copy {
       text-align: center;
 
@@ -54,6 +61,9 @@
           font-size: 1.1em;
           max-width: 40%;
         }
+      }
+      @include media($medium-screen-up){
+        display: none;
       }
     }
   }
