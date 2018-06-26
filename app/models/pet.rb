@@ -8,7 +8,7 @@ class Pet < ActiveRecord::Base
   enum sex: [:male, :female]
   enum status: [:adoption, :adopted]
   enum size: [:small, :medium, :big]
-  enum specie: [:dog, :cat]
+  enum specie: [:dog, :cat, :rodent]
 
   after_initialize :set_default_status, if: :new_record?
 

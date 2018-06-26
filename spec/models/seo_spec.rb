@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe SEO do
   let(:pet) { Specie.find_by_key(:pet) }
   let(:dog) { Specie.find_by_key(:dog) }
-  let(:cat) { Specie.find_by_key(:cat) }
+  let(:cat) { Specie.find_by_key(:cat) } 
 
   describe '.description_for_index' do
     it 'returns the right text' do

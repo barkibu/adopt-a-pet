@@ -11,6 +11,10 @@ module SearchHelper
     check_specie?(params) || params[:specie] == 'gatos'
   end
 
+  def check_specie_rodent?(params)
+    check_specie?(params) || params[:specie] == 'roedores'
+  end
+
   def submit_serch_text(specie)
     if specie.key_without_pet?
       "Buscar #{specie} en adopción"

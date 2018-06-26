@@ -2,9 +2,9 @@
 
 FactoryGirl.define do
   factory :pet do
-    name          { "#{ case specie when :dog then 'Perrito';when :cat then 'Gatito';end } #{ %w(guay viejete happy).sample }" }
-    specie        { [:dog, :cat].sample }
-    breed         { case specie when :dog then %w(dogo pontier golden).sample;when :cat then %w(persa tigre).sample;end }
+    name          { "#{ case specie when :dog then 'Perrito';when :cat then 'Gatito';when :rodent then 'Ratoncito';end } #{ %w(guay viejete happy).sample }" }
+    specie        { [:dog, :cat, :rodent].sample }
+    breed         { case specie when :dog then %w(dogo pontier golden).sample;when :cat then %w(persa tigre).sample;when :rodent then 'común';end }
     sex           { Pet.sexes.keys.sample }
     description   { Faker::Lorem.paragraphs(rand(4) + 1).join "\n\n" }
     shelter_name  { Faker::Company.name }

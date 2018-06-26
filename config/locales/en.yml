@@ -59,6 +59,7 @@ en:
         species:
           dog: 'Dog'
           cat: 'Cat'
+          rodent: 'Rodent'
         status: 'Status'
         statuses:
           adoption: 'In adoption'
@@ -87,6 +88,7 @@ en:
   species_prepositions:
     cat: 'a cat'
     dog: 'a dog'
+    rodent: 'a rodent'
     pet: 'a pet'
 
   views:

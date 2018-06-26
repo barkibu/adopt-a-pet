@@ -49,6 +49,8 @@ class HomeController < ApplicationController
       'perros'
     elsif params[:cat]
       'gatos'
+    elsif params[:rodent]
+      'roedores'
     else
       'mascotas'
     end
