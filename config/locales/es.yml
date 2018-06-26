@@ -61,6 +61,7 @@ es:
         species:
           dog: 'Perro'
           cat: 'Gato'
+          rodent: 'Roedor'
         status: 'Estado'
         statuses:
           adoption: 'En adopción'
@@ -89,6 +90,7 @@ es:
   species_prepositions:
     cat: 'un gato'
     dog: 'un perro'
+    rodent: 'un roedor'
     pet: 'una mascota'
 
   views:

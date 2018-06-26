@@ -14,6 +14,7 @@ module HeaderHelper
     else
       links << link_to('Perros en adopción', adopt_species_path(specie: Specie.find_by_key(:dog)))
       links << link_to('Gatos en adopción', adopt_species_path(specie: Specie.find_by_key(:cat)))
+      links << link_to('Roedores en adopción', adopt_species_path(specie: Specie.find_by_key(:rodent)))
     end
     links
   end

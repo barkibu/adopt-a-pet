@@ -1,7 +1,4 @@
 = link_to pet.adopt_specie_path, class: 'card', itemscope: true, itemtype: "http://schema.org/Article", itemprop: 'url' do
-  - if pet.urgent?
-    .ribbon-wrapper
-      .ribbon URGENTE
   .card-image
     - if pet.pet_pictures.any?
       = image_tag pet.pet_pictures.first.asset.url(:home), itemprop: 'image'

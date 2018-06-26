@@ -7,7 +7,7 @@ if Rails.env.development?
       include FactoryGirl::Syntax::Methods
 
       FactoryGirl.create :user, email: 'admin@example.com', password: 'password', role: :admin
-      FactoryGirl.create_list :pet, 40
+      FactoryGirl.create_list :pet, 80
     end
   end
 end

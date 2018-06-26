@@ -1,5 +1,5 @@
 class Specie
-  PARAMS = { dog: 'perros', cat: 'gatos', pet: 'mascotas' }
+  PARAMS = { dog: 'perros', cat: 'gatos', rodent: 'roedores', pet: 'mascotas' }
 
   attr_accessor :key, :value
 

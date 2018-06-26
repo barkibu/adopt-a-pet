@@ -10,6 +10,9 @@
         %li
           = check_box_tag :cat, '1', check_specie_cat?(params)
           = label_tag :cat, 'Gatos'
+        %li
+          = check_box_tag :rodent, '1', check_specie_rodent?(params)
+          = label_tag :rodent, 'Roedores'
 
   = render 'search_box_filter', filter: 'size'
   = render 'search_box_filter', filter: 'age'
